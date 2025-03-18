@@ -7,16 +7,29 @@ import java.time.LocalDate;
 
 @Data
 @Entity
+@Table(name = "variante")
 public class Variante {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    private String uuid;
+
+    @Column(nullable = false)
     private String nombre;
+
     private String descripcion;
+
+    @Column(nullable = false)
     private String enlace;
+
+    @Column(nullable = false)
     private String personaje;
+
     @Column(name = "total_likes")
     private Long numLikes;
+
     @Column(name = "fecha_creacion")
     private LocalDate fechaCreacion;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
 }
