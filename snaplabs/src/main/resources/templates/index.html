@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Snap Labs - Marvel Snap Mazos, Cartas y Variantes</title>
+</head>
+<body>
+    <header th:replace="fragments/plantilla :: header"></header>
+    <main>
+        <section>
+            <img th:src="" alt="Logo Snap Labs">
+            <p>Bienvenido a Snap Labs, un lugar donde compartir tu conocimiento y arte sobre Marvel Snap con los demás</p>
+        </section>
+        <nav>
+            <ul>
+                <li>
+                    <a th:href="">Mazos de la Comunidad</a>
+                </li>
+                <li>
+                    <a th:href="">Mazos Meta</a>
+                </li>
+                <li>
+                    <a th:href="">Laboratorio de Mazos</a>
+                </li>
+                <li>
+                    <a th:href="">Variantes de la Comunidad</a>
+                </li>
+                <li>
+                    <a th:href="">Lista de Cartas</a>
+                </li>
+            </ul>
+        </nav>
+    </main>
+    <footer th:replace="fragments/plantilla :: footer"></footer>
+</body>
+</html>
