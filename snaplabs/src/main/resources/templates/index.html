@@ -6,8 +6,7 @@
     <title>Snap Labs - Marvel Snap Mazos, Cartas y Variantes</title>
 </head>
 <body>
-    <header th:replace="fragments/plantilla :: header"></header>
-    <main>
+    <main th:fragment="content">
         <section>
             <img th:src="" alt="Logo Snap Labs">
             <p>Bienvenido a Snap Labs, un lugar donde compartir tu conocimiento y arte sobre Marvel Snap con los demás</p>
@@ -32,6 +31,5 @@
             </ul>
         </nav>
     </main>
-    <footer th:replace="fragments/plantilla :: footer"></footer>
 </body>
 </html>

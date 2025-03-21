@@ -4,93 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Plantilla</title>
+    <link rel='stylesheet' type='text/css' media='screen' th:href='@{/styles/header.css}'>
+    <link rel='stylesheet' type='text/css' media='screen' th:href='@{/styles/footer.css}'>
+    <link rel='stylesheet' th:href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header th:fragment="header">
-        <div>
-            <a th:href="@{/}">
-                <img th:src="@{/images/}" alt="Logo negro Snap Labs">
-            </a>
-        </div>
-        <div>
-            <nav>
-                <ul>
-                    <li>
-                        Mazos
-                        <ul>
-                            <li>
-                                <a>Laboratorio</a>
-                            </li>
-                            <li>
-                                <a>Mazos Publicados</a>
-                            </li>
-                            <li>
-                                <a>Mazos Meta</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Cartas
-                        <ul>
-                            <li>
-                                <a>Lista de Cartas</a>
-                            </li>
-                            <li>
-                                <a>Serie 1</a>
-                            </li>
-                            <li>
-                                <a>Serie 2</a>
-                            </li>
-                            <li>
-                                <a>Serie 3</a>
-                            </li>
-                            <li>
-                                <a>Serie 4</a>
-                            </li>
-                            <li>
-                                <a>Serie 5</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Comunidad
-                        <ul>
-                            <li>
-                                <a>Variantes</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        <div>
-            <a>Iniciar Sesión</a>
-        </div>
-    </header>
-    
-    <header th:fragment="header-login">
-
-    </header>
-    
-    <footer th:fragment="footer">
-        <div>
-            <img th:src="@{/images/}" alt="Logo negro Snap Labs">
-        </div>
-        <div>
-            <nav>
-                <ul>
-                    <li>
-                        Sobre mí
-                    </li>
-                    <li>
-                        Contacto
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        <div>
-            <p>Snap Labs no está afiliada a Nuverse, Second Dinner o Marvel.</p>
-        </div>
-    </footer>
+    <header th:replace="fragments/header :: header"></header>
+    <main th:replace="${vista} :: contenido"></main>
+    <footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>
