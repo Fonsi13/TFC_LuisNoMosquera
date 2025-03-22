@@ -3,16 +3,14 @@
     font-style: bold;
     src:
         local("Edge of the Galaxy Poster Italic"),
-        url("../fonts/EdgeOfTheGalaxyPosterItalic.otf") format("opentype"),
         url("/fonts/EdgeOfTheGalaxyItalic.otf") format("opentype");
 }
 @font-face {
     font-family: 'Edge of the Galaxy';
     font-style: normal;
     src:
-    local("Edge of the Galaxy"),
-    url("../fonts/EdgeOfTheGalaxyRegular.otf") format("opentype"),
-    url("/fonts/EdgeOfTheGalaxyRegular.otf") format("opentype");
+        local("Edge of the Galaxy"),
+        url("/fonts/EdgeOfTheGalaxyRegular.otf") format("opentype");
 }
 /* Quitar estilos de las listas */
 ul {
@@ -35,6 +33,7 @@ a {
     font-size: 36px;
     background-color: #2B1B67;
     color: #F1E8F4;
+    border-bottom: medium solid #BE6BBC;
 }
 /* Estilos de los contenedores */
 .desplegable {
@@ -55,11 +54,14 @@ a {
     display: none;
     position: absolute;
     z-index: 1;
-    background-color: #f1f1f1;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2B1B67;
     min-width: 200px;
     font-family: 'Edge of the Galaxy', sans-serif;
     font-display: swap;
     font-size: 24px;
+    border-radius: 2.5%;
 }
 /* Estilos de los enlaces */
 .desplegable-contenido li {
@@ -73,15 +75,16 @@ a {
 }
 /* Cambiar el color de fondo de los enlaces al pasar por encima */
 .desplegable-contenido li:hover {
-    background-color: #ddd;
+    color: #BE6BBC;
+    background-color: #0A002B;
 }
 /* Cambiar el color de fondo del padre cuando se muestra el menú desplegable */
 .desplegable:hover .desplegable-boton {
-    background-color: #3e8e41;
+    color: #B8A6C4;
 }
 /* Centrar el logo */
 #div-logo {
-    margin-top: 0.2em;
+    margin-top: 5px;
 }
 /* Centrar el enlace de inicio de sesión */
 #div-login {

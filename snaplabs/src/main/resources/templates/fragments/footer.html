@@ -6,18 +6,21 @@
     <title>Footer</title>
 </head>
 <body>
-    <footer th:fragment="footer">
-        <div>
-            <img th:src="@{/images/}" alt="Logo negro Snap Labs">
+    <footer th:fragment="footer" class="footer">
+        <div id="div-logo">
+            <img th:src="@{/images/snap_labs_small_logo_white.png}" alt="Logo negro Snap Labs">
         </div>
         <div>
             <nav>
-                <ul>
+                <ul class="enlaces">
                     <li>
-                        Sobre mí
+                        <a>Sobre mí</a>
                     </li>
                     <li>
-                        Contacto
+                        |
+                    </li>
+                    <li>
+                        <a>Contacto</a>
                     </li>
                 </ul>
             </nav>

@@ -1,5 +1,4 @@
 /* Ocupar todo el espacio en la ventana */
-body, html {
+body {
     margin: 0;
-    padding: 0;
 }
