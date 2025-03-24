@@ -1,19 +1,5 @@
-@font-face {
-    font-family: 'Edge of the Galaxy Poster Italic';
-    font-style: bold;
-    src:
-        local("Edge of the Galaxy Poster Italic"),
-        url("/fonts/EdgeOfTheGalaxyItalic.otf") format("opentype");
-}
-@font-face {
-    font-family: 'Edge of the Galaxy';
-    font-style: normal;
-    src:
-        local("Edge of the Galaxy"),
-        url("/fonts/EdgeOfTheGalaxyRegular.otf") format("opentype");
-}
 /* Quitar estilos de las listas */
-ul {
+.cabecera ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
