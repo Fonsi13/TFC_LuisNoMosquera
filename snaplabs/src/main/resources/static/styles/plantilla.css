@@ -1,8 +1,3 @@
-/* Ocupar todo el espacio en la ventana */
-body {
-    margin: 0;
-    background-color: #0a002b;
-}
 /* Defino las fuentes */
 @font-face {
     font-family: 'Edge of the Galaxy';
@@ -24,4 +19,21 @@ body {
     src:
         local("Edge of the Galaxy Poster Italic"),
         url("../fonts/EdgeOfTheGalaxyItalic.otf") format("opentype");
+}
+/* Ocupar todo el espacio en la ventana */
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: #0a002b;
+}
+/* Enviar el footer al fondo */
+main {
+    flex: 1;
+}
+/* Cambiar el cursor en los enlaces */
+a {
+    cursor: pointer;
+    text-decoration: none;
 }

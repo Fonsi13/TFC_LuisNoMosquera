@@ -28,11 +28,18 @@
     text-align: center;
     font-size: 2rem;
 }
+/* Estilos comunes de los apartados */
 .caja {
     border: 1px solid black;
     border-radius: 2.5%;
     padding: 2.5em 2.25em;
+    color: #F1E8F4;
 }
+/* Forzar colores enlace */
+.caja a {
+    color: #F1E8F4;
+}
+/* Estilos de cada apartado */
 .caja1 {
     grid-area: mazos;
     background-image:
@@ -88,5 +95,3 @@
     background-size: cover;
     background-position: center;
 }
-
-body {background-color: #0a002b;}

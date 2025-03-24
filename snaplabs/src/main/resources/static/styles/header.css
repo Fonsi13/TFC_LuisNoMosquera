@@ -4,10 +4,6 @@
     margin: 0;
     padding: 0;
 }
-/* Cambiar el cursor en los enlaces */
-a {
-    cursor: pointer;
-}
 /* Estilos de la cabecera */
 .cabecera {
     display: flex;
