@@ -1,37 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns:th="https://www.thymeleaf.org" lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Plantilla</title>
+    <title>Header</title>
 </head>
 <body>
-    <header th:fragment="header">
-        <div>
+    <header th:fragment="header" class="cabecera">
+        <div id="div-logo">
             <a th:href="@{/}">
-                <img th:src="@{/images/}" alt="Logo negro Snap Labs">
+                <img th:src="@{/images/logo/snap_labs_small_logo_white.png}" alt="Logo blanco Snap Labs">
             </a>
         </div>
         <div>
             <nav>
                 <ul>
-                    <li>
-                        Mazos
-                        <ul>
-                            <li>
-                                <a>Laboratorio</a>
-                            </li>
+                    <li class="desplegable">
+                        <a class="desplegable-boton">Mazos<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="desplegable-contenido">
                             <li>
                                 <a>Mazos Publicados</a>
                             </li>
                             <li>
                                 <a>Mazos Meta</a>
                             </li>
+                            <li>
+                                <a>Laboratorio</a>
+                            </li>
                         </ul>
                     </li>
-                    <li>
-                        Cartas
-                        <ul>
+                    <li class="desplegable">
+                        <a class="desplegable-boton">Cartas<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="desplegable-contenido">
                             <li>
                                 <a>Lista de Cartas</a>
                             </li>
@@ -52,9 +52,9 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        Comunidad
-                        <ul>
+                    <li class="desplegable">
+                        <a class="desplegable-boton">Comunidad<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="desplegable-contenido">
                             <li>
                                 <a>Variantes</a>
                             </li>
@@ -63,34 +63,13 @@
                 </ul>
             </nav>
         </div>
-        <div>
-            <a>Iniciar Sesión</a>
+        <div id="div-login">
+            <a><i class="fa-solid fa-door-open"></i>Acceder</a>
         </div>
     </header>
-    
+
     <header th:fragment="header-login">
 
     </header>
-    
-    <footer th:fragment="footer">
-        <div>
-            <img th:src="@{/images/}" alt="Logo negro Snap Labs">
-        </div>
-        <div>
-            <nav>
-                <ul>
-                    <li>
-                        Sobre mí
-                    </li>
-                    <li>
-                        Contacto
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        <div>
-            <p>Snap Labs no está afiliada a Nuverse, Second Dinner o Marvel.</p>
-        </div>
-    </footer>
 </body>
 </html>

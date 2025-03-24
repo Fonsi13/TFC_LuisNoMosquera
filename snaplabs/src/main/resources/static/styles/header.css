@@ -1,0 +1,85 @@
+/* Quitar estilos de las listas */
+.cabecera ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+/* Cambiar el cursor en los enlaces */
+a {
+    cursor: pointer;
+}
+/* Estilos de la cabecera */
+.cabecera {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em;
+    font-family: 'Edge of the Galaxy Poster Italic', sans-serif;
+    font-display: swap;
+    font-size: 36px;
+    background-color: #2B1B67;
+    color: #F1E8F4;
+    border-bottom: medium solid #BE6BBC;
+}
+/* Estilos de los contenedores */
+.desplegable {
+    position: relative;
+    display: inline-block;
+    margin: 0.45em 1.5em 0 1.5em;
+}
+/* Estilos de los titulos del menu */
+.desplegable > a{
+    padding: 0.3em;
+}
+.desplegable-boton i {
+    margin-left: 0.2em;
+    font-size: 20px;
+}
+/* Estilos del menú desplegable, oculto */
+.desplegable-contenido {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2B1B67;
+    min-width: 200px;
+    font-family: 'Edge of the Galaxy', sans-serif;
+    font-display: swap;
+    font-size: 24px;
+    border-radius: 2.5%;
+}
+/* Estilos de los enlaces */
+.desplegable-contenido li {
+    display: block;
+    text-align: center;
+    padding: 0.3em 0;
+}
+/* Mostra el menú desplegable */
+.desplegable:hover .desplegable-contenido {
+    display: block;
+}
+/* Cambiar el color de fondo de los enlaces al pasar por encima */
+.desplegable-contenido li:hover {
+    color: #BE6BBC;
+    background-color: #0A002B;
+}
+/* Cambiar el color de fondo del padre cuando se muestra el menú desplegable */
+.desplegable:hover .desplegable-boton {
+    color: #B8A6C4;
+}
+/* Centrar el logo */
+#div-logo {
+    margin-top: 5px;
+}
+/* Centrar el enlace de inicio de sesión */
+#div-login {
+    margin: 0.45em 1.75em 0 1.75em;
+}
+#div-login a {
+    padding: 0.3em;
+}
+#div-login i {
+    margin-right: 0.2em;
+    font-size: 30px;
+}

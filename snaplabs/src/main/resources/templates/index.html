@@ -4,34 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Snap Labs - Marvel Snap Mazos, Cartas y Variantes</title>
+    <th:block th:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/index.css}">
+    </th:block>
 </head>
 <body>
-    <header th:replace="fragments/plantilla :: header"></header>
-    <main>
-        <section>
-            <img th:src="" alt="Logo Snap Labs">
-            <p>Bienvenido a Snap Labs, un lugar donde compartir tu conocimiento y arte sobre Marvel Snap con los demás</p>
+    <main th:fragment="content" class="contenido">
+        <section class="titulo">
+            <p>Bienvenido a Snap Labs, un espacio donde compartir tu conocimiento y arte sobre Marvel Snap</p>
         </section>
         <nav>
-            <ul>
-                <li>
+            <ul class="secciones">
+                <li class="caja caja1">
                     <a th:href="">Mazos de la Comunidad</a>
                 </li>
-                <li>
+                <li class="caja caja2">
                     <a th:href="">Mazos Meta</a>
                 </li>
-                <li>
-                    <a th:href="">Laboratorio de Mazos</a>
+                <li class="caja caja3">
+                    <a th:href="">Laboratorio</a>
                 </li>
-                <li>
+                <li class="caja caja4">
                     <a th:href="">Variantes de la Comunidad</a>
                 </li>
-                <li>
+                <li class="caja caja5">
                     <a th:href="">Lista de Cartas</a>
                 </li>
             </ul>
         </nav>
     </main>
-    <footer th:replace="fragments/plantilla :: footer"></footer>
 </body>
 </html>

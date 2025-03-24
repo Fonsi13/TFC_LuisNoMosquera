@@ -1,0 +1,27 @@
+/* Ocupar todo el espacio en la ventana */
+body {
+    margin: 0;
+    background-color: #0a002b;
+}
+/* Defino las fuentes */
+@font-face {
+    font-family: 'Edge of the Galaxy';
+    font-style: normal;
+    src:
+        local("Edge of the Galaxy"),
+        url("/fonts/EdgeOfTheGalaxyRegular.otf") format("opentype");
+}
+@font-face {
+    font-family: 'Edge of the Galaxy Italic';
+    font-style: bold;
+    src:
+        local("Edge of the Galaxy Italic"),
+        url("/fonts/EdgeOfTheGalaxyItalic.otf") format("opentype");
+}
+@font-face {
+    font-family: 'Edge of the Galaxy Poster Italic';
+    font-style: bold;
+    src:
+        local("Edge of the Galaxy Poster Italic"),
+        url("../fonts/EdgeOfTheGalaxyItalic.otf") format("opentype");
+}

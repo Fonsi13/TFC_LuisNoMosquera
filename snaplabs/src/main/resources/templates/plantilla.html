@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Plantilla</title>
+    <link rel='stylesheet' type='text/css' media='screen' th:href='@{/styles/header.css}'>
+    <link rel='stylesheet' type='text/css' media='screen' th:href='@{/styles/footer.css}'>
+    <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <th:block th:replace="${vista} :: css"></th:block>
+</head>
+<body>
+    <header th:replace="fragments/header :: header"></header>
+    <main th:replace="${vista} :: contenido"></main>
+    <footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

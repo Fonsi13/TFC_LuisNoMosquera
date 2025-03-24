@@ -1,0 +1,29 @@
+/* Cambiar el cursor en los enlaces */
+a {
+    cursor: pointer;
+}
+/* Estilos del pie de pagina */
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Trebuchet MS, Arial, sans-serif;
+    font-display: swap;
+    background-color: #2B1B67;
+    color: #F1E8F4;
+    border-top: medium solid #BE6BBC;
+}
+/* Crear espacio entre el logo y el borde */
+#div-logo {
+    margin-top: 5px;
+}
+/* Quitar estilos de las listas */
+.enlaces {
+    display: inline-flex;
+    justify-content: center;
+    gap: 0.3em;
+    list-style-type: none;
+    margin: 0.3em 0 0 0;
+    padding: 0;
+}
