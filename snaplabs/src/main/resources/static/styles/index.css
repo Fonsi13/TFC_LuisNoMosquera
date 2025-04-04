@@ -4,9 +4,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Edge of the Galaxy Poster Italic', sans-serif;
-    font-display: swap;
-    color: #F1E8F4;
+    font-family: 'Edge of the Galaxy Poster Italic', Arial, sans-serif;
+    color: #F5F1FB;
 }
 /* Estilos del titulo */
 .titulo {
@@ -33,11 +32,11 @@
     border: 1px solid black;
     border-radius: 2.5%;
     padding: 2.5em 2.25em;
-    color: #F1E8F4;
+    color: #F5F1FB;
 }
 /* Forzar colores enlace */
 .caja a {
-    color: #F1E8F4;
+    color: #F5F1FB;
 }
 /* Estilos de cada apartado */
 .caja1 {

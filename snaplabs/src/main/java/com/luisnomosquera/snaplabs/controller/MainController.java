@@ -12,4 +12,10 @@ public class MainController {
         model.addAttribute("vista", "index");
         return "plantilla";
     }
+
+    @GetMapping("/login")
+    public String showLogin(Model model) {
+        model.addAttribute("vista", "login");
+        return "plantilla";
+    }
 }
