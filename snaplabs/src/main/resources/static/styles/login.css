@@ -1,0 +1,65 @@
+/* Centrar el contenido */
+.contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #F5F1FB;
+}
+/* Estilos del titulo */
+.titulo {
+    font-family: 'Edge of the Galaxy Poster Italic', arial, sans-serif;
+    font-size: 2.25rem;
+}
+/* Estilos en columna */
+.columna {
+    display: flex;
+    flex-direction: column;
+}
+/* Espaciar los campos */
+.formulario {
+    gap: 1.5rem;
+    font-family: 'Edge of the Galaxy', Arial, sans-serif;
+    font-size: 1.25rem;
+}
+/* Estilos de los campos del formulario */
+.campo {
+    width: 20rem;
+    padding: 0.25em 0.7em;
+    margin: 0.5em 0 1rem 0;
+    border: 0.05em solid #ccc;
+    border-radius: 0.5em;
+    font-size: 1.25rem;
+}
+/* Estilos del boton */
+.boton {
+    width: 100%;
+    padding: 0.5em 0.7em;
+    border: none;
+    background-color: #3B014B;
+    font-family: 'Edge of the Galaxy', arial, sans-serif;
+    font-size: 1.4rem;
+    color: #F5F1FB;
+    cursor: pointer;
+}
+.boton:hover {
+    background-color: #000002;
+}
+/* Efecto de enfoque en los campos de entrada */
+.campo:focus {
+    border-color: #2B1B67;
+    outline: none;
+}
+/* Estilos del enlace */
+.enlace {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+}
+.enlace a {
+    color: #F5F1FB;
+}
+.enlace a:hover {
+    color: #BE6BBC;
+}
+

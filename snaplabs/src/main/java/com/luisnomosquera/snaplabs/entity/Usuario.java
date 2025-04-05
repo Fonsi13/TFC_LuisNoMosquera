@@ -11,6 +11,7 @@ import java.util.Set;
 @Table(name = "usuario")
 public class Usuario {
     @Id
+    @Column(name = "uuid", columnDefinition = "CHAR(36)")
     private String uuid;
 
     @Column(nullable = false)
@@ -36,7 +37,7 @@ public class Usuario {
     @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @JoinTable(
             name = "usuario_favorito_mazo",
-            joinColumns = { @JoinColumn(name = "id_usuario") },
+            joinColumns = { @JoinColumn(name = "id_usuario", columnDefinition = "CHAR(36)") },
             inverseJoinColumns = { @JoinColumn(name = "id_mazo") }
     )
     private Set<Mazo> likedMazos;

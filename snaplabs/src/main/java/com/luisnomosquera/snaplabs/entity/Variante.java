@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @Table(name = "variante")
 public class Variante {
     @Id
+    @Column(name = "uuid", columnDefinition = "CHAR(36)")
     private String uuid;
 
     @Column(nullable = false)
@@ -30,6 +31,6 @@ public class Variante {
     private LocalDate fechaCreacion;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "id_usuario", columnDefinition = "CHAR(36)")
     private Usuario usuario;
 }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:fragment="titulo">
+        <title>Acceder - Snap Labs</title>
+    </th:block>
+    <th:block th:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/login.css}">
+    </th:block>
+</head>
+<body>
+    <main th:fragment="contenido" class="contenido">
+        <section class="titulo">
+            <p>Explora el multiverso de Snap Labs</p>
+        </section>
+        <section class="login">
+            <form class="formulario columna">
+                <div class="columna">
+                    <label for="usuario">Nombre de usuario:</label>
+                    <input type="text" id="usuario" name="usuario" class="campo">
+                </div>
+                <div class="columna">
+                    <label for="pwd">Clave de acceso:</label>
+                    <input type="password" id="pwd" name="pwd" class="campo">
+                </div>
+                <div>
+                    <input type="submit" id="btn_login" name="btn_login" class="campo boton" value="Acceder">
+                </div>
+                <div class="enlace">
+                    <a th:href="@{/login}">Crear cuenta</a>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

@@ -33,7 +33,7 @@ public class Mazo {
     private LocalDate fechaCreacion;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "id_usuario", columnDefinition = "CHAR(36)")
     private Usuario usuario;
 
     @ManyToMany(mappedBy = "likedMazos")
