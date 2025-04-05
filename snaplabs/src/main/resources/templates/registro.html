@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:fragment="titulo">
+        <title>Registro - Snap Labs</title>
+    </th:block>
+    <th:block th:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/registro.css}">
+    </th:block>
+</head>
+<body>
+    <main th:fragment="contenido" class="contenido">
+        <section class="titulo">
+            <p>Comienza tu aventura</p>
+        </section>
+        <section class="registro">
+            <form class="formulario columna">
+                <div class="columna">
+                    <label for="usuario">Nombre de usuario:</label>
+                    <input type="text" id="usuario" name="usuario" class="campo">
+                </div>
+                <div class="columna">
+                    <label for="pwd">Clave de acceso:</label>
+                    <input type="password" id="pwd" name="pwd" class="campo">
+                </div>
+                <div class="columna">
+                    <label for="confirmar_pwd">Repite la clave de acceso:</label>
+                    <input type="password" id="confirmar_pwd" name="pwd" class="campo">
+                </div>
+                <div class="columna">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" class="campo">
+                </div>
+                <div class="columna">
+                    <label for="foto_perfil">Foto de perfil (Opcional):</label>
+                    <input type="file" id="foto_perfil" name="foto_perfil" accept="image/png, image/jpeg, image/jpg" class="campo foto">
+                </div>
+                <div>
+                    <input type="submit" id="btn_registro" name="btn_registro" class="campo boton" value="Crear">
+                </div>
+                <div class="enlace">
+                    <a th:href="@{/registro}">Ya tengo una cuenta</a>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
