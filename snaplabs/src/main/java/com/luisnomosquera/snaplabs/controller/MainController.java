@@ -18,4 +18,10 @@ public class MainController {
         model.addAttribute("vista", "login");
         return "plantilla";
     }
+
+    @GetMapping("/registro")
+    public String showRegistro(Model model) {
+        model.addAttribute("vista", "registro");
+        return "plantilla";
+    }
 }

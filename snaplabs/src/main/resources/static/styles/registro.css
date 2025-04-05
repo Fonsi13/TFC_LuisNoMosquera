@@ -31,6 +31,9 @@
     border-radius: 0.5em;
     font-size: 1.25rem;
 }
+.foto {
+    border: none;
+}
 /* Estilos del boton */
 .boton {
     width: 100%;
@@ -62,4 +65,3 @@
 .enlace a:hover {
     color: #BE6BBC;
 }
-
