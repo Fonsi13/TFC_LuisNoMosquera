@@ -1,5 +1,6 @@
 package com.luisnomosquera.snaplabs.controller;
 
+import com.luisnomosquera.snaplabs.entity.Usuario;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ public class MainController {
     @GetMapping("/registro")
     public String showRegistro(Model model) {
         model.addAttribute("vista", "registro");
+        model.addAttribute("usuario", new Usuario());
         return "plantilla";
     }
 }

@@ -16,14 +16,14 @@
             <p>Comienza tu aventura</p>
         </section>
         <section class="registro">
-            <form class="formulario columna">
+            <form th:action="@{/usuarios/guardar}" th:object="${usuario}" method="post" enctype="multipart/form-data" class="formulario columna">
                 <div class="columna">
                     <label for="usuario">Nombre de usuario:</label>
-                    <input type="text" id="usuario" name="usuario" class="campo">
+                    <input type="text" th:field="*{username}" id="usuario" name="usuario" class="campo">
                 </div>
                 <div class="columna">
                     <label for="pwd">Clave de acceso:</label>
-                    <input type="password" id="pwd" name="pwd" class="campo">
+                    <input type="password" th:field="*{password}" id="pwd" name="pwd" class="campo">
                 </div>
                 <div class="columna">
                     <label for="confirmar_pwd">Repite la clave de acceso:</label>
@@ -31,17 +31,17 @@
                 </div>
                 <div class="columna">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" class="campo">
+                    <input type="email" th:field="*{correo}" id="email" name="email" class="campo">
                 </div>
                 <div class="columna">
-                    <label for="foto_perfil">Foto de perfil (Opcional):</label>
+                    <label for="foto_perfil">Foto de perfil(Opcional):</label>
                     <input type="file" id="foto_perfil" name="foto_perfil" accept="image/png, image/jpeg, image/jpg" class="campo foto">
                 </div>
                 <div>
                     <input type="submit" id="btn_registro" name="btn_registro" class="campo boton" value="Crear">
                 </div>
                 <div class="enlace">
-                    <a th:href="@{/registro}">Ya tengo una cuenta</a>
+                    <a th:href="@{/login}">Ya tengo una cuenta</a>
                 </div>
             </form>
         </section>
