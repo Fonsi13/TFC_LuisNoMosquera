@@ -9,7 +9,7 @@
 }
 @font-face {
     font-family: 'Edge of the Galaxy Italic';
-    font-style: bold;
+    font-style: italic;
     src:
         local("Edge of the Galaxy Italic"),
         url("/fonts/EdgeOfTheGalaxyItalic.otf") format("opentype");
@@ -17,10 +17,26 @@
 }
 @font-face {
     font-family: 'Edge of the Galaxy Poster Italic';
-    font-style: bold;
+    font-style: oblique;
     src:
         local("Edge of the Galaxy Poster Italic"),
         url("../fonts/EdgeOfTheGalaxyItalic.otf") format("opentype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'IBM Plex Sans Condensed Thin';
+    font-style: normal;
+    src:
+        local("IBM Plex Sans Condensed Thin"),
+        url("../fonts/IBMPlexSansCondensed-Thin.ttf") format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'IBM Plex Sans Condensed Light';
+    font-style: normal;
+    src:
+        local("IBM Plex Sans Condensed Light"),
+        url("../fonts/IBMPlexSansCondensed-Light.ttf") format("truetype");
     font-display: swap;
 }
 /* Ocupar todo el espacio en la ventana */
@@ -34,9 +50,14 @@ body {
 /* Enviar el footer al fondo */
 main {
     flex: 1;
+    margin-bottom: 1.5rem;
 }
 /* Cambiar el cursor en los enlaces */
 a {
     cursor: pointer;
     text-decoration: none;
+}
+/* Estilos de los mensajes de error */
+.error {
+    color: #FFD700;
 }

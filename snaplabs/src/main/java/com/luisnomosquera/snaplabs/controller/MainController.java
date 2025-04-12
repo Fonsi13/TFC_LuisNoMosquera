@@ -1,8 +1,9 @@
 package com.luisnomosquera.snaplabs.controller;
 
-import com.luisnomosquera.snaplabs.entity.Usuario;
+import com.luisnomosquera.snaplabs.dto.request.UsuarioRequestDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -22,8 +23,10 @@ public class MainController {
 
     @GetMapping("/registro")
     public String showRegistro(Model model) {
+        if (!model.containsAttribute("usuarioDto")) {
+            model.addAttribute("usuarioDto", new UsuarioRequestDto());
+        }
         model.addAttribute("vista", "registro");
-        model.addAttribute("usuario", new Usuario());
         return "plantilla";
     }
 }
