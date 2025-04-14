@@ -21,16 +21,18 @@
                     <label for="usuario">Nombre de usuario:</label>
                     <input type="text" th:field="*{username}" id="usuario" name="usuario" class="campo">
                     <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></span>
+                    <span th:if="${errorUsr}" th:text="${errorUsr}" class="error"></span>
                 </div>
                 <div class="columna">
                     <label for="pwd">Clave de acceso:</label>
-                    <input type="password" th:field="*{password}" id="pwd" name="pwd" class="campo" placeholder="Ej: Ab@123456789">
+                    <input type="password" th:field="*{password}" id="pwd" name="pwd" class="campo" minlength="12" placeholder="Ej: Ab@123456789">
                     <span th:if="${#fields.hasErrors('password')}" th:each="err : ${#fields.errors('password')}" th:utext="${err}" class="error"></span>
                 </div>
                 <div class="columna">
                     <label for="confirmar_pwd">Repite la clave de acceso:</label>
-                    <input type="password" th:field="*{confirmarPassword}" id="confirmar_pwd" name="confirmar_pwd" class="campo" placeholder="Ej: Ab@123456789">
+                    <input type="password" th:field="*{confirmarPassword}" id="confirmar_pwd" name="confirmar_pwd" class="campo" minlength="12" placeholder="Ej: Ab@123456789">
                     <span th:if="${#fields.hasErrors('confirmarPassword')}" th:errors="*{confirmarPassword}" class="error"></span>
+                    <span th:if="${errorPwd}" th:text="${errorPwd}" class="error"></span>
                 </div>
                 <div class="columna">
                     <label for="email">Email:</label>
@@ -39,7 +41,8 @@
                 </div>
                 <div class="columna">
                     <label for="foto_perfil">Foto de perfil (Opcional):</label>
-                    <input type="file" th:field="*{fotoPerfil}" id="foto_perfil" name="foto_perfil" accept="image/png, image/jpeg, image/jpg" class="campo foto">
+                    <input type="file" th:field="*{fotoPerfil}" id="foto_perfil" name="foto_perfil" accept="image/png, image/jpeg, image/jpg, image/webp" class="campo foto">
+                    <span th:if="${errorImg}" th:utext="${errorImg}" class="error"></span>
                 </div>
                 <div>
                     <input type="submit" id="btn_registro" name="btn_registro" class="campo boton" value="Crear">
