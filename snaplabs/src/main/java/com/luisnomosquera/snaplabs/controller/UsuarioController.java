@@ -6,6 +6,7 @@ import com.luisnomosquera.snaplabs.mapper.UsuarioMapper;
 import com.luisnomosquera.snaplabs.service.CloudinaryService;
 import com.luisnomosquera.snaplabs.service.UsuarioService;
 import com.luisnomosquera.snaplabs.util.FileUploadUtil;
+import com.luisnomosquera.snaplabs.util.PasswordUtil;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,9 @@ public class UsuarioController {
     @Autowired
     private CloudinaryService cloudinaryService;
 
+    @Autowired
+    private PasswordUtil passwordUtil;
+
     @PostMapping ("/guardar")
     public String guardarUsuario(@ModelAttribute("usuarioDto") @Valid UsuarioRequestDto usuarioDto,
                                  BindingResult bindingResult, RedirectAttributes redirectAttributes) {
@@ -55,6 +59,7 @@ public class UsuarioController {
             final String uuid = UUID.randomUUID().toString();
             usuarioDto.setUuid(uuid);
             // Hash contraseña
+            usuarioDto.setHashPassword(passwordUtil.hashPassword(usuarioDto.getPassword()));
             // Guardo la imagen en la nube y actualizo la url del usuario
             usuarioDto.setUrlFoto(cloudinaryService.uploadImage(usuarioDto.getFotoPerfil(), uuid));
             Usuario usuario = usuarioService.saveNewUsuario(usuarioMapper.toUsuario(usuarioDto));
@@ -79,7 +84,7 @@ public class UsuarioController {
             valido = false;
             redirectAttributes.addFlashAttribute("errorPwd","La contraseña no coincide");
         }
-        if (usuarioService.getUsuarioByUsername(usuarioDto.getUsername()) == null) {
+        if (usuarioService.getUsuarioByUsername(usuarioDto.getUsername()) != null) {
             valido = false;
             redirectAttributes.addFlashAttribute("errorUsr","El nombre de usuario no está disponible");
         }

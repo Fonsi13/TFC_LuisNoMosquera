@@ -12,7 +12,7 @@ public class UsuarioMapper {
         usuario.setUuid(usuarioDto.getUuid());
         usuario.setUsername(usuarioDto.getUsername());
         usuario.setCorreo(usuarioDto.getCorreo());
-        usuario.setPassword(usuarioDto.getPassword());
+        usuario.setPassword(usuarioDto.getHashPassword());
         usuario.setFoto(usuarioDto.getUrlFoto());
         return usuario;
     }

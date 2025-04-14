@@ -18,24 +18,25 @@ public class CloudinaryService {
 
     public String uploadImage(MultipartFile imagen, String uuid) {
         String url;
-        try (InputStream inputStream = imagen.getInputStream();) {
+
+        if (imagen == null || imagen.isEmpty()) {
+            return "https://res.cloudinary.com/dhmmvfghx/image/upload/v1744621186/default_eb292v.png";
+        }
+
+        try {
             final Map params = ObjectUtils.asMap(
                     "public_id", uuid,
                     "overwrite", true,
-                    "folder", "profiles",
+                    "folder", "avatars",
                     "resource_type", "image",
                     "format", "png"
             );
-            Map uploadResult = cloudinary.uploader().upload(inputStream, params);
+            Map uploadResult = cloudinary.uploader().upload(imagen.getBytes(), params);
             url = uploadResult.get("secure_url").toString();
         } catch (IOException e) {
-            if (imagen.isEmpty()) {
-                url = "https://res.cloudinary.com/dhmmvfghx/image/upload/v1744621186/default_eb292v.png";
-            } else {
-                throw new RuntimeException("Error al subir imagen");
-            }
+            throw new RuntimeException("Error al procesar la imagen: " + e.getMessage());
         } catch (Exception e) {
-            throw new RuntimeException("Error al subir imagen");
+            throw new RuntimeException("Error al subir imagen: " + e.getMessage());
         }
         return url;
     }
