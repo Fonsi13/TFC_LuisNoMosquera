@@ -16,7 +16,7 @@
             <p>Comienza tu aventura</p>
         </section>
         <section class="registro">
-            <form th:action="@{/usuarios/guardar}" th:object="${usuarioDto}" method="post" enctype="multipart/form-data" class="formulario columna">
+            <form th:action="@{/registro}" th:object="${usuarioDto}" method="post" enctype="multipart/form-data" class="formulario columna">
                 <div class="columna">
                     <label for="usuario">Nombre de usuario:</label>
                     <input type="text" th:field="*{username}" id="usuario" name="usuario" class="campo">

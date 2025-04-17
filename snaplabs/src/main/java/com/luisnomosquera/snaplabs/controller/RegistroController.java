@@ -6,9 +6,15 @@ import com.luisnomosquera.snaplabs.mapper.UsuarioMapper;
 import com.luisnomosquera.snaplabs.service.CloudinaryService;
 import com.luisnomosquera.snaplabs.service.UsuarioService;
 import com.luisnomosquera.snaplabs.util.FileUploadUtil;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,6 +41,9 @@ public class RegistroController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
     @GetMapping("/registro")
     public String showRegistro(Model model) {
         if (!model.containsAttribute("usuarioDto")) {
@@ -46,14 +55,14 @@ public class RegistroController {
 
     @PostMapping ("/registro")
     public String guardarUsuario(@ModelAttribute("usuarioDto") @Valid UsuarioRequestDto usuarioDto,
-                                 BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+                                 BindingResult bindingResult, RedirectAttributes redirectAttributes, HttpServletRequest request) {
         final String vista;
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.usuarioDto", bindingResult);
             redirectAttributes.addFlashAttribute("usuarioDto", usuarioDto);
             vista = "redirect:/registro";
         } else if (validarCampos(usuarioDto, redirectAttributes)) {
-            vista = crearUsuario(usuarioDto, redirectAttributes);
+            vista = crearUsuario(usuarioDto, redirectAttributes, request);
         } else {
             redirectAttributes.addFlashAttribute("usuarioDto", usuarioDto);
             vista = "redirect:/registro";
@@ -62,17 +71,19 @@ public class RegistroController {
         return vista;
     }
 
-    private String crearUsuario(UsuarioRequestDto usuarioDto, RedirectAttributes redirectAttributes) {
+    private String crearUsuario(UsuarioRequestDto usuarioDto, RedirectAttributes redirectAttributes, HttpServletRequest request) {
         String vista;
         try {
             final String uuid = UUID.randomUUID().toString();
             usuarioDto.setUuid(uuid);
             // Hash contraseña
             usuarioDto.setHashPassword(passwordEncoder.encode(usuarioDto.getPassword()));
-            // Guardo la imagen en la nube y actualizo la url del usuario
+            // Guardar la imagen en la nube y actualizar la url del usuario
             usuarioDto.setUrlFoto(cloudinaryService.uploadImage(usuarioDto.getFotoPerfil(), uuid));
-            Usuario usuario = usuarioService.saveNewUsuario(usuarioMapper.toUsuario(usuarioDto));
-            // Variables de sesion
+            // Guardar el usuario en la base de datos
+            usuarioService.saveNewUsuario(usuarioMapper.toUsuario(usuarioDto));
+            // Iniciar sesion con el nuevo usuario
+            crearSesion(usuarioDto.getUsername(), usuarioDto.getPassword(), request);
             vista = "redirect:/";
         } catch (RuntimeException e) {
             redirectAttributes.addFlashAttribute("usuarioDto", usuarioDto);
@@ -80,6 +91,17 @@ public class RegistroController {
             vista = "redirect:/registro";
         }
         return vista;
+    }
+
+    private void crearSesion(String username, String password, HttpServletRequest request) {
+        // Crear token de autenticación
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
+        // Añadir detalles de la solicitud HTTP al token
+        authToken.setDetails(new WebAuthenticationDetails(request));
+        // Verificar las credenciales
+        Authentication authentication = authenticationManager.authenticate(authToken);
+        // Establece la sesión
+        SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 
     private boolean validarCampos(UsuarioRequestDto usuarioDto, RedirectAttributes redirectAttributes) {
