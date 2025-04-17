@@ -6,22 +6,22 @@ import com.luisnomosquera.snaplabs.mapper.UsuarioMapper;
 import com.luisnomosquera.snaplabs.service.CloudinaryService;
 import com.luisnomosquera.snaplabs.service.UsuarioService;
 import com.luisnomosquera.snaplabs.util.FileUploadUtil;
-import com.luisnomosquera.snaplabs.util.PasswordUtil;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/usuarios")
-public class UsuarioController {
+public class RegistroController {
 
     @Autowired
     private UsuarioService usuarioService;
@@ -33,9 +33,18 @@ public class UsuarioController {
     private CloudinaryService cloudinaryService;
 
     @Autowired
-    private PasswordUtil passwordUtil;
+    private PasswordEncoder passwordEncoder;
 
-    @PostMapping ("/guardar")
+    @GetMapping("/registro")
+    public String showRegistro(Model model) {
+        if (!model.containsAttribute("usuarioDto")) {
+            model.addAttribute("usuarioDto", new UsuarioRequestDto());
+        }
+        model.addAttribute("vista", "registro");
+        return "plantilla";
+    }
+
+    @PostMapping ("/registro")
     public String guardarUsuario(@ModelAttribute("usuarioDto") @Valid UsuarioRequestDto usuarioDto,
                                  BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         final String vista;
@@ -59,7 +68,7 @@ public class UsuarioController {
             final String uuid = UUID.randomUUID().toString();
             usuarioDto.setUuid(uuid);
             // Hash contraseña
-            usuarioDto.setHashPassword(passwordUtil.hashPassword(usuarioDto.getPassword()));
+            usuarioDto.setHashPassword(passwordEncoder.encode(usuarioDto.getPassword()));
             // Guardo la imagen en la nube y actualizo la url del usuario
             usuarioDto.setUrlFoto(cloudinaryService.uploadImage(usuarioDto.getFotoPerfil(), uuid));
             Usuario usuario = usuarioService.saveNewUsuario(usuarioMapper.toUsuario(usuarioDto));

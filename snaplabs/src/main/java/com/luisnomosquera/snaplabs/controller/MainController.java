@@ -20,13 +20,4 @@ public class MainController {
         model.addAttribute("vista", "login");
         return "plantilla";
     }
-
-    @GetMapping("/registro")
-    public String showRegistro(Model model) {
-        if (!model.containsAttribute("usuarioDto")) {
-            model.addAttribute("usuarioDto", new UsuarioRequestDto());
-        }
-        model.addAttribute("vista", "registro");
-        return "plantilla";
-    }
 }
