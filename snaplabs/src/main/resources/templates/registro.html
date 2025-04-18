@@ -16,27 +16,27 @@
             <p>Comienza tu aventura</p>
         </section>
         <section class="registro">
-            <form th:action="@{/usuarios/guardar}" th:object="${usuarioDto}" method="post" enctype="multipart/form-data" class="formulario columna">
+            <form th:action="@{/registro}" th:object="${usuarioDto}" method="post" enctype="multipart/form-data" class="formulario columna">
                 <div class="columna">
                     <label for="usuario">Nombre de usuario:</label>
-                    <input type="text" th:field="*{username}" id="usuario" name="usuario" class="campo">
+                    <input type="text" th:field="*{username}" id="usuario" name="usuario" class="campo" required>
                     <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></span>
                     <span th:if="${errorUsr}" th:text="${errorUsr}" class="error"></span>
                 </div>
                 <div class="columna">
                     <label for="pwd">Clave de acceso:</label>
-                    <input type="password" th:field="*{password}" id="pwd" name="pwd" class="campo" minlength="12" placeholder="Ej: Ab@123456789">
+                    <input type="password" th:field="*{password}" id="pwd" name="pwd" class="campo" minlength="12" placeholder="Ej: Ab@123456789" required>
                     <span th:if="${#fields.hasErrors('password')}" th:each="err : ${#fields.errors('password')}" th:utext="${err}" class="error"></span>
                 </div>
                 <div class="columna">
                     <label for="confirmar_pwd">Repite la clave de acceso:</label>
-                    <input type="password" th:field="*{confirmarPassword}" id="confirmar_pwd" name="confirmar_pwd" class="campo" minlength="12" placeholder="Ej: Ab@123456789">
+                    <input type="password" th:field="*{confirmarPassword}" id="confirmar_pwd" name="confirmar_pwd" class="campo" minlength="12" placeholder="Ej: Ab@123456789" required>
                     <span th:if="${#fields.hasErrors('confirmarPassword')}" th:errors="*{confirmarPassword}" class="error"></span>
                     <span th:if="${errorPwd}" th:text="${errorPwd}" class="error"></span>
                 </div>
                 <div class="columna">
                     <label for="email">Email:</label>
-                    <input type="email" th:field="*{correo}" id="email" name="email" class="campo">
+                    <input type="email" th:field="*{correo}" id="email" name="email" class="campo" required>
                     <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}" class="error"></span>
                 </div>
                 <div class="columna">
