@@ -16,14 +16,17 @@
             <p>Explora el multiverso de Snap Labs</p>
         </section>
         <section class="login">
-            <form class="formulario columna">
+            <form th:action="@{/login}" method="post" class="formulario columna">
                 <div class="columna">
-                    <label for="usuario">Nombre de usuario:</label>
-                    <input type="text" id="usuario" name="usuario" class="campo">
+                    <label for="username">Nombre de usuario:</label>
+                    <input type="text" id="username" name="username" class="campo" required>
                 </div>
                 <div class="columna">
-                    <label for="pwd">Clave de acceso:</label>
-                    <input type="password" id="pwd" name="pwd" class="campo">
+                    <label for="password">Clave de acceso:</label>
+                    <input type="password" id="password" name="password" class="campo" required>
+                </div>
+                <div th:if="${param.error}" class="error">
+                    <span>Credenciales incorrectas. Inténtalo de nuevo.</span>
                 </div>
                 <div>
                     <input type="submit" id="btn_login" name="btn_login" class="campo boton" value="Acceder">
