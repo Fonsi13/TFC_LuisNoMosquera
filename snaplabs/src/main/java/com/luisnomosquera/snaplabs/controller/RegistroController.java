@@ -49,8 +49,8 @@ public class RegistroController {
         if (!model.containsAttribute("usuarioDto")) {
             model.addAttribute("usuarioDto", new UsuarioRequestDto());
         }
-        model.addAttribute("vista", "registro");
-        return "plantilla";
+        model.addAttribute("vista", "pages/registro");
+        return "layouts/plantilla";
     }
 
     @PostMapping ("/registro")
