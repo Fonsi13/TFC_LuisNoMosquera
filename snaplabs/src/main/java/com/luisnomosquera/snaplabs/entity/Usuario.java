@@ -2,6 +2,7 @@ package com.luisnomosquera.snaplabs.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -26,7 +27,8 @@ public class Usuario {
     @Column(nullable = false)
     private String foto;
 
-    @Column(name = "fecha_creacion")
+    @CreationTimestamp
+    @Column(name = "fecha_creacion", updatable = false)
     private LocalDate fechaCreacion;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
