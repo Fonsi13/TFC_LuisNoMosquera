@@ -2,6 +2,7 @@ package com.luisnomosquera.snaplabs.service;
 
 import com.luisnomosquera.snaplabs.entity.Usuario;
 import com.luisnomosquera.snaplabs.repository.UsuarioRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ public class UsuarioService {
         return usuarioRepository.findByUsername(username);
     }
 
+    @Transactional
     public Usuario saveNewUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }

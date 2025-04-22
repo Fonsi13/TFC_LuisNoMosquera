@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:fragment="titulo">
+        <title>Lista de Cartas - Snap Labs</title>
+    </th:block>
+    <th:block th:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/menu_cartas.css}">
+    </th:block>
+</head>
+<body>
+    <main th:fragment="contenido" class="contenido">
+        <section class="titulo">
+            <p>Todas las cartas de Marvel Snap</p>
+        </section>
+        <section class="gridCartas">
+            <div th:each="carta: ${listaCartas}" th:id="${carta.clave}" class="carta">
+                <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">
+                <span th:text="${carta.nombre}"></span>
+                <span th:text="${carta.descripcion}" class="texto"></span>
+            </div>
+        </section>
+    </main>
+    <script th:fragment="js" th:remove="tag"></script>
+</body>
+</html>
