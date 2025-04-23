@@ -26,6 +26,10 @@ public class Usuario {
     @Column(nullable = false)
     private String foto;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Rol rol;
+
     @Column(name = "fecha_creacion")
     private LocalDate fechaCreacion;
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,9 +15,12 @@
         <section class="titulo">
             <p>Todas las cartas de Marvel Snap</p>
         </section>
+        <div sec:authorize="hasRole('ADMIN')">
+            <a th:href="@{/cartas/update}"><button class="boton">Actualizar cartas</button></a>
+        </div>
         <section class="gridCartas">
-            <div th:each="carta: ${listaCartas}" th:id="${carta.clave}" class="carta">
-                <a th:href="@{/cartas/{clave}(clave=${carta.clave})}">
+            <div th:each="carta: ${listaCartas}" th:id="${carta.clave}">
+                <a th:href="@{/cartas/{clave}(clave=${carta.clave})}" class="carta">
                     <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">
                     <span th:text="${carta.nombre}"></span>
                     <span th:text="${carta.descripcion}" class="texto"></span>

@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Edge of the Galaxy Poster Italic', Arial, sans-serif;
+    font-family: 'Edge of the Galaxy', Arial, sans-serif;
     color: #F5F1FB;
 }
 /* Estilos del titulo */
@@ -33,6 +33,7 @@
     border-radius: 2.5%;
     padding: 2.5em 2.25em;
     color: #F5F1FB;
+    position: relative;
 }
 /* Forzar colores enlace */
 .caja a {
@@ -41,6 +42,8 @@
 /* Estilos de cada apartado */
 .caja1 {
     grid-area: mazos;
+}
+.caja1 li{
     background-image:
         linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%),
         image-set(
@@ -52,6 +55,8 @@
 }
 .caja2 {
     grid-area: meta;
+}
+.caja2 li{
     background-image:
         linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%),
         image-set(
@@ -63,6 +68,8 @@
 }
 .caja3 {
     grid-area: lab;
+}
+.caja3 li{
     background-image:
         linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%),
         image-set(
@@ -74,6 +81,8 @@
 }
 .caja4 {
     grid-area: variante;
+}
+.caja4 li{
     background-image:
         linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%),
         image-set(
@@ -85,6 +94,8 @@
 }
 .caja5 {
     grid-area: cartas;
+}
+.caja5 li{
     background-image:
         linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%),
         image-set(

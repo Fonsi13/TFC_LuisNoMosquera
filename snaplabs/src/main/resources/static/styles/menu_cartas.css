@@ -25,6 +25,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    color: #F5F1FB;
 }
 /* Estilo de la imagen de la carta */
 .imagen {
@@ -34,4 +35,8 @@
 /* Estilo para centrar descripcion */
 .texto {
     padding: 0 12px 12px;
+}
+/* Estilos del boton */
+.boton {
+    cursor: pointer;
 }
