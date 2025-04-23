@@ -13,6 +13,7 @@ public class CartaMapper {
         carta.setNombre(cartaResponseDto.getNombre());
         carta.setDescripcion(cartaResponseDto.getDescripcion());
         carta.setImagen(cartaResponseDto.getImagen());
+        carta.setSeries(cartaResponseDto.getSeries());
         carta.setIdSnap("En proceso");
         return carta;
     }

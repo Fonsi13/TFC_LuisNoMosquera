@@ -19,6 +19,9 @@ public class Carta {
     @Column(nullable = false)
     private String imagen;
 
+    @Column(nullable = false)
+    private String series;
+
     @Column(name = "id_snap", nullable = false)
     private String idSnap;
 }

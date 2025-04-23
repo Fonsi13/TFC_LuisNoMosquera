@@ -35,6 +35,4 @@ public class CartaController {
         cartaService.saveAllCartas(cartas);
         return "redirect:/cartas";
     }
-
-
 }

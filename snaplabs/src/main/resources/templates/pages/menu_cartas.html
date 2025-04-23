@@ -17,9 +17,11 @@
         </section>
         <section class="gridCartas">
             <div th:each="carta: ${listaCartas}" th:id="${carta.clave}" class="carta">
-                <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">
-                <span th:text="${carta.nombre}"></span>
-                <span th:text="${carta.descripcion}" class="texto"></span>
+                <a th:href="@{/cartas/{clave}(clave=${carta.clave})}">
+                    <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">
+                    <span th:text="${carta.nombre}"></span>
+                    <span th:text="${carta.descripcion}" class="texto"></span>
+                </a>
             </div>
         </section>
     </main>

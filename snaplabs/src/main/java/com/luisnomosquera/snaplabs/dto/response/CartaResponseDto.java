@@ -7,12 +7,18 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class CartaResponseDto {
+
     @JsonProperty("card_key")
     private String clave;
+
     @JsonProperty("name")
     private String nombre;
+
     @JsonProperty("description")
     private String descripcion;
+
     @JsonProperty("Image")
     private String imagen;
+
+    private String series;
 }
