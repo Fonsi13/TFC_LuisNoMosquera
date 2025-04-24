@@ -17,17 +17,21 @@ import java.util.List;
 @Service
 public class MarvelSnapApiService {
 
-    private final String API_KEY = Dotenv.load().get("MARVEL_SNAP_API_KEY");
+    Dotenv dotenv = Dotenv.load();
+    private final String API_KEY = dotenv.get("MARVEL_SNAP_API_KEY");
+    private final String API_HOST = dotenv.get("MARVEL_SNAP_API_HOST");
+    private final String API_URL_ALL = dotenv.get("MARVEL_SNAP_API_URL_ALL_CARDS");
+    private final String API_KEY_DETAILS = dotenv.get("MARVEL_SNAP_API_URL_CARDS_DETAILS");
 
     public List<CartaResponseDto> getArrayCartas() {
-        int pagina = 1;
+        Integer pagina = 1;
         boolean continuar = true;
         ObjectMapper objectMapper = new ObjectMapper();
         List<CartaResponseDto> listaCartas = new ArrayList<>();
 
         try {
             while (continuar) {;
-                String respuesta = getAllCards(pagina);
+                String respuesta = peticionApi(API_URL_ALL, pagina.toString());
                 ApiResponseDto apiResponseDto = objectMapper.readValue(respuesta, ApiResponseDto.class);
                 Integer next = apiResponseDto.getNext();
                 List<CartaResponseDto> listaCartasPagina = addSeries(apiResponseDto.getData());
@@ -50,7 +54,7 @@ public class MarvelSnapApiService {
         ObjectMapper mapper = new ObjectMapper();
         try {
             for (CartaResponseDto carta: lista) {
-                String detalles = getDetalles(carta.getClave());
+                String detalles = peticionApi(API_KEY_DETAILS, carta.getClave());
                 JsonNode jsonNode = mapper.readTree(detalles);
                 String series = jsonNode.get(0).get("series_key").asText();
                 carta.setSeries(series);
@@ -62,33 +66,15 @@ public class MarvelSnapApiService {
         return lista;
     }
 
-    private String getAllCards(int pagina) {
+    private String peticionApi(String url, String parametro) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("https://marvel-snap-api.p.rapidapi.com/api/get-all-cards?page=" + pagina)
+                .url(url + parametro)
                 .get()
                 .addHeader("x-rapidapi-key", API_KEY)
-                .addHeader("x-rapidapi-host", "marvel-snap-api.p.rapidapi.com")
+                .addHeader("x-rapidapi-host", API_HOST)
                 .build();
 
-        try (Response response = client.newCall(request).execute()) {
-            if (response.isSuccessful())
-                return response.body().string();
-            else
-                throw new RuntimeException("HttpResponseCode: " + response.code());
-        } catch (IOException e) {
-            throw new RuntimeException("Error al realizar la peticion a la API de Marvel Snap");
-        }
-    }
-
-    private String getDetalles(String clave) {
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url("https://marvel-snap-api.p.rapidapi.com/api/get-card-details/" + clave)
-                .get()
-                .addHeader("x-rapidapi-key", API_KEY)
-                .addHeader("x-rapidapi-host", "marvel-snap-api.p.rapidapi.com")
-                .build();
         try (Response response = client.newCall(request).execute()) {
             if (response.isSuccessful())
                 return response.body().string();
