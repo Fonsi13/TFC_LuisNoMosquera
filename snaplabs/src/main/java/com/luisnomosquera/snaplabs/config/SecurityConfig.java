@@ -29,10 +29,24 @@ public class SecurityConfig {
                     .expiredUrl("/login?expired")
             )
             .authorizeHttpRequests(auth -> auth
-                // Rutas públicas
-                .requestMatchers("/", "/login", "/registro", "/cartas/**", "/mazos", "/meta").permitAll()
-                // Resto de rutas con autorización
-                .anyRequest().authenticated()
+                    // Ruta privada para el administrador
+                    .requestMatchers("/cartas/update").hasRole("ADMIN")
+                    // Rutas públicas
+                    .requestMatchers(
+                            "/styles/**",
+                            "/images/**",
+                            "/fonts/**",
+                            "/js/**",
+                            "/",
+                            "/login",
+                            "/registro",
+                            "/cartas",
+                            "/cartas/*",
+                            "/mazos",
+                            "/meta"
+                    ).permitAll()
+                    // Resto de rutas con autorización
+                    .anyRequest().authenticated()
             )
             .formLogin(form -> form
                     .loginPage("/login")
@@ -75,3 +89,19 @@ public class SecurityConfig {
         return new HttpSessionEventPublisher(); // Necesario para gestionar eventos de sesión
     }
 }
+/*
+// Ruta privada para el administrador
+                    .requestMatchers("/cartas/update").hasRole("ADMIN")
+// Rutas públicas
+                    .requestMatchers(
+                            "/styles/**",
+                                    "/images/**",
+                                    "/fonts/**",
+                                    "/js/**",
+                                    "/",
+                                    "/login",
+                                    "/registro",
+                                    "/mazos",
+                                    "/meta"
+).permitAll()
+*/

@@ -1,6 +1,7 @@
 package com.luisnomosquera.snaplabs.mapper;
 
 import com.luisnomosquera.snaplabs.dto.request.UsuarioRequestDto;
+import com.luisnomosquera.snaplabs.entity.Rol;
 import com.luisnomosquera.snaplabs.entity.Usuario;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,7 @@ public class UsuarioMapper {
         usuario.setCorreo(usuarioDto.getCorreo());
         usuario.setPassword(usuarioDto.getHashPassword());
         usuario.setFoto(usuarioDto.getUrlFoto());
+        usuario.setRol(Rol.USER);
         return usuario;
     }
 }

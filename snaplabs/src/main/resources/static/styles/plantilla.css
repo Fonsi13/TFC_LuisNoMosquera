@@ -20,15 +20,7 @@
     font-style: oblique;
     src:
         local("Edge of the Galaxy Poster Italic"),
-        url("../fonts/EdgeOfTheGalaxyItalic.otf") format("opentype");
-    font-display: swap;
-}
-@font-face {
-    font-family: 'IBM Plex Sans Condensed Thin';
-    font-style: normal;
-    src:
-        local("IBM Plex Sans Condensed Thin"),
-        url("../fonts/IBMPlexSansCondensed-Thin.ttf") format("truetype");
+        url("../fonts/EdgeOfTheGalaxyPosterItalic.otf") format("opentype");
     font-display: swap;
 }
 @font-face {
@@ -37,6 +29,14 @@
     src:
         local("IBM Plex Sans Condensed Light"),
         url("../fonts/IBMPlexSansCondensed-Light.ttf") format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'IBM Plex Sans Condensed Regular';
+    font-style: normal;
+    src:
+    local("IBM Plex Sans Condensed Regular"),
+    url("../fonts/IBMPlexSansCondensed-Regular.ttf") format("truetype");
     font-display: swap;
 }
 /* Ocupar todo el espacio en la ventana */

@@ -8,7 +8,26 @@ import lombok.Data;
 @Table(name = "carta")
 public class Carta {
     @Id
+    private String clave;
+
+    @Column(nullable = false)
     private String nombre;
-    @Column(name = "id_snap")
+
+    @Column(nullable = false)
+    private String descripcion;
+
+    @Column(nullable = false)
+    private int coste;
+
+    @Column(nullable = false)
+    private int poder;
+
+    @Column(nullable = false)
+    private String imagen;
+
+    @Column(nullable = false)
+    private String serie;
+
+    @Column(name = "id_snap", nullable = false)
     private String idSnap;
 }

@@ -17,23 +17,24 @@
         </section>
         <nav>
             <ul class="secciones">
-                <li class="caja caja1">
-                    <a th:href="@{/}">Mazos de la Comunidad</a>
-                </li>
-                <li class="caja caja2">
-                    <a th:href="@{/}">Mazos Meta</a>
-                </li>
-                <li class="caja caja3">
-                    <a th:href="@{/}">Laboratorio</a>
-                </li>
-                <li class="caja caja4">
-                    <a th:href="@{/}">Variantes de la Comunidad</a>
-                </li>
-                <li class="caja caja5">
-                    <a th:href="@{/}">Lista de Cartas</a>
-                </li>
+                <a th:href="@{/}" class="caja1">
+                    <li class="caja">Mazos de la Comunidad</li>
+                </a>
+                <a th:href="@{/}" class="caja2">
+                    <li class="caja">Mazos Meta</li>
+                </a>
+                <a th:href="@{/}" class="caja3">
+                    <li class="caja">Laboratorio</li>
+                </a>
+                <a th:href="@{/}" class="caja4">
+                    <li class="caja">Variantes de la Comunidad</li>
+                </a>
+                <a th:href="@{/cartas}" class="caja5">
+                    <li class="caja">Lista de Cartas</li>
+                </a>
             </ul>
         </nav>
     </main>
+    <script th:fragment="js" th:remove="tag"></script>
 </body>
 </html>
