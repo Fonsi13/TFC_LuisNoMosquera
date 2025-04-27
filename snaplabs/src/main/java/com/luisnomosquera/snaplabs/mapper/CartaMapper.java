@@ -13,7 +13,9 @@ public class CartaMapper {
         carta.setNombre(cartaResponseDto.getNombre());
         carta.setDescripcion(cartaResponseDto.getDescripcion());
         carta.setImagen(cartaResponseDto.getImagen());
-        carta.setSeries(cartaResponseDto.getSeries());
+        carta.setSerie(cartaResponseDto.getSeries());
+        carta.setCoste(cartaResponseDto.getCoste());
+        carta.setPoder(cartaResponseDto.getPoder());
         carta.setIdSnap("En proceso");
         return carta;
     }

@@ -11,7 +11,6 @@ import java.util.Set;
 @Table(name = "usuario")
 public class Usuario {
     @Id
-    @Column(name = "uuid", columnDefinition = "CHAR(36)")
     private String uuid;
 
     @Column(nullable = false)

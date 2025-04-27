@@ -29,6 +29,8 @@ public class SecurityConfig {
                     .expiredUrl("/login?expired")
             )
             .authorizeHttpRequests(auth -> auth
+                    // Ruta privada para el administrador
+                    .requestMatchers("/cartas/update").hasRole("ADMIN")
                     // Rutas públicas
                     .requestMatchers(
                             "/styles/**",
@@ -39,12 +41,10 @@ public class SecurityConfig {
                             "/login",
                             "/registro",
                             "/cartas",
-                            "/cartas/{clave}",
+                            "/cartas/*",
                             "/mazos",
                             "/meta"
                     ).permitAll()
-                    // Ruta privada para el administrador
-                    .requestMatchers("/cartas/update").hasRole("ADMIN")
                     // Resto de rutas con autorización
                     .anyRequest().authenticated()
             )
@@ -89,3 +89,19 @@ public class SecurityConfig {
         return new HttpSessionEventPublisher(); // Necesario para gestionar eventos de sesión
     }
 }
+/*
+// Ruta privada para el administrador
+                    .requestMatchers("/cartas/update").hasRole("ADMIN")
+// Rutas públicas
+                    .requestMatchers(
+                            "/styles/**",
+                                    "/images/**",
+                                    "/fonts/**",
+                                    "/js/**",
+                                    "/",
+                                    "/login",
+                                    "/registro",
+                                    "/mazos",
+                                    "/meta"
+).permitAll()
+*/

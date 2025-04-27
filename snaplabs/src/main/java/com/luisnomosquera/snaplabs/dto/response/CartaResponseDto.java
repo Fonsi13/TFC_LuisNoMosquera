@@ -21,4 +21,8 @@ public class CartaResponseDto {
     private String imagen;
 
     private String series;
+
+    private int coste;
+
+    private int poder;
 }

@@ -13,13 +13,34 @@
 <body>
     <main th:fragment="contenido" class="contenido">
         <section class="titulo">
-            <p>Todas las cartas de Marvel Snap</p>
+            <p th:text="${titulo} ?: 'Todas las cartas de Marvel Snap'"></p>
         </section>
         <div sec:authorize="hasRole('ADMIN')">
             <a th:href="@{/cartas/update}"><button class="boton">Actualizar cartas</button></a>
         </div>
+        <section class="filtros">
+            <input type="text" id="buscar" placeholder="Buscar cartas...">
+            <label for="alfa">Ordenar alfabéticamente:</label>
+            <select id="alfa">
+                <option selected disabled>Orden:</option>
+                <option value="asc">ASC</option>
+                <option value="desc">DESC</option>
+            </select>
+            <label for="coste">Ordenar por Coste:</label>
+            <select id="coste">
+                <option selected disabled>Orden:</option>
+                <option value="asc">ASC</option>
+                <option value="desc">DESC</option>
+            </select>
+            <label for="poder">Ordenar por Poder:</label>
+            <select id="poder">
+                <option selected disabled>Orden:</option>
+                <option value="asc">ASC</option>
+                <option value="desc">DESC</option>
+            </select>
+        </section>
         <section class="gridCartas">
-            <div th:each="carta: ${listaCartas}" th:id="${carta.clave}">
+            <div th:each="carta: ${listaCartas}" th:id="${carta.nombre}" th:data-coste="${carta.coste}" th:data-poder="${carta.poder}">
                 <a th:href="@{/cartas/{clave}(clave=${carta.clave})}" class="carta">
                     <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">
                     <span th:text="${carta.nombre}"></span>
@@ -28,6 +49,6 @@
             </div>
         </section>
     </main>
-    <script th:fragment="js" th:remove="tag"></script>
+    <script th:fragment="js" th:src="@{/js/menu_cartas.js}" defer></script>
 </body>
 </html>

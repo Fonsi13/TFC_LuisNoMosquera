@@ -20,7 +20,7 @@
     font-style: oblique;
     src:
         local("Edge of the Galaxy Poster Italic"),
-        url("../fonts/EdgeOfTheGalaxyItalic.otf") format("opentype");
+        url("../fonts/EdgeOfTheGalaxyPosterItalic.otf") format("opentype");
     font-display: swap;
 }
 @font-face {

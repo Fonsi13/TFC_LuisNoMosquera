@@ -34,7 +34,7 @@ public class MarvelSnapApiService {
                 String respuesta = peticionApi(API_URL_ALL, pagina.toString());
                 ApiResponseDto apiResponseDto = objectMapper.readValue(respuesta, ApiResponseDto.class);
                 Integer next = apiResponseDto.getNext();
-                List<CartaResponseDto> listaCartasPagina = addSeries(apiResponseDto.getData());
+                List<CartaResponseDto> listaCartasPagina = addDatos(apiResponseDto.getData());
 
                 listaCartas.addAll(listaCartasPagina);
 
@@ -50,14 +50,18 @@ public class MarvelSnapApiService {
         return listaCartas;
     }
 
-    private List<CartaResponseDto> addSeries(List<CartaResponseDto> lista) {
+    private List<CartaResponseDto> addDatos(List<CartaResponseDto> lista) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             for (CartaResponseDto carta: lista) {
                 String detalles = peticionApi(API_KEY_DETAILS, carta.getClave());
                 JsonNode jsonNode = mapper.readTree(detalles);
                 String series = jsonNode.get(0).get("series_key").asText();
+                int coste = jsonNode.get(0).get("cost").asInt();
+                int poder = jsonNode.get(0).get("power").asInt();
                 carta.setSeries(series);
+                carta.setCoste(coste);
+                carta.setPoder(poder);
             }
         } catch (Exception e) {
             throw  new RuntimeException(e.getMessage());

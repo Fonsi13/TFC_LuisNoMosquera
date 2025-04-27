@@ -32,4 +32,8 @@ public class CartaService {
     public List<Carta> findAllCartas() {
         return cartaRepository.findAll();
     }
+
+    public List<Carta> findBySerie(String serie) {
+        return cartaRepository.findBySerie(serie);
+    }
 }
