@@ -7,6 +7,7 @@ CREATE TABLE usuario (
 	username VARCHAR(25) NOT NULL,
 	password VARCHAR(255) NOT NULL,
 	foto VARCHAR(255) NOT NULL,
+	rol ENUM('USER', 'ADMIN') NOT NULL,
 	fecha_creacion date DEFAULT CURRENT_DATE,
 	UNIQUE (username)
 );
@@ -44,6 +45,12 @@ CREATE TABLE usuario_favorito_mazo (
 );
 
 CREATE TABLE carta (
-	nombre VARCHAR(50) PRIMARY KEY,
+	clave VARCHAR(50) PRIMARY KEY,
+	nombre VARCHAR(50) NOT NULL,
+	descripcion VARCHAR(255) NOT NULL,
+	coste INT NOT NULL,
+	poder INT NOT NULL,
+	imagen VARCHAR(255) NOT NULL,
+	serie VARCHAR(20) NOT NULL,
 	id_snap VARCHAR(50) NOT NULL
 );

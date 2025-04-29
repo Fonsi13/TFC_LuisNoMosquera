@@ -89,19 +89,3 @@ public class SecurityConfig {
         return new HttpSessionEventPublisher(); // Necesario para gestionar eventos de sesión
     }
 }
-/*
-// Ruta privada para el administrador
-                    .requestMatchers("/cartas/update").hasRole("ADMIN")
-// Rutas públicas
-                    .requestMatchers(
-                            "/styles/**",
-                                    "/images/**",
-                                    "/fonts/**",
-                                    "/js/**",
-                                    "/",
-                                    "/login",
-                                    "/registro",
-                                    "/mazos",
-                                    "/meta"
-).permitAll()
-*/
