@@ -1,6 +1,6 @@
 # TFC_LuisNoMosquera
 Repositorio para el Trabajo de Fin de Ciclo de Luis Alfonso No Mosquera
-> .[!NOTE].
+> [!NOTE]
 > Este proyecto está en fase de pruebas. Sigue estos pasos para configurar el entorno local.
 
 1. **Prerrequisitos**
@@ -13,12 +13,12 @@ Repositorio para el Trabajo de Fin de Ciclo de Luis Alfonso No Mosquera
       - Gestor de BD: A elección propia, yo utilizo DBeaver.
 
 2. **Configuración de la Base de Datos**
-   1. **Crear la BD**:
+   - **Crear la BD**:
       - Ejecutar los scripts SQL ubicados en la carpeta 'SQL'
       - Primero ejecutar 'estructura_bd.sql' para crear el esqueleto de la base de datos
       - Después ejecutar 'data_bd.sql' para insertar dos usuarios creados
 
-   2. **Configurar credenciales**:
+   - **Configurar credenciales**:
       - Asegúrate de que el archivo application.properties (en src/main/resources) tenga tus credenciales de MySQL:
       ```properties
         spring.datasource.username=tu_usuario
@@ -26,12 +26,12 @@ Repositorio para el Trabajo de Fin de Ciclo de Luis Alfonso No Mosquera
       ```
 
 3. **Ejecutar el Proyecto**
-   1. **Abrir en IntelliJ**:
+   - **Abrir en IntelliJ**:
       - Clona el repositorio o descarga la carpeta 'snaplabs' y abre el proyecto
 
-   2. **Iniciar la aplicación**:
+   - **Iniciar la aplicación**:
       - Ejecuta la clase principal (@SnapLabsApplication) desde el IDE
       
-   3. **Acceder**:
+   - **Acceder**:
       - Escribe en tu navegador:
       [`http://localhost:8080/`](http://localhost:8080/)
