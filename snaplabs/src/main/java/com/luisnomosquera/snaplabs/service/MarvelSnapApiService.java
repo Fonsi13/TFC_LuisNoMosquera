@@ -3,7 +3,8 @@ package com.luisnomosquera.snaplabs.service;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.luisnomosquera.snaplabs.dto.response.ApiResponseDto;
-import com.luisnomosquera.snaplabs.dto.response.CartaResponseDto;
+import com.luisnomosquera.snaplabs.dto.response.DetallesCartaResponseDto;
+import com.luisnomosquera.snaplabs.dto.response.SimpleCartaResponseDto;
 import io.github.cdimascio.dotenv.Dotenv;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -23,18 +24,18 @@ public class MarvelSnapApiService {
     private final String API_URL_ALL = dotenv.get("MARVEL_SNAP_API_URL_ALL_CARDS");
     private final String API_KEY_DETAILS = dotenv.get("MARVEL_SNAP_API_URL_CARDS_DETAILS");
 
-    public List<CartaResponseDto> getArrayCartas() {
+    public List<SimpleCartaResponseDto> getArrayCartas() {
         Integer pagina = 1;
         boolean continuar = true;
-        ObjectMapper objectMapper = new ObjectMapper();
-        List<CartaResponseDto> listaCartas = new ArrayList<>();
+        ObjectMapper mapper = new ObjectMapper();
+        List<SimpleCartaResponseDto> listaCartas = new ArrayList<>();
 
         try {
             while (continuar) {;
                 String respuesta = peticionApi(API_URL_ALL, pagina.toString());
-                ApiResponseDto apiResponseDto = objectMapper.readValue(respuesta, ApiResponseDto.class);
+                ApiResponseDto apiResponseDto = mapper.readValue(respuesta, ApiResponseDto.class);
                 Integer next = apiResponseDto.getNext();
-                List<CartaResponseDto> listaCartasPagina = addDatos(apiResponseDto.getData());
+                List<SimpleCartaResponseDto> listaCartasPagina = addDatos(apiResponseDto.getData());
 
                 listaCartas.addAll(listaCartasPagina);
 
@@ -50,16 +51,27 @@ public class MarvelSnapApiService {
         return listaCartas;
     }
 
-    private List<CartaResponseDto> addDatos(List<CartaResponseDto> lista) {
+    public DetallesCartaResponseDto getDetallesCarta(String clave) {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            for (CartaResponseDto carta: lista) {
+            String detalles = peticionApi(API_KEY_DETAILS, clave);
+            DetallesCartaResponseDto[] carta = mapper.readValue(detalles, DetallesCartaResponseDto[].class);
+            return carta[0];
+        } catch (Exception e) {
+            throw  new RuntimeException(e.getMessage());
+        }
+    }
+
+    private List<SimpleCartaResponseDto> addDatos(List<SimpleCartaResponseDto> lista) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            for (SimpleCartaResponseDto carta: lista) {
                 String detalles = peticionApi(API_KEY_DETAILS, carta.getClave());
                 JsonNode jsonNode = mapper.readTree(detalles);
-                String series = jsonNode.get(0).get("series_key").asText();
+                String serie = jsonNode.get(0).get("series_key").asText();
                 int coste = jsonNode.get(0).get("cost").asInt();
                 int poder = jsonNode.get(0).get("power").asInt();
-                carta.setSeries(series);
+                carta.setSerie(serie);
                 carta.setCoste(coste);
                 carta.setPoder(poder);
             }

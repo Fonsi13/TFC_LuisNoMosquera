@@ -10,5 +10,5 @@ import java.util.List;
 public class ApiResponseDto {
     private int total_pages;
     private Integer next;
-    private List<CartaResponseDto> data;
+    private List<SimpleCartaResponseDto> data;
 }

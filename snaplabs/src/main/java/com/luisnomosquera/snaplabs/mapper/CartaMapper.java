@@ -1,21 +1,21 @@
 package com.luisnomosquera.snaplabs.mapper;
 
-import com.luisnomosquera.snaplabs.dto.response.CartaResponseDto;
+import com.luisnomosquera.snaplabs.dto.response.SimpleCartaResponseDto;
 import com.luisnomosquera.snaplabs.entity.Carta;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CartaMapper {
 
-    public Carta toCarta(CartaResponseDto cartaResponseDto) {
+    public Carta toCarta(SimpleCartaResponseDto simpleCartaResponseDto) {
         Carta carta = new Carta();
-        carta.setClave(cartaResponseDto.getClave());
-        carta.setNombre(cartaResponseDto.getNombre());
-        carta.setDescripcion(cartaResponseDto.getDescripcion());
-        carta.setImagen(cartaResponseDto.getImagen());
-        carta.setSerie(cartaResponseDto.getSeries());
-        carta.setCoste(cartaResponseDto.getCoste());
-        carta.setPoder(cartaResponseDto.getPoder());
+        carta.setClave(simpleCartaResponseDto.getClave());
+        carta.setNombre(simpleCartaResponseDto.getNombre());
+        carta.setDescripcion(simpleCartaResponseDto.getDescripcion());
+        carta.setImagen(simpleCartaResponseDto.getImagen());
+        carta.setSerie(simpleCartaResponseDto.getSerie());
+        carta.setCoste(simpleCartaResponseDto.getCoste());
+        carta.setPoder(simpleCartaResponseDto.getPoder());
         carta.setIdSnap("En proceso");
         return carta;
     }
