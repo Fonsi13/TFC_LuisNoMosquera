@@ -25,4 +25,6 @@ public class SimpleCartaResponseDto {
     private int coste;
 
     private int poder;
+
+    private String habilidades;
 }

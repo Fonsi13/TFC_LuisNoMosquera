@@ -9,6 +9,7 @@
     <th:block th:fragment="css">
         <link rel="stylesheet" type="text/css" th:href="@{/styles/menu_cartas.css}">
     </th:block>
+    <script th:fragment="js" th:src="@{/js/menu_cartas.js}" defer></script>
 </head>
 <body>
     <main th:fragment="contenido" class="contenido">
@@ -38,10 +39,25 @@
                 <option value="asc">ASC</option>
                 <option value="desc">DESC</option>
             </select>
+            <label for="habilidades">Filtrar por Habilidad:</label>
+            <div id="habilidades">
+                <input type="checkbox" name="habilidad" value="Destroy" id="destroy"/>
+                <label for="destroy">Destruir</label>
+                <input type="checkbox" name="habilidad" value="Discard" id="discard"/>
+                <label for="discard">Descartar</label>
+                <input type="checkbox" name="habilidad" value="Move" id="move"/>
+                <label for="move">Movimiento</label>
+                <input type="checkbox" name="habilidad" value="No Ability" id="no"/>
+                <label for="no">Sin Habilidad</label>
+                <input type="checkbox" name="habilidad" value="On Reveal" id="reveal"/>
+                <label for="reveal">Al Revelarse</label>
+                <input type="checkbox" name="habilidad" value="Ongoing" id="ongoing"/>
+                <label for="ongoing">Continuo</label>
+            </div>
         </section>
         <section class="gridCartas">
-            <div th:each="carta: ${listaCartas}" th:id="${carta.nombre}" th:data-coste="${carta.coste}" th:data-poder="${carta.poder}">
-                <a th:href="@{/cartas/{clave}(clave=${carta.clave})}" class="carta">
+            <div th:each="carta: ${listaCartas}" th:id="${carta.nombre}" th:data-coste="${carta.coste}" th:data-poder="${carta.poder}" th:data-habilidades="${carta.habilidades}">
+                <a th:href="@{/cartas/id/{clave}(clave=${carta.clave})}" class="carta">
                     <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">
                     <span th:text="${carta.nombre}"></span>
                     <span th:text="${carta.descripcion}" class="texto"></span>
@@ -49,6 +65,5 @@
             </div>
         </section>
     </main>
-    <script th:fragment="js" th:src="@{/js/menu_cartas.js}" defer></script>
 </body>
 </html>

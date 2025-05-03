@@ -39,7 +39,4 @@ public class DetallesCartaResponseDto {
 
     @JsonProperty("is_released")
     private boolean publicado;
-
-    @JsonProperty("card_abilities")
-    private List<HabilidadCartaResponseDto> habilidades;
 }

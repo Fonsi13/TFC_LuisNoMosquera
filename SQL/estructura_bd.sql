@@ -50,7 +50,8 @@ CREATE TABLE carta (
 	descripcion VARCHAR(255) NOT NULL,
 	coste INT NOT NULL,
 	poder INT NOT NULL,
-	imagen VARCHAR(255) NOT NULL,
 	serie VARCHAR(20) NOT NULL,
+	habilidades VARCHAR(100),
+	imagen VARCHAR(255) NOT NULL,
 	id_snap VARCHAR(50) NOT NULL
 );

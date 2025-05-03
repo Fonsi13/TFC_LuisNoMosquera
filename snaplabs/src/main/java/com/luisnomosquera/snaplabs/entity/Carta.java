@@ -23,10 +23,13 @@ public class Carta {
     private int poder;
 
     @Column(nullable = false)
-    private String imagen;
+    private String serie;
 
     @Column(nullable = false)
-    private String serie;
+    private String habilidades;
+
+    @Column(nullable = false)
+    private String imagen;
 
     @Column(name = "id_snap", nullable = false)
     private String idSnap;

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -71,9 +72,12 @@ public class MarvelSnapApiService {
                 String serie = jsonNode.get(0).get("series_key").asText();
                 int coste = jsonNode.get(0).get("cost").asInt();
                 int poder = jsonNode.get(0).get("power").asInt();
+                List<String> habilidades = jsonNode.get(0).get("card_abilities").isEmpty() ?
+                        Arrays.asList("No Ability") : filtrarHabilidades(jsonNode);
                 carta.setSerie(serie);
                 carta.setCoste(coste);
                 carta.setPoder(poder);
+                carta.setHabilidades(String.join(",", habilidades));
             }
         } catch (Exception e) {
             throw  new RuntimeException(e.getMessage());
@@ -99,5 +103,23 @@ public class MarvelSnapApiService {
         } catch (IOException e) {
             throw new RuntimeException("Error al realizar la peticion a la API de Marvel Snap");
         }
+    }
+
+    private List<String> filtrarHabilidades(JsonNode jsonNode) {
+        List<String> habilidades = new ArrayList<>();
+        for (JsonNode nodo: jsonNode.get(0).get("card_abilities")) {
+            String habilidad = nodo.get("name").asText();
+            switch (habilidad) {
+                case "Destroy":
+                case "Discard":
+                case "Move":
+                case "No Ability":
+                case "On Reveal":
+                case "Ongoing": habilidades.add(habilidad); break;
+                default: break;
+            }
+        }
+        if (habilidades.isEmpty()) habilidades.add(null);
+        return habilidades;
     }
 }
