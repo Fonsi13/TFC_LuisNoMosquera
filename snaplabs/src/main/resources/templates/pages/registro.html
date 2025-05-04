@@ -9,6 +9,7 @@
     <th:block th:fragment="css">
         <link rel="stylesheet" type="text/css" th:href="@{/styles/registro.css}">
     </th:block>
+    <script th:fragment="js" th:remove="tag"></script>
 </head>
 <body>
     <main th:fragment="contenido" class="contenido">
@@ -53,6 +54,5 @@
             </form>
         </section>
     </main>
-    <script th:fragment="js" th:remove="tag"></script>
 </body>
 </html>

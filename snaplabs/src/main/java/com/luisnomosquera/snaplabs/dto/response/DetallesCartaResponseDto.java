@@ -39,4 +39,6 @@ public class DetallesCartaResponseDto {
 
     @JsonProperty("is_released")
     private boolean publicado;
+
+    private List<VarianteCartaResponseDto> variantes;
 }

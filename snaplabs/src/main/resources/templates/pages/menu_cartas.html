@@ -59,7 +59,7 @@
             <div th:each="carta: ${listaCartas}" th:id="${carta.nombre}" th:data-coste="${carta.coste}" th:data-poder="${carta.poder}" th:data-habilidades="${carta.habilidades}">
                 <a th:href="@{/cartas/id/{clave}(clave=${carta.clave})}" class="carta">
                     <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">
-                    <span th:text="${carta.nombre}"></span>
+                    <span th:text="${carta.nombre}" class="texto"></span>
                     <span th:text="${carta.descripcion}" class="texto"></span>
                 </a>
             </div>
