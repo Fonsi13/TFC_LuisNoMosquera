@@ -1,6 +1,6 @@
 package com.luisnomosquera.snaplabs.service;
 
-import com.luisnomosquera.snaplabs.dto.response.CartaResponseDto;
+import com.luisnomosquera.snaplabs.dto.response.SimpleCartaResponseDto;
 import com.luisnomosquera.snaplabs.entity.Carta;
 import com.luisnomosquera.snaplabs.mapper.CartaMapper;
 import com.luisnomosquera.snaplabs.repository.CartaRepository;
@@ -21,9 +21,9 @@ public class CartaService {
     private CartaMapper cartaMapper;
 
     @Transactional
-    public void saveAllCartas(List<CartaResponseDto> listaCartasDto) {
+    public void saveAllCartas(List<SimpleCartaResponseDto> listaCartasDto) {
         List<Carta> cartas = new ArrayList<>();
-        for (CartaResponseDto carta: listaCartasDto) {
+        for (SimpleCartaResponseDto carta: listaCartasDto) {
             cartas.add(cartaMapper.toCarta(carta));
         }
         cartaRepository.saveAll(cartas);

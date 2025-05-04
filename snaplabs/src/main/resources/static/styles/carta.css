@@ -1,0 +1,59 @@
+/* Centrar el contenido */
+.contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #F5F1FB;
+}
+/* Estilos del titulo */
+.titulo {
+    font-family: 'Edge of the Galaxy', Arial, sans-serif;
+    font-size: 2.75rem;
+}
+/* Estilos del grid */
+.gridDetalles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+/* Estilos del contenedor con los detalles */
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* Estilos del titulo de cada categoria */
+.categoriaDetalle {
+    font-family: 'Edge of the Galaxy', Arial, sans-serif;
+    font-size: 2rem;
+    margin-bottom:0;
+}
+/* Estilos del texto de cada categoria */
+.textoDetalle {
+    font-family: 'IBM Plex Sans Condensed Regular', Arial, sans-serif;
+    font-size: 1.35rem;
+}
+/* Estilo del enlace */
+#div-serie a {
+    color: #F5F1FB;
+}
+/* Estilo negrita */
+.negrita {
+    font-weight: bold;
+}
+/* Estilo de las imágenes de las variantes */
+.imgVariante {
+    width: 90%;
+    height: auto;
+}
+/* Estilos del grid de las variantes */
+.gridVariantes {
+    display: grid;
+    grid-template-columns: repeat(3, 25%);
+    justify-content: center;
+}
+/* Estilo de contenedor de cada variante */
+.variante {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}

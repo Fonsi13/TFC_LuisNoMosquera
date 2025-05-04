@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:fragment="titulo">
+        <title th:text="${carta.nombre} + ' - Snap Labs'">Detalles - Snap Labs</title>
+    </th:block>
+    <th:block th:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/carta.css}">
+    </th:block>
+    <script th:fragment="js" th:remove="tag"></script>
+</head>
+<body>
+    <main th:fragment="contenido" class="contenido">
+        <section class="titulo">
+            <p th:text="${carta.nombre}"></p>
+        </section>
+        <section class="gridDetalles">
+            <div id="div-imagen">
+                <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula">
+            </div>
+            <div class="contenedor">
+                <div id="div-descripcion">
+                    <p class="categoriaDetalle">Descripcion</p>
+                    <p th:text="${carta.descripcion}" class="textoDetalle"></p>
+                </div>
+                <div id="div-serie">
+                    <p class="categoriaDetalle">Serie</p>
+                    <a th:href="@{/cartas/{serie}(serie=${carta.serieClave})}">
+                        <p th:text="${carta.serieNombre}" class="textoDetalle"></p>
+                    </a>
+                </div>
+                <div id="div-stats">
+                    <p class="categoriaDetalle">Estadisticas</p>
+                    <p th:text="'Coste: ' + ${carta.coste}" class="textoDetalle"></p>
+                    <p th:text="'Poder: ' + ${carta.poder}" class="textoDetalle"></p>
+                </div>
+                <div id="div-disponible">
+                    <p class="categoriaDetalle">Disponibilidad</p>
+                    <p th:if="${carta.publicado}" class="textoDetalle">Publicada</p>
+                    <p th:unless="${carta.publicado}" class="textoDetalle">No publicada</p>
+                </div>
+                <div id="div-artistas">
+                    <p class="categoriaDetalle">Artistas</p>
+                    <div th:each="artista : ${carta.variantes[0].artistas}">
+                        <p th:text="${artista.tipo} + ': ' + ${artista.nombre}" class="textoDetalle"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <p class="categoriaDetalle" style="text-align: center">Variantes</p>
+            <div class="gridVariantes">
+                <div th:each="variante: ${carta.variantes}" class="variante">
+                    <div>
+                        <img th:src="${variante.imagen}" alt="Arre demo, esto non furrula" class="imgVariante">
+                    </div>
+                    <div>
+                        <p th:if="${variante.nombre == 'null'}" th:text="'Variante: Carta Base'" class="textoDetalle"></p>
+                        <p th:unless="${variante.nombre == 'null'}" th:text="'Variante: ' + ${variante.nombre}" class="textoDetalle"></p>
+                        <p th:if="${variante.rareza != 'Unknown'}" th:text="'Rareza: ' + ${variante.rareza}" class="textoDetalle"></p>
+                        <div th:each="artista : ${variante.artistas}">
+                            <p th:text="${artista.tipo} + ': ' + ${artista.nombre}" class="textoDetalle"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -42,6 +42,7 @@ public class SecurityConfig {
                             "/registro",
                             "/cartas",
                             "/cartas/*",
+                            "/cartas/id/*",
                             "/mazos",
                             "/meta"
                     ).permitAll()

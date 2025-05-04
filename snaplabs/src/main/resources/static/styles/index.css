@@ -9,7 +9,7 @@
 }
 /* Estilos del titulo */
 .titulo {
-    font-size: 2.25rem;
+    font-size: 2.75rem;
 }
 /* Aplicando el grid a los apartados */
 .secciones {
@@ -21,7 +21,7 @@
     grid-template-rows: repeat(3,1fr);
     grid-template-columns: repeat(3,1fr);
     gap: 1.25rem;
-    margin: 3rem 0 0 0;
+    margin: 0;
     padding: 0;
     list-style-type: none;
     text-align: center;

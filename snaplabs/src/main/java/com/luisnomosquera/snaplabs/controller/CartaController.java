@@ -1,6 +1,6 @@
 package com.luisnomosquera.snaplabs.controller;
 
-import com.luisnomosquera.snaplabs.dto.response.CartaResponseDto;
+import com.luisnomosquera.snaplabs.dto.response.SimpleCartaResponseDto;
 import com.luisnomosquera.snaplabs.service.CartaService;
 import com.luisnomosquera.snaplabs.service.MarvelSnapApiService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class CartaController {
 
     @GetMapping("/update")
     public String updateAllCartas() {
-        List<CartaResponseDto> cartas = marvelSnapApiService.getArrayCartas();
+        List<SimpleCartaResponseDto> cartas = marvelSnapApiService.getArrayCartas();
         cartaService.saveAllCartas(cartas);
         return "redirect:/cartas";
     }
@@ -41,6 +41,13 @@ public class CartaController {
         model.addAttribute("vista", "pages/menu_cartas");
         model.addAttribute("listaCartas", cartaService.findBySerie(serie));
         model.addAttribute("titulo", setTituloSerie(serie));
+        return "layouts/plantilla";
+    }
+
+    @GetMapping("/id/{clave}")
+    public String showDetallesCarta(Model model, @PathVariable String clave) {
+        model.addAttribute("vista", "pages/carta");
+        model.addAttribute("carta", marvelSnapApiService.getDetallesCarta(clave));
         return "layouts/plantilla";
     }
 

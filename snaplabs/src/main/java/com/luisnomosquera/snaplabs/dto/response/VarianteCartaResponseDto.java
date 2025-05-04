@@ -4,25 +4,21 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class CartaResponseDto {
+public class VarianteCartaResponseDto {
 
-    @JsonProperty("card_key")
-    private String clave;
-
-    @JsonProperty("name")
+    @JsonProperty("variant_label")
     private String nombre;
-
-    @JsonProperty("description")
-    private String descripcion;
 
     @JsonProperty("Image")
     private String imagen;
 
-    private String series;
+    @JsonProperty("rarity_label")
+    private String rareza;
 
-    private int coste;
-
-    private int poder;
+    @JsonProperty("artist")
+    private List<ArtistaCartaResponseDto> artistas;
 }
