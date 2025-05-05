@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class ApiResponseDto {
+public class ApiCartaResponseDto {
     private int total_pages;
     private Integer next;
     private List<SimpleCartaResponseDto> data;
