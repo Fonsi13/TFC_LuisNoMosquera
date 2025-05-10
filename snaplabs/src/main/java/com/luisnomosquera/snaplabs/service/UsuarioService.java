@@ -22,4 +22,9 @@ public class UsuarioService {
     public Usuario saveNewUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
+
+
+    public String getFotoById(String uuid) {
+        return usuarioRepository.getFotoById(uuid);
+    }
 }
