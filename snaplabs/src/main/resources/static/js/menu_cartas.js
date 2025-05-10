@@ -4,7 +4,7 @@ const coste = document.getElementById("coste");
 const poder = document.getElementById("poder");
 const checkboxes = document.querySelectorAll("input[type='checkbox']");
 const grid = document.querySelector(".gridCartas");
-const listaCartas = Array.from(grid.children);
+const listaCartas = [...grid.children];
 
 alfabetico.addEventListener("change", (event) => ordenarCartasAlf(event));
 coste.addEventListener("change", (event) => ordenarCartasDato(event));
@@ -16,7 +16,7 @@ checkboxes.forEach(checkbox => {
 
 function ordenarCartasAlf() {
     grid.innerHTML = "";
-    asc = (event.target.value === "asc") ? true : false;
+    asc = event.target.value === "asc";
     listaCartas
         .sort((a, b) => asc ? a.id.localeCompare(b.id) : b.id.localeCompare(a.id))
         .forEach(node => grid.appendChild(node));
@@ -25,7 +25,7 @@ function ordenarCartasAlf() {
 function ordenarCartasDato(event) {
     grid.innerHTML = "";
     criterio = event.target.id;
-    asc = (event.target.value === "asc") ? true : false;
+    asc = event.target.value === "asc";
     listaCartas
         .sort((a, b) => {
             const valorA = parseInt(a.getAttribute(`data-${criterio}`));
