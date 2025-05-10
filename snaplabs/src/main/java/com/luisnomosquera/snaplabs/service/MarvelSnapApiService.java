@@ -3,10 +3,7 @@ package com.luisnomosquera.snaplabs.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.luisnomosquera.snaplabs.dto.response.ApiResponseDto;
-import com.luisnomosquera.snaplabs.dto.response.DetallesCartaResponseDto;
-import com.luisnomosquera.snaplabs.dto.response.SimpleCartaResponseDto;
-import com.luisnomosquera.snaplabs.dto.response.VarianteCartaResponseDto;
+import com.luisnomosquera.snaplabs.dto.response.*;
 import io.github.cdimascio.dotenv.Dotenv;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -25,30 +22,24 @@ public class MarvelSnapApiService {
     private final String API_KEY = dotenv.get("MARVEL_SNAP_API_KEY");
     private final String API_HOST = dotenv.get("MARVEL_SNAP_API_HOST");
     private final String API_URL_ALL = dotenv.get("MARVEL_SNAP_API_URL_ALL_CARDS");
-    private final String API_KEY_DETAILS = dotenv.get("MARVEL_SNAP_API_URL_CARDS_DETAILS");
-    private final String API_KEY_VARIANTS = dotenv.get("MARVEL_SNAP_API_URL_CARDS_VARIANTS");
+    private final String API_URL_DETAILS = dotenv.get("MARVEL_SNAP_API_URL_CARDS_DETAILS");
+    private final String API_URL_VARIANTS = dotenv.get("MARVEL_SNAP_API_URL_CARDS_VARIANTS");
+    private final String API_URL_META_DECKS = dotenv.get("MARVEL_SNAP_API_URL_META_DECKS");
 
     public List<SimpleCartaResponseDto> getArrayCartas() {
         Integer pagina = 1;
-        boolean continuar = true;
         ObjectMapper mapper = new ObjectMapper();
         List<SimpleCartaResponseDto> listaCartas = new ArrayList<>();
-
         try {
-            while (continuar) {;
+            do {
                 String respuesta = peticionApi(API_URL_ALL, pagina.toString());
-                ApiResponseDto apiResponseDto = mapper.readValue(respuesta, ApiResponseDto.class);
-                Integer next = apiResponseDto.getNext();
-                List<SimpleCartaResponseDto> listaCartasPagina = addDatos(apiResponseDto.getData());
+                ApiCartaResponseDto apiCartaResponseDto = mapper.readValue(respuesta, ApiCartaResponseDto.class);
+                Integer next = apiCartaResponseDto.getNext();
+                List<SimpleCartaResponseDto> listaCartasPagina = addDatos(apiCartaResponseDto.getData());
 
                 listaCartas.addAll(listaCartasPagina);
-
-                if (next != null)
-                    pagina = next;
-                else {
-                    continuar = false;
-                }
-            }
+                pagina = next;
+            } while (pagina != null);
         } catch (Exception e) {
             throw  new RuntimeException(e.getMessage());
         }
@@ -58,7 +49,7 @@ public class MarvelSnapApiService {
     public DetallesCartaResponseDto getDetallesCarta(String clave) {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            String detalles = peticionApi(API_KEY_DETAILS, clave);
+            String detalles = peticionApi(API_URL_DETAILS, clave);
             DetallesCartaResponseDto[] carta = mapper.readValue(detalles, DetallesCartaResponseDto[].class);
             carta[0].setVariantes(getVariantesCarta(clave));
             return carta[0];
@@ -67,10 +58,28 @@ public class MarvelSnapApiService {
         }
     }
 
+    public List<MazoResponseDto> getMazosMeta() {
+        Integer pagina = 1;
+        ObjectMapper mapper = new ObjectMapper();
+        List<MazoResponseDto> listaMazos = new ArrayList<>();
+        try {
+            do {
+                String respuesta = peticionApi(API_URL_META_DECKS, pagina.toString());
+                ApiMazoResponseDto apiMazoResponseDto = mapper.readValue(respuesta, ApiMazoResponseDto.class);
+                Integer next = apiMazoResponseDto.getNext();
+                listaMazos.addAll(apiMazoResponseDto.getData());
+                pagina = next;
+            } while (pagina != null);
+        } catch (Exception e) {
+            throw  new RuntimeException(e.getMessage());
+        }
+        return listaMazos;
+    }
+
     private List<VarianteCartaResponseDto> getVariantesCarta(String clave) {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            String variantes = peticionApi(API_KEY_VARIANTS, clave);
+            String variantes = peticionApi(API_URL_VARIANTS, clave);
             return mapper.readValue(variantes, new TypeReference<List<VarianteCartaResponseDto>>() {});
         } catch (Exception e) {
             throw  new RuntimeException(e.getMessage());
@@ -81,7 +90,7 @@ public class MarvelSnapApiService {
         ObjectMapper mapper = new ObjectMapper();
         try {
             for (SimpleCartaResponseDto carta: lista) {
-                String detalles = peticionApi(API_KEY_DETAILS, carta.getClave());
+                String detalles = peticionApi(API_URL_DETAILS, carta.getClave());
                 JsonNode jsonNode = mapper.readTree(detalles);
                 String serie = jsonNode.get(0).get("series_key").asText();
                 int coste = jsonNode.get(0).get("cost").asInt();

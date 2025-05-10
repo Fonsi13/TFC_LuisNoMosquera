@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:fragment="titulo">
+        <title>Mazos Meta - Snap Labs</title>
+    </th:block>
+    <th:block th:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/meta.css}">
+    </th:block>
+    <script th:fragment="js" th:src="@{/js/mazo.js}" defer></script>
+</head>
+<body>
+    <main th:fragment="contenido" class="contenido">
+        <section class="titulo">
+            <p>Mazos Meta - Los mejores mazos para el meta actual</p>
+        </section>
+        <section class="gridMazos">
+            <div th:each="mazo : ${listaMazos}" class="mazo">
+                <span th:text="${mazo.nombre}" class="texto"></span>
+                <button type="button" onclick="copiarCodigo(event)" th:value="${mazo.codigo}">Copiar</button>
+                <span th:text="'Porcentaje de victorias: ' + ${#numbers.formatDecimal(mazo.pctVictorias, 1, 2)} + '%'" class="texto"></span>
+                <span th:text="'Promedio de cubos: ' + ${#numbers.formatDecimal(mazo.mediaCubos, 1, 2)} + ''" class="texto"></span>
+                <div class="gridCartas">
+                    <div th:each="carta : ${mazo.cartas}" th:data-src="${carta.imagen}" th:data-desc="${carta.descripcion}">
+                        <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
