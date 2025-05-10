@@ -19,7 +19,7 @@ public class CloudinaryService {
         String url;
 
         if (imagen == null || imagen.isEmpty()) {
-            return "https://res.cloudinary.com/dhmmvfghx/image/upload/v1744621186/default_eb292v.png";
+            return "default_eb292v.png";
         }
 
         try {
@@ -31,7 +31,7 @@ public class CloudinaryService {
                     "format", "png"
             );
             Map uploadResult = cloudinary.uploader().upload(imagen.getBytes(), params);
-            url = uploadResult.get("secure_url").toString();
+            url = uploadResult.get("public_id").toString();
         } catch (IOException e) {
             throw new RuntimeException("Error al procesar la imagen: " + e.getMessage());
         } catch (Exception e) {
