@@ -18,13 +18,21 @@ public class UsuarioService {
         return usuarioRepository.findByUsername(username);
     }
 
+    public Usuario getReferenciaByUuid(String uuid) {
+        return usuarioRepository.getReferenceById(uuid);
+    }
+
+    @Transactional
+    public void updateUsuario(Usuario usuario) {
+        usuarioRepository.save(usuario);
+    }
+
+    public Optional<Usuario> getUsuarioByUuid(String uuid) {
+        return usuarioRepository.findByUuid(uuid);
+    }
+
     @Transactional
     public Usuario saveNewUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
-    }
-
-
-    public String getFotoById(String uuid) {
-        return usuarioRepository.getFotoById(uuid);
     }
 }

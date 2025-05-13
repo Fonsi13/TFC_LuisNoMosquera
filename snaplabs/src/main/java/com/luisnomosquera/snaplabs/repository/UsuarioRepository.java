@@ -1,6 +1,7 @@
 package com.luisnomosquera.snaplabs.repository;
 
 import com.luisnomosquera.snaplabs.entity.Usuario;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -12,6 +13,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, String> {
 
     Optional<Usuario> findByUsername(String username);
 
-    @Query("SELECT u.foto FROM Usuario u WHERE u.uuid = ?1")
-    String getFotoById(String uuid);
+    Optional<Usuario> findByUuid(String uuid);
+
+    @NotNull Usuario getReferenceById(@NotNull String uuid);
 }

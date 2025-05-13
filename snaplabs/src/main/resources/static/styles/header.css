@@ -90,9 +90,10 @@
 .fotoHeader {
     border-radius: 50%;
 }
-.perfil {
+.perfilHeader {
     display: flex;
     align-items: center;
+    gap: 0.5em:
 }
 .botonLogout {
     background: none;

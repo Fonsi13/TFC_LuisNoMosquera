@@ -1,9 +1,11 @@
 package com.luisnomosquera.snaplabs.controller;
 
+import com.luisnomosquera.snaplabs.dto.CustomUserDetails;
 import com.luisnomosquera.snaplabs.dto.response.SimpleCartaResponseDto;
 import com.luisnomosquera.snaplabs.service.CartaService;
 import com.luisnomosquera.snaplabs.service.MarvelSnapApiService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +25,11 @@ public class CartaController {
     private MarvelSnapApiService marvelSnapApiService;
 
     @GetMapping("")
-    public String showListaCartas(Model model) {
+    public String showListaCartas(Model model, Authentication authentication) {
+        if (authentication != null) {
+            CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+            model.addAttribute("foto", customUserDetails.getAvatar());
+        }
         model.addAttribute("vista", "pages/menu_cartas");
         model.addAttribute("listaCartas", cartaService.findAllCartas());
         return "layouts/plantilla";
@@ -37,7 +43,11 @@ public class CartaController {
     }
 
     @GetMapping("/{serie}")
-    public String showSerieCartas(Model model, @PathVariable String serie) {
+    public String showSerieCartas(Model model, @PathVariable String serie, Authentication authentication) {
+        if (authentication != null) {
+            CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+            model.addAttribute("foto", customUserDetails.getAvatar());
+        }
         model.addAttribute("vista", "pages/menu_cartas");
         model.addAttribute("listaCartas", cartaService.findBySerie(serie));
         model.addAttribute("titulo", setTituloSerie(serie));
@@ -45,7 +55,11 @@ public class CartaController {
     }
 
     @GetMapping("/id/{clave}")
-    public String showDetallesCarta(Model model, @PathVariable String clave) {
+    public String showDetallesCarta(Model model, @PathVariable String clave, Authentication authentication) {
+        if (authentication != null) {
+            CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+            model.addAttribute("foto", customUserDetails.getAvatar());
+        }
         model.addAttribute("vista", "pages/carta");
         model.addAttribute("carta", marvelSnapApiService.getDetallesCarta(clave));
         return "layouts/plantilla";

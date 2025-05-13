@@ -1,6 +1,7 @@
 package com.luisnomosquera.snaplabs.service;
 
 import com.cloudinary.Cloudinary;
+import com.cloudinary.Transformation;
 import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,5 +39,17 @@ public class CloudinaryService {
             throw new RuntimeException("Error al subir imagen: " + e.getMessage());
         }
         return url;
+    }
+
+    public String getFotoHeader(String publicId) {
+        return cloudinary.url()
+                .transformation(new Transformation().width(60).height(60).crop("fill"))
+                .generate(publicId);
+    }
+
+    public String getFotoPerfil(String publicId) {
+        return cloudinary.url()
+                .transformation(new Transformation().width(200).height(200).crop("fill"))
+                .generate(publicId);
     }
 }

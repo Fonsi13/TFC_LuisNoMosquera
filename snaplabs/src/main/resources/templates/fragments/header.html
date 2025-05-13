@@ -82,7 +82,7 @@
             </nav>
         </div>
         <div id="div-login">
-            <div sec:authorize="isAuthenticated()" class="perfil">
+            <div sec:authorize="isAuthenticated()" class="perfilHeader">
                 <div>
                     <a th:href="@{/usuario/{id}(id=${id})}">
                         <img th:src="${foto}" alt="Arre demo, esto non furrula" class="fotoHeader">

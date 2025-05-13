@@ -20,6 +20,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UsuarioService usuarioService;
 
+    @Autowired
+    private CloudinaryService cloudinaryService;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Usuario usuario = usuarioService.getUsuarioByUsername(username)
@@ -28,6 +31,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("ROLE_" + usuario.getRol().name()));
 
-        return new CustomUserDetails(usuario, authorities);
+        return new CustomUserDetails(usuario, authorities, cloudinaryService);
     }
 }
