@@ -1,6 +1,7 @@
 package com.luisnomosquera.snaplabs.service;
 
 import com.cloudinary.Cloudinary;
+import com.cloudinary.Transformation;
 import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class CloudinaryService {
         String url;
 
         if (imagen == null || imagen.isEmpty()) {
-            return "https://res.cloudinary.com/dhmmvfghx/image/upload/v1744621186/default_eb292v.png";
+            return "default_eb292v.png";
         }
 
         try {
@@ -31,12 +32,24 @@ public class CloudinaryService {
                     "format", "png"
             );
             Map uploadResult = cloudinary.uploader().upload(imagen.getBytes(), params);
-            url = uploadResult.get("secure_url").toString();
+            url = uploadResult.get("public_id").toString();
         } catch (IOException e) {
             throw new RuntimeException("Error al procesar la imagen: " + e.getMessage());
         } catch (Exception e) {
             throw new RuntimeException("Error al subir imagen: " + e.getMessage());
         }
         return url;
+    }
+
+    public String getFotoHeader(String publicId) {
+        return cloudinary.url()
+                .transformation(new Transformation().width(60).height(60).crop("fill"))
+                .generate(publicId);
+    }
+
+    public String getFotoPerfil(String publicId) {
+        return cloudinary.url()
+                .transformation(new Transformation().width(200).height(200).crop("fill"))
+                .generate(publicId);
     }
 }

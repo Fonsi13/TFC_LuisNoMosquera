@@ -58,8 +58,10 @@
 }
 /* Cambiar el color de fondo de los enlaces al pasar por encima */
 .desplegable-contenido li:hover {
-    color: #0A002B;
     background-color: #643AC9;
+}
+.desplegable-contenido li:hover a {
+    color: #0A002B;
 }
 /* Cambiar el color de fondo del padre cuando se muestra el menú desplegable */
 .desplegable:hover .desplegable-boton {
@@ -75,7 +77,6 @@
 }
 #div-login a {
     padding: 0.3em;
-    color: #F5F1FB;
 }
 #div-login i {
     margin-right: 0.2em;
@@ -84,4 +85,19 @@
 /* Estilos del enlace de inicio de sesión */
 #div-login:hover a {
     color: #0A002B;
+}
+/* Estilos de la foto de perfil */
+.fotoHeader {
+    border-radius: 50%;
+}
+.perfilHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.5em:
+}
+.botonLogout {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
 }

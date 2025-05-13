@@ -1,7 +1,8 @@
 INSERT INTO snaplabs.usuario (uuid,correo,username,password,foto,rol,fecha_creacion) VALUES
-	('290c779c-2d88-4d09-9fc3-143e4bb12530','luisalfonsono@gmail.com','admin','$2a$10$tcVLOBn300I7g9aa8bIemuys8cWppNu6MzjBWdqnmQ1J0HEslk7Tm','https://res.cloudinary.com/dhmmvfghx/image/upload/v1744621186/default_eb292v.png','ADMIN','2025-04-23'),
-	('47c4e2d3-4f98-453b-ae97-218b68d446dd','ciro@gmail.com','ciro','$2a$10$SMLSb7G/O.EVCykTeD1XxOtATxsNvzmHnTV1nM/j888VZL4WKXQly','https://res.cloudinary.com/dhmmvfghx/image/upload/v1744658706/avatars/47c4e2d3-4f98-453b-ae97-218b68d446dd.png','USER','2025-04-23'),
-	('63324757-d412-4d50-9ecc-137390f74946','luisalfonsono@gmail.com','luis','$2a$10$ZbykZ/0iFeuXXWQ7rcLo3OEOpMDfNK4tArsp3FwwdZDPPJxl3Nm5a','https://res.cloudinary.com/dhmmvfghx/image/upload/v1744621186/default_eb292v.png','USER','2025-04-23');
+	('290c779c-2d88-4d09-9fc3-143e4bb12530','luisalfonsono@gmail.com','admin','$2a$10$tcVLOBn300I7g9aa8bIemuys8cWppNu6MzjBWdqnmQ1J0HEslk7Tm','default_eb292v','ADMIN','2025-04-23'),
+	('47c4e2d3-4f98-453b-ae97-218b68d446dd','ciro@gmail.com','ciro','$2a$10$SMLSb7G/O.EVCykTeD1XxOtATxsNvzmHnTV1nM/j888VZL4WKXQly','default_eb292v','USER','2025-04-23'),
+	('63324757-d412-4d50-9ecc-137390f74946','luisalfonsono@gmail.com','luis','$2a$10$ZbykZ/0iFeuXXWQ7rcLo3OEOpMDfNK4tArsp3FwwdZDPPJxl3Nm5a','avatars/47c4e2d3-4f98-453b-ae97-218b68d446dd','USER','2025-04-23'),
+	('8f36a7af-c509-4973-94e0-b1ba27004dce','cirolachupa@gmail.com','test','$2a$10$UG3P2EYHoa8eFkZmJxyoDuX/7vihIaA9VlsrL0ahKQmyatYaEQxn.','avatars/8f36a7af-c509-4973-94e0-b1ba27004dce','USER','2025-05-13');
 INSERT INTO snaplabs.carta (clave,nombre,descripcion,coste,poder,serie,habilidades,imagen,id_snap) VALUES
 	('Abomination','Abomination','Foolish rabble! You are beneath me!',5,9,'Starter','No Ability','https://imagedelivery.net/WeUSpTTnN6p7LLSToV3zTA/74aca90d-a519-45f9-d45a-a30802b8c800/public','En proceso'),
 	('AbsorbingMan','Absorbing Man','On Reveal: If the last card you played has an On Reveal, copy its text. (if able)',4,4,'Series3','On Reveal','https://imagedelivery.net/WeUSpTTnN6p7LLSToV3zTA/e169f3a3-7070-4fd2-d045-528ea7cc1f00/public','En proceso'),

@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,13 +16,15 @@
             <nav>
                 <ul>
                     <li class="desplegable">
-                        <a class="desplegable-boton">Mazos<i class="fa-solid fa-caret-down"></i></a>
+                        <a class="desplegable-boton">
+                            Mazos<i class="fa-solid fa-caret-down"></i>
+                        </a>
                         <ul class="desplegable-contenido">
                             <li>
                                 <a>Mazos Publicados</a>
                             </li>
                             <li>
-                                <a>Mazos Meta</a>
+                                <a th:href="@{/meta}">Mazos Meta</a>
                             </li>
                             <li>
                                 <a>Laboratorio</a>
@@ -30,7 +32,9 @@
                         </ul>
                     </li>
                     <li class="desplegable">
-                        <a class="desplegable-boton">Cartas<i class="fa-solid fa-caret-down"></i></a>
+                        <a class="desplegable-boton" th:href="@{/cartas}">
+                            Cartas<i class="fa-solid fa-caret-down"></i>
+                        </a>
                         <ul class="desplegable-contenido">
                             <li>
                                 <a th:href="@{/cartas}">Lista de Cartas</a>
@@ -65,7 +69,9 @@
                         </ul>
                     </li>
                     <li class="desplegable">
-                        <a class="desplegable-boton">Comunidad<i class="fa-solid fa-caret-down"></i></a>
+                        <a class="desplegable-boton">
+                            Comunidad<i class="fa-solid fa-caret-down"></i>
+                        </a>
                         <ul class="desplegable-contenido">
                             <li>
                                 <a>Variantes</a>
@@ -76,12 +82,26 @@
             </nav>
         </div>
         <div id="div-login">
-            <a th:href="@{/login}"><i class="fa-solid fa-door-open"></i>Acceder</a>
+            <div sec:authorize="isAuthenticated()" class="perfilHeader">
+                <div>
+                    <a th:href="@{/usuario/{id}(id=${id})}">
+                        <img th:src="${foto}" alt="Arre demo, esto non furrula" class="fotoHeader">
+                    </a>
+                </div>
+                <div>
+                    <form th:action="@{/logout}" method="post" style="display: inline;">
+                        <button type="submit" class="botonLogout">
+                            <img th:src="@{/images/menu/logout.svg}" width="60px" height="60px" alt="Arre demo, esto non furrula">
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div sec:authorize="!isAuthenticated()">
+                <a th:href="@{/login}">
+                    <i class="fa-solid fa-door-open"></i>Acceder
+                </a>
+            </div>
         </div>
-    </header>
-
-    <header th:fragment="header-login">
-
     </header>
 </body>
 </html>

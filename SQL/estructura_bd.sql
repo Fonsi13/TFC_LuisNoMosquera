@@ -7,7 +7,7 @@ CREATE TABLE usuario (
 	username VARCHAR(25) NOT NULL,
 	password VARCHAR(255) NOT NULL,
 	foto VARCHAR(255) NOT NULL,
-	rol ENUM('USER', 'ADMIN') NOT NULL,
+	rol ENUM('ADMIN', 'USER') NOT NULL,
 	fecha_creacion date DEFAULT CURRENT_DATE,
 	UNIQUE (username)
 );

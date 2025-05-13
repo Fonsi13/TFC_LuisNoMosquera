@@ -1,0 +1,94 @@
+/* Centrar el contenido */
+.contenido {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 5em;
+    color: #F5F1FB;
+}
+/* Estilos del menu de botones */
+.lateral {
+    position: sticky;
+    align-self: flex-start;
+}
+.perfil {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    font-family: 'IBM Plex Sans Condensed Light', Arial, sans-serif;
+    font-size: 1.25rem;
+}
+/* Estilos de la imagen */
+.imagenPerfil {
+    border-radius: 50%;
+    display: block
+}
+/* Estilo de columna */
+.col {
+    display: flex;
+    flex-direction: column;
+}
+/* Estilo de fila*/
+.row {
+    display: flex;
+    gap: 0.5em;
+}
+.menuBoton {
+    list-style: none;
+}
+/* Estilos del contenedor de la imagen */
+#div-foto {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+/* Estilos de los campos del formulario */
+.campo {
+    width: 28rem;
+    padding: 0.25em 0.7em;
+    margin: 0.5em 0 1rem 0;
+    border: 0.05em solid #ccc;
+    border-radius: 0.5em;
+    font-size: 1.25rem;
+}
+.campoFoto {
+    border: none;
+}
+/* Efecto de enfoque en los campos de entrada */
+.campo:focus {
+    border-color: #BE6BBC;
+    outline: none;
+}
+/* Estilos del boton */
+.boton {
+    width: 100%;
+    padding: 0.5em 0.7em;
+    border: none;
+    background-color: #3B014B;
+    font-family: 'Edge of the Galaxy', Arial, sans-serif;
+    font-size: 1.4rem;
+    color: #F5F1FB;
+    cursor: pointer;
+}
+.boton:hover {
+    background-color: #643AC9;
+}
+/* Estilos del boton */
+.botonPerfil {
+    width: 100%;
+    padding: 0.5em 0.7em;
+    border: none;
+    background-color: #F5F1FB;
+    font-family: 'Edge of the Galaxy', Arial, sans-serif;
+    font-size: 1.4rem;
+    color: #000002;
+    cursor: pointer;
+}
+.botonPerfil:hover {
+    background-color: #643AC9;
+}
+@media screen and (min-width: 1921px) {
+    .perfil {
+        margin-left: 12.5%;
+    }
+}

@@ -1,7 +1,6 @@
 package com.luisnomosquera.snaplabs.controller;
 
 import com.luisnomosquera.snaplabs.dto.request.UsuarioRequestDto;
-import com.luisnomosquera.snaplabs.entity.Usuario;
 import com.luisnomosquera.snaplabs.mapper.UsuarioMapper;
 import com.luisnomosquera.snaplabs.service.CloudinaryService;
 import com.luisnomosquera.snaplabs.service.UsuarioService;
@@ -82,26 +81,13 @@ public class RegistroController {
             usuarioDto.setUrlFoto(cloudinaryService.uploadImage(usuarioDto.getFotoPerfil(), uuid));
             // Guardar el usuario en la base de datos
             usuarioService.saveNewUsuario(usuarioMapper.toUsuario(usuarioDto));
-            // Iniciar sesion con el nuevo usuario
-            crearSesion(usuarioDto.getUsername(), usuarioDto.getPassword(), request);
-            vista = "redirect:/";
+            vista = "redirect:/login";
         } catch (RuntimeException e) {
             redirectAttributes.addFlashAttribute("usuarioDto", usuarioDto);
             redirectAttributes.addFlashAttribute("errorImg", e.getMessage());
             vista = "redirect:/registro";
         }
         return vista;
-    }
-
-    private void crearSesion(String username, String password, HttpServletRequest request) {
-        // Crear token de autenticación
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
-        // Añadir detalles de la solicitud HTTP al token
-        authToken.setDetails(new WebAuthenticationDetails(request));
-        // Verificar las credenciales
-        Authentication authentication = authenticationManager.authenticate(authToken);
-        // Establece la sesión
-        SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 
     private boolean validarCampos(UsuarioRequestDto usuarioDto, RedirectAttributes redirectAttributes) {
@@ -115,7 +101,7 @@ public class RegistroController {
             valido = false;
             redirectAttributes.addFlashAttribute("errorPwd","La contraseña no coincide");
         }
-        if (usuarioService.getUsuarioByUsername(usuarioDto.getUsername()) != null) {
+        if (usuarioService.getUsuarioByUsername(usuarioDto.getUsername()).isPresent()) {
             valido = false;
             redirectAttributes.addFlashAttribute("errorUsr","El nombre de usuario no está disponible");
         }
