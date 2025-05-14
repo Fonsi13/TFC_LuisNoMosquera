@@ -21,6 +21,7 @@ public class MetaController {
         if (authentication != null) {
             CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
             model.addAttribute("foto", customUserDetails.getAvatar());
+            model.addAttribute("id", customUserDetails.getUuid());
         }
         model.addAttribute("vista", "pages/meta");
         model.addAttribute("listaMazos", marvelSnapApiService.getMazosMeta());

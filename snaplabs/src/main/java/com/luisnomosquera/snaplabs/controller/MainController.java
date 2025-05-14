@@ -22,10 +22,8 @@ public class MainController {
     public String showIndex(Model model, Authentication authentication) {
         if (authentication != null) {
             CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
-            String id = customUserDetails.getUuid();
-            String url = customUserDetails.getAvatar();
-            model.addAttribute("foto", url);
-            model.addAttribute("id", id);
+            model.addAttribute("foto", customUserDetails.getAvatar());
+            model.addAttribute("id", customUserDetails.getUuid());
         }
         model.addAttribute("vista", "pages/index");
         return "layouts/plantilla";

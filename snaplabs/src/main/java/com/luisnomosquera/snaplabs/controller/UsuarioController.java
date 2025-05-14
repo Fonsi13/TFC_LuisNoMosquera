@@ -52,6 +52,7 @@ public class UsuarioController {
         }
         CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
         model.addAttribute("foto", customUserDetails.getAvatar());
+        model.addAttribute("id", customUserDetails.getUuid());
         model.addAttribute("vista", "pages/usuario");
         return "layouts/plantilla";
     }
