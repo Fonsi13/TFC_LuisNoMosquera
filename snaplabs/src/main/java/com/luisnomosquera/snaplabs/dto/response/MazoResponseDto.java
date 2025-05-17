@@ -24,4 +24,8 @@ public class MazoResponseDto {
 
     @JsonProperty("cards_on_this_deck")
     private List<SimpleCartaResponseDto> cartas;
+
+    private String usuario;
+
+    private Boolean publico;
 }

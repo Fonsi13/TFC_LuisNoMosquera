@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CartaService {
@@ -19,6 +20,10 @@ public class CartaService {
 
     @Autowired
     private CartaMapper cartaMapper;
+
+    public Optional<Carta> findByNombre(String nombre) {
+        return cartaRepository.findByNombre(nombre);
+    }
 
     @Transactional
     public void saveAllCartas(List<SimpleCartaResponseDto> listaCartasDto) {

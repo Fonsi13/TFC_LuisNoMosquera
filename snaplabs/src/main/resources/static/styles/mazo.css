@@ -1,0 +1,56 @@
+/* Centrar el contenido */
+.contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 65%;
+    margin: 0 auto;
+    margin-bottom: 20%;
+    color: #F5F1FB;
+}
+/* Estilos del titulo */
+.titulo {
+    font-family: 'Edge of the Galaxy', Arial, sans-serif;
+    font-size: 2.75rem;
+}
+/* Estilos del grid de mazos */
+.gridMazos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+/* Estilos de cada mazo */
+.mazo {
+    display: flex;
+    flex-direction: column;
+}
+.mazo button {
+    width: fit-content;
+}
+/* Estilos del grid de cartas */
+.gridCartas {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 5px;
+    margin-top: 10px;
+}
+/* Imágenes de las cartas */
+.imagen {
+    width: 100%;
+    height: auto;
+}
+/* Estilos del texto del mazo */
+.texto {
+    font-family: 'IBM Plex Sans Condensed Regular', Arial, sans-serif;
+    font-size: 0.9rem;
+}
+/* Estilos de los tooltip */
+.tooltip {
+    position: fixed;
+    background-color: #2B1B67;
+    border-radius: 2.5%;
+}

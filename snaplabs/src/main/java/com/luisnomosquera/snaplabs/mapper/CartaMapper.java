@@ -20,4 +20,17 @@ public class CartaMapper {
         carta.setIdSnap("En proceso");
         return carta;
     }
+
+    public SimpleCartaResponseDto toCartaDto(Carta carta) {
+        SimpleCartaResponseDto simpleCartaResponseDto = new SimpleCartaResponseDto();
+        simpleCartaResponseDto.setClave(carta.getClave());
+        simpleCartaResponseDto.setNombre(carta.getNombre());
+        simpleCartaResponseDto.setDescripcion(carta.getDescripcion());
+        simpleCartaResponseDto.setImagen(carta.getImagen());
+        simpleCartaResponseDto.setSerie(carta.getSerie());
+        simpleCartaResponseDto.setCoste(carta.getCoste());
+        simpleCartaResponseDto.setPoder(carta.getPoder());
+        simpleCartaResponseDto.setHabilidades(carta.getHabilidades());
+        return simpleCartaResponseDto;
+    }
 }
