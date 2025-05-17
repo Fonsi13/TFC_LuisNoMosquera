@@ -86,10 +86,4 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-    // Componente para gestionar eventos de sesión
-    @Bean
-    public HttpSessionEventPublisher httpSessionEventPublisher() {
-        return new HttpSessionEventPublisher(); // Necesario para gestionar eventos de sesión
-    }
 }

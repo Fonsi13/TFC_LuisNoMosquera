@@ -1,0 +1,165 @@
+/* Centrar el contenido */
+.contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5em;
+    color: #F5F1FB;
+    font-family: 'IBM Plex Sans Condensed Regular', Arial, sans-serif;
+}
+/* Estilo de columna */
+.col {
+    display: flex;
+    flex-direction: column;
+}
+/* Estilo de fila*/
+.row {
+    display: flex;
+    gap: 0.5em;
+}
+/* Estilos para centrado total */
+.center {
+    justify-content: center;
+    align-items: center;
+}
+/* Espaciar los campos */
+.formulario {
+    gap: 1.5rem;
+    font-size: 1.25rem;
+    align-items: center;
+    margin-bottom: 1.5em;
+}
+/* Estilos del grid superior del formulario */
+.gridForm {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+}
+/* Estilos del contenedor del builder */
+.gridBuilder {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    padding: 2rem;
+    gap: 1rem;
+    background-color: #1F2329;
+}
+/* Estilos de los contenedores de las cartas */
+.cartaBuilder {
+    border: white solid 2px;
+    border-radius: 2.5%;
+    background-color: #0D0F11;
+    width: 130px;
+    height: 180px;
+}
+/* Estilos de la lista de cartas */
+.gridCartas {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    max-width: 60%;
+    max-height: 1000px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0 auto;
+    padding: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: #643AC9 #1F2329;
+}
+/* Estilos de la barra de desplazamiento */
+.gridCartas::-webkit-scrollbar {
+    width: 20px;
+}
+.gridCartas::-webkit-scrollbar-track {
+    background: #1F2329;
+    border-radius: 10px;
+}
+.gridCartas::-webkit-scrollbar-thumb {
+    background: #643AC9;
+    border-radius: 10px;
+}
+.gridCartas::-webkit-scrollbar-thumb:hover {
+    background: #7B4AE3;
+}
+/* Estilos de los campos del formulario */
+.campo {
+    width: 28rem;
+    padding: 0.25em 0.7em;
+    margin: 0.5em 0 1rem 0;
+    border: 0.05em solid #ccc;
+    border-radius: 0.5em;
+    font-size: 1.25rem;
+}
+/* Efecto de enfoque en los campos de entrada */
+.campo:focus {
+    border-width: 2px;
+    border-color: #BE6BBC;
+    outline: none;
+}
+/* Estilos del boton */
+.boton {
+    padding: 0.5em 0.7em;
+    border: none;
+    background-color: #3B014B;
+    font-family: 'Edge of the Galaxy', Arial, sans-serif;
+    font-size: 1.4rem;
+    color: #F5F1FB;
+    cursor: pointer;
+}
+.boton:hover {
+    background-color: #643AC9;
+}
+/* Estilos de las cartas */
+.carta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    color: #F5F1FB;
+}
+.disabled {
+    opacity: 0.5;
+}
+/* Estilo de la imagen de la carta */
+.imagen {
+    width: 100%;
+    height: auto;
+}
+/* Estilo de la imagen de la carta */
+.selected {
+    width: 150px;
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+/* Estilo para centrar descripcion */
+.texto {
+    padding: 0 12px 12px;
+    font-family: 'IBM Plex Sans Condensed Regular', Arial, sans-serif;
+}
+/* No redimensionar el textarea */
+textarea {
+    resize: none;
+}
+/* Estilos del select */
+.arquetipo {
+    width: fit-content;
+    padding: 0.15em 0.5em;
+    border: 0.05em solid #ccc;
+    border-radius: 0.5em;
+    font-size: 1.25rem;
+
+}
+.arquetipo:focus {
+    border-color: #BE6BBC;
+    outline: none;
+}
+
+@media screen and (max-width: 1920px) {
+    .gridCartas {
+        max-height: 600px;
+    }
+}

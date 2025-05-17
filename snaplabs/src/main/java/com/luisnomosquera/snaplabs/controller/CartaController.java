@@ -29,6 +29,7 @@ public class CartaController {
         if (authentication != null) {
             CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
             model.addAttribute("foto", customUserDetails.getAvatar());
+            model.addAttribute("id", customUserDetails.getUuid());
         }
         model.addAttribute("vista", "pages/menu_cartas");
         model.addAttribute("listaCartas", cartaService.findAllCartas());

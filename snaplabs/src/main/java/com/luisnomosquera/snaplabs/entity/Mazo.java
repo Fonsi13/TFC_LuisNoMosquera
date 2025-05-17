@@ -2,6 +2,7 @@ package com.luisnomosquera.snaplabs.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -29,6 +30,7 @@ public class Mazo {
     @Column(nullable = false)
     private Boolean publico;
 
+    @CreationTimestamp
     @Column(name = "fecha_creacion")
     private LocalDate fechaCreacion;
 
