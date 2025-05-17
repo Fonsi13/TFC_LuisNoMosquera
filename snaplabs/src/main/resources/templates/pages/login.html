@@ -29,6 +29,9 @@
                 <div th:if="${param.error}" class="error">
                     <span>Credenciales incorrectas. Inténtalo de nuevo.</span>
                 </div>
+                <div th:if="${param.exito}" class="exito">
+                    <span>Cuenta creada correctamente.</span>
+                </div>
                 <div>
                     <input type="submit" id="btn_login" name="btn_login" class="campo boton" value="Acceder">
                 </div>

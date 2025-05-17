@@ -1,4 +1,5 @@
-CREATE DATABASE IF NOT EXISTS snaplabs;
+DROP DATABASE IF EXISTS snaplabs;
+CREATE DATABASE snaplabs;
 USE snaplabs;
 
 CREATE TABLE usuario (

@@ -62,3 +62,7 @@ a {
 .error {
     color: #FFD700;
 }
+/* Estilos de los mensajes de error */
+.error {
+    color: #4cff4c;
+}

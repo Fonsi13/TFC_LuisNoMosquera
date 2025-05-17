@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:fragment="titulo">
+        <title>Laboratorio - Snap Labs</title>
+    </th:block>
+    <th:block th:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/lab.css}">
+    </th:block>
+    <script th:fragment="js" th:src="@{/js/cartas.js}" defer></script>
+</head>
+<body>
+    <main th:fragment="contenido" class="contenido">
+        <section class="builder">
+            <form id="formBuilder" th:action="@{/lab/{id}/crear(id=${id})}" th:object="${mazoDto}" method="post" class="formulario col">
+                <input type="hidden" id="contenido" th:field="*{contenido}">
+                <div class="gridForm">
+                    <div class="col">
+                        <label for="nombre">Nombre*:</label>
+                        <input type="text" th:field="*{nombre}" id="nombre" name="nombre" class="campo" minlength="3" maxlength="25" required>
+                        <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error"></span>
+                    </div>
+                    <div class="col" style="justify-content: center;">
+                        <div class="row center">
+                            <label for="arquetipo">Arquetipo*:</label>
+                            <select th:field="*{arquetipo}" id="arquetipo" name="arquetipo" class="arquetipo" required>
+                                <option value="" selected>Selecciona</option>
+                                <option value="destroy">Destrucción</option>
+                                <option value="discard">Descarte</option>
+                                <option value="move">Movimiento</option>
+                                <option value="reveal">Al revelarse</option>
+                                <option value="ongoing">Continuo</option>
+                            </select>
+                        </div>
+                        <span th:if="${#fields.hasErrors('arquetipo')}" th:errors="*{arquetipo}" class="error"></span>
+                    </div>
+                    <div class="col">
+                        <label for="descripcion">Descripción:</label>
+                        <textarea id="descripcion" name="descripcion" rows="6" cols="65" placeholder="Introduce una descripción de tu mazo">
+                        </textarea>
+                    </div>
+                    <div class="row center">
+                        <label for="publico">Público*:</label>
+                        <input type="checkbox" th:field="*{publico}" id="publico" name="publico">
+                    </div>
+                </div>
+                <div class="gridBuilder">
+                    <div th:each="i : ${#numbers.sequence(0, 11)}" class="cartaBuilder void"></div>
+                </div>
+                <span th:if="${#fields.hasErrors('contenido')}" th:errors="*{contenido}" class="error"></span>
+                <div class="row">
+                    <input type="submit" id="crear" name="crear" class="campo boton" value="Crear">
+                </div>
+                <span th:if="${error}" th:text="${error}" class="error"></span>
+                <div th:if="${param.exito}" class="exito">
+                    <span>Mazo creado con éxito.</span>
+                </div>
+            </form>
+        </section>
+        <section class="filtros">
+            <input type="text" id="buscar" placeholder="Buscar cartas...">
+            <label for="alfa">Ordenar alfabéticamente:</label>
+            <select id="alfa">
+                <option selected disabled>Orden:</option>
+                <option value="asc">ASC</option>
+                <option value="desc">DESC</option>
+            </select>
+            <label for="coste">Ordenar por Coste:</label>
+            <select id="coste">
+                <option selected disabled>Orden:</option>
+                <option value="asc">ASC</option>
+                <option value="desc">DESC</option>
+            </select>
+            <label for="poder">Ordenar por Poder:</label>
+            <select id="poder">
+                <option selected disabled>Orden:</option>
+                <option value="asc">ASC</option>
+                <option value="desc">DESC</option>
+            </select>
+            <label for="habilidades">Filtrar por Habilidad:</label>
+            <div id="habilidades">
+                <input type="checkbox" name="habilidad" value="Destroy" id="destroy"/>
+                <label for="destroy">Destruir</label>
+                <input type="checkbox" name="habilidad" value="Discard" id="discard"/>
+                <label for="discard">Descartar</label>
+                <input type="checkbox" name="habilidad" value="Move" id="move"/>
+                <label for="move">Movimiento</label>
+                <input type="checkbox" name="habilidad" value="No Ability" id="no"/>
+                <label for="no">Sin Habilidad</label>
+                <input type="checkbox" name="habilidad" value="On Reveal" id="reveal"/>
+                <label for="reveal">Al Revelarse</label>
+                <input type="checkbox" name="habilidad" value="Ongoing" id="ongoing"/>
+                <label for="ongoing">Continuo</label>
+            </div>
+        </section>
+        <section class="gridCartas">
+            <div th:each="carta: ${listaCartas}" th:id="${carta.nombre}" th:data-coste="${carta.coste}" th:data-poder="${carta.poder}" th:data-habilidades="${carta.habilidades}" class="cartaLab">
+                <div class="carta">
+                    <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">
+                    <span th:text="${carta.nombre}" class="texto"></span>
+                    <span th:text="${carta.descripcion}" class="texto"></span>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

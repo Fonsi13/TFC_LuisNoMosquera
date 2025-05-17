@@ -81,7 +81,7 @@ public class RegistroController {
             usuarioDto.setUrlFoto(cloudinaryService.uploadImage(usuarioDto.getFotoPerfil(), uuid));
             // Guardar el usuario en la base de datos
             usuarioService.saveNewUsuario(usuarioMapper.toUsuario(usuarioDto));
-            vista = "redirect:/login";
+            vista = "redirect:/login?exito";
         } catch (RuntimeException e) {
             redirectAttributes.addFlashAttribute("usuarioDto", usuarioDto);
             redirectAttributes.addFlashAttribute("errorImg", e.getMessage());
