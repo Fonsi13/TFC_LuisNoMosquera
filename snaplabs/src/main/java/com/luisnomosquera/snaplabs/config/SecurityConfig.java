@@ -44,6 +44,7 @@ public class SecurityConfig {
                             "/cartas/*",
                             "/cartas/id/*",
                             "/mazos",
+                            "/mazos/*",
                             "/meta"
                     ).permitAll()
                     // Resto de rutas con autorización

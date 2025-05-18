@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MazoService {
@@ -20,6 +21,8 @@ public class MazoService {
 
     @Autowired
     private MazoMapper mazoMapper;
+
+    public Optional<Mazo> findById(int id) { return mazoRepository.findById(id); }
 
     @Transactional
     public Mazo saveNewMazo(Mazo mazo) { return mazoRepository.save(mazo); }

@@ -35,8 +35,10 @@ public class MazoMapper {
 
     public MazoResponseDto toMazoResponseDto(Mazo mazo) {
         MazoResponseDto mazoResponseDto = new MazoResponseDto();
+        mazoResponseDto.setId(mazo.getId());
         mazoResponseDto.setNombre(mazo.getNombre());
         mazoResponseDto.setUsuario(mazo.getUsuario().getUsername());
+        mazoResponseDto.setDescripcion(mazo.getDescripcion());
         mazoResponseDto.setPublico(mazo.getPublico());
         List<SimpleCartaResponseDto> listaCartas = new ArrayList<>();
         String[] cartas = mazo.getContenido().split(",");

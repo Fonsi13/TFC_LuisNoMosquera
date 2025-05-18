@@ -10,6 +10,8 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MazoResponseDto {
 
+    private int id;
+
     @JsonProperty("deck_name")
     private String nombre;
 
@@ -26,6 +28,8 @@ public class MazoResponseDto {
     private List<SimpleCartaResponseDto> cartas;
 
     private String usuario;
+
+    private String descripcion;
 
     private Boolean publico;
 }
