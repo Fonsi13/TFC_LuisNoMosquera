@@ -5,6 +5,7 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Set;
 
 @Data
@@ -40,4 +41,17 @@ public class Mazo {
 
     @ManyToMany(mappedBy = "likedMazos")
     private Set<Usuario> likes;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Mazo)) return false;
+        Mazo mazo = (Mazo) o;
+        return id != 0 && id == mazo.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

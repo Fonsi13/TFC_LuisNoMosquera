@@ -24,15 +24,4 @@ public class CustomUserDetails extends User {
         this.uuid = usuario.getUuid();
         this.avatar = cloudinaryService.getFotoHeader(usuario.getFoto());
     }
-
-    public CustomUserDetails(String username, String password, Collection<? extends GrantedAuthority> authorities,
-                             String uuid, CloudinaryService cloudinaryService, String fotoId) {
-        super(
-                username,
-                password,
-                authorities
-        );
-        this.uuid = uuid;
-        this.avatar = cloudinaryService.getFotoHeader(fotoId);
-    }
 }
