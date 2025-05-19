@@ -16,6 +16,8 @@
         <section class="builder">
             <form id="formBuilder" th:action="@{/lab/{id}/crear(id=${id})}" th:object="${mazoDto}" method="post" class="formulario col">
                 <input type="hidden" id="contenido" th:field="*{contenido}">
+                <span th:if="${error}" th:text="${error}" class="error"></span>
+                <span th:if="${param.exito}" class="exito">Mazo creado con éxito.</span>
                 <div class="gridForm">
                     <div class="col">
                         <label for="nombre">Nombre*:</label>
@@ -39,7 +41,7 @@
                     <div class="col">
                         <label for="descripcion">Descripción:</label>
                         <textarea id="descripcion" name="descripcion" rows="6" cols="65" placeholder="Introduce una descripción de tu mazo">
-                        </textarea>
+                            </textarea>
                     </div>
                     <div class="row center">
                         <label for="publico">Público*:</label>
@@ -52,10 +54,6 @@
                 <span th:if="${#fields.hasErrors('contenido')}" th:errors="*{contenido}" class="error"></span>
                 <div class="row">
                     <input type="submit" id="crear" name="crear" class="campo boton" value="Crear">
-                </div>
-                <span th:if="${error}" th:text="${error}" class="error"></span>
-                <div th:if="${param.exito}" class="exito">
-                    <span>Mazo creado con éxito.</span>
                 </div>
             </form>
         </section>

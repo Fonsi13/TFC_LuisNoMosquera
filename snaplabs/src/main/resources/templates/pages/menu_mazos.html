@@ -22,6 +22,16 @@
                     <span th:text="${mazo.nombre}" class="texto"></span>
                 </a>
                 <span th:text="'Creado por ' + ${mazo.usuario}" class="texto"></span>
+                <div th:if="${likedMazos.isEmpty() or !likedMazos.contains(mazo.id)}">
+                    <a th:href="@{/mazos/{id}/like(id=${mazo.id})}">
+                        <img th:src="@{/images/fav/fav_icon_white.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">
+                    </a>
+                </div>
+                <div th:if="${likedMazos.contains(mazo.id)}">
+                    <a th:href="@{/mazos/{id}/dislike(id=${mazo.id})}">
+                        <img th:src="@{/images/fav/fav_icon_golden.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">
+                    </a>
+                </div>
                 <div class="gridCartas">
                     <div th:each="carta : ${mazo.cartas}" th:data-src="${carta.imagen}" th:data-desc="${carta.descripcion}">
                         <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">
