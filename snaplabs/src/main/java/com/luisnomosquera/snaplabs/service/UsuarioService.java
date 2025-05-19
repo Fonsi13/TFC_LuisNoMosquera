@@ -23,8 +23,8 @@ public class UsuarioService {
     }
 
     @Transactional
-    public void updateUsuario(Usuario usuario) {
-        usuarioRepository.save(usuario);
+    public Usuario updateUsuario(Usuario usuario) {
+        return usuarioRepository.save(usuario);
     }
 
     public Optional<Usuario> getUsuarioByUuid(String uuid) {

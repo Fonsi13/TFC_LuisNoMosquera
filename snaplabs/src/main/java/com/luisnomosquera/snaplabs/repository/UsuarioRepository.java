@@ -3,7 +3,6 @@ package com.luisnomosquera.snaplabs.repository;
 import com.luisnomosquera.snaplabs.entity.Usuario;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

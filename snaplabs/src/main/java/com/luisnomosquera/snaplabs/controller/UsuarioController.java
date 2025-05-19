@@ -86,23 +86,21 @@ public class UsuarioController {
             if (!usuarioDto.getFotoPerfil().isEmpty()){
                 String publicId = cloudinaryService.uploadImage(usuarioDto.getFotoPerfil(), uuid);
                 usuario.setFoto(publicId);
-                actualizarSesion(usuarioDto.getPassword(), authentication, customUserDetails, publicId);
             }
-            // Guardar el usuario en la base de datos
-            usuarioService.updateUsuario(usuario);
+            // Actualizar el usuario en la base de datos
+            Usuario updatedUsuario = usuarioService.updateUsuario(usuario);
+            // Actualizar datos de la sesión
+            actualizarSesion(updatedUsuario, authentication, customUserDetails);
         } catch (RuntimeException e) {
             redirectAttributes.addFlashAttribute("errorImg", e.getMessage());
         }
     }
 
-    private void actualizarSesion(String pwd, Authentication authentication, CustomUserDetails currentUserDetails, String nuevoAvatar) {
+    private void actualizarSesion(Usuario updatedUsuario, Authentication authentication, CustomUserDetails currentUserDetails) {
         CustomUserDetails updatedUserDetails = new CustomUserDetails(
-                currentUserDetails.getUsername(),
-                pwd,
+                updatedUsuario,
                 currentUserDetails.getAuthorities(),
-                currentUserDetails.getUuid(),
-                cloudinaryService,
-                nuevoAvatar
+                cloudinaryService
         );
 
         Authentication newAuthentication = new UsernamePasswordAuthenticationToken(

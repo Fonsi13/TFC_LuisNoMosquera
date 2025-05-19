@@ -5,6 +5,7 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Set;
 
 @Data
@@ -48,4 +49,17 @@ public class Usuario {
             inverseJoinColumns = { @JoinColumn(name = "id_mazo") }
     )
     private Set<Mazo> likedMazos;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Usuario)) return false;
+        Usuario usuario = (Usuario) o;
+        return uuid != null && uuid.equals(usuario.uuid);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(uuid);
+    }
 }

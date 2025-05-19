@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:fragment="titulo">
+        <title th:text="${mazo.nombre} + ' - Marvel Snap Mazos, Cartas y Variantes'"></title>
+    </th:block>
+    <th:block th:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/mazo.css}">
+    </th:block>
+    <script th:fragment="js" th:src="@{/js/mazo.js}" defer></script>
+</head>
+<body>
+    <main th:fragment="contenido" class="contenido">
+        <section class="titulo">
+            <p th:text="${mazo.nombre}"></p>
+        </section>
+        <section class="mazo">
+            <p th:text="'Coste medio del mazo: ' + ${#numbers.formatDecimal(coste, 1, 2)}" class="texto"></p>
+            <p th:text="'Poder medio del mazo: ' + ${#numbers.formatDecimal(poder, 1, 2)}" class="texto"></p>
+            <span th:text="'Creado por ' + ${mazo.usuario}" class="texto"></span>
+            <div class="gridCartas">
+                <div th:each="carta : ${mazo.cartas}" th:data-src="${carta.imagen}" th:data-desc="${carta.descripcion}">
+                  <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">
+                </div>
+            </div>
+            <p class="texto">Descripción:</p>
+            <p style="white-space: pre-line;" th:text="${mazo.descripcion}" class="texto"></p>
+        </section>
+    </main>
+</body>
+</html>
