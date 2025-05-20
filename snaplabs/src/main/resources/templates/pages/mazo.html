@@ -17,12 +17,14 @@
             <p th:text="${mazo.nombre}"></p>
         </section>
         <section class="mazo">
+            <p th:text="'Arquetipo: ' + ${mazo.arquetipo}" class="texto"></p>
             <p th:text="'Coste medio del mazo: ' + ${#numbers.formatDecimal(coste, 1, 2)}" class="texto"></p>
             <p th:text="'Poder medio del mazo: ' + ${#numbers.formatDecimal(poder, 1, 2)}" class="texto"></p>
-            <span th:text="'Creado por ' + ${mazo.usuario}" class="texto"></span>
+            <p th:text="'Publicado ' + ${mazo.tiempoTranscurrido}" class="texto"></p>
+            <p th:text="'Creado por ' + ${mazo.usuario.username}" class="texto"></p>
             <div class="gridCartas">
                 <div th:each="carta : ${mazo.cartas}" th:data-src="${carta.imagen}" th:data-desc="${carta.descripcion}">
-                  <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">
+                    <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">
                 </div>
             </div>
             <p class="texto">Descripción:</p>
