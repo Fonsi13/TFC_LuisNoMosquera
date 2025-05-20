@@ -17,11 +17,13 @@
             <p>Mazos publicados por la Comunidad</p>
         </section>
         <section class="gridMazos">
-            <div th:each="mazo : ${listaMazos}" th:if="${mazo.publico}"  class="mazo">
+            <div th:each="mazo : ${listaMazos}" th:if="${mazo.publico}" th:data-arquetipo="${mazo.arquetipo}"  class="mazo">
                 <a th:href="@{/mazos/{id}(id=${mazo.id})}">
                     <span th:text="${mazo.nombre}" class="texto"></span>
                 </a>
-                <span th:text="'Creado por ' + ${mazo.usuario}" class="texto"></span>
+                <span th:text="'Creado por ' + ${mazo.usuario.username}" class="texto"></span>
+                <span th:text="'Arquetipo: ' + ${mazo.arquetipo}" class="texto"></span>
+                <span th:text="'Publicado ' + ${mazo.tiempoTranscurrido}" class="texto"></span>
                 <div th:if="${likedMazos.isEmpty() or !likedMazos.contains(mazo.id)}">
                     <a th:href="@{/mazos/{id}/like(id=${mazo.id})}">
                         <img th:src="@{/images/fav/fav_icon_white.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">

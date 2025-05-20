@@ -1,12 +1,11 @@
 package com.luisnomosquera.snaplabs.service;
 
-import com.luisnomosquera.snaplabs.dto.response.MazoResponseDto;
+import com.luisnomosquera.snaplabs.dto.response.MazoDto;
 import com.luisnomosquera.snaplabs.entity.Mazo;
 import com.luisnomosquera.snaplabs.entity.Usuario;
 import com.luisnomosquera.snaplabs.mapper.MazoMapper;
 import com.luisnomosquera.snaplabs.repository.MazoRepository;
 import jakarta.transaction.Transactional;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,9 +30,9 @@ public class MazoService {
     @Transactional
     public Mazo saveNewMazo(Mazo mazo) { return mazoRepository.save(mazo); }
 
-    public List<MazoResponseDto> getListaMazosDto() {
-        List<MazoResponseDto> lista = new ArrayList<>();
-        mazoRepository.findAll().forEach(mazo -> lista.add(mazoMapper.toMazoResponseDto(mazo)));
+    public List<MazoDto> getListaMazosDto() {
+        List<MazoDto> lista = new ArrayList<>();
+        mazoRepository.findAll().forEach(mazo -> lista.add(mazoMapper.toMazoDto(mazo)));
         return lista;
     }
 

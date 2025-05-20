@@ -1,7 +1,7 @@
 package com.luisnomosquera.snaplabs.controller;
 
 import com.luisnomosquera.snaplabs.dto.CustomUserDetails;
-import com.luisnomosquera.snaplabs.dto.response.MazoResponseDto;
+import com.luisnomosquera.snaplabs.dto.response.MazoDto;
 import com.luisnomosquera.snaplabs.dto.response.SimpleCartaResponseDto;
 import com.luisnomosquera.snaplabs.entity.Mazo;
 import com.luisnomosquera.snaplabs.entity.Usuario;
@@ -46,7 +46,7 @@ public class MazoController {
             usuario.get().getLikedMazos().forEach(mazo -> likedMazos.add(mazo.getId()));
         }
         model.addAttribute("likedMazos", likedMazos);
-        model.addAttribute("listaMazos", mazoService.getListaMazosDto());
+        model.addAttribute("listaMazos", mazoService.getListaMazosDto().reversed());
         model.addAttribute("vista", "pages/menu_mazos");
         return "layouts/plantilla";
     }
@@ -60,7 +60,7 @@ public class MazoController {
         }
         Optional<Mazo> mazo = mazoService.findById(parseInt(id));
         if (mazo.isPresent()) {
-            MazoResponseDto mazoDto =  mazoMapper.toMazoResponseDto(mazo.get());
+            MazoDto mazoDto =  mazoMapper.toMazoDto(mazo.get());
             List<SimpleCartaResponseDto> cartas = mazoDto.getCartas();
             model.addAttribute("mazo", mazoDto);
             model.addAttribute("coste", getMedias(cartas, "coste"));
