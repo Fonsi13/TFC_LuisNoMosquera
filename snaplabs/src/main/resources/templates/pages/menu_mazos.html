@@ -16,8 +16,29 @@
         <section class="titulo">
             <p>Mazos publicados por la Comunidad</p>
         </section>
+        <section class="filtros">
+            <label for="fecha">Ordenar por fecha:</label>
+            <select id="fecha">
+                <option selected disabled>Orden:</option>
+                <option value="asc">ASC</option>
+                <option value="desc">DESC</option>
+            </select>
+            <label for="habilidades">Filtrar por Arquetipo:</label>
+            <div id="habilidades">
+                <input type="checkbox" name="arquetipo" value="destroy" id="destroy"/>
+                <label for="destroy">Destruir</label>
+                <input type="checkbox" name="arquetipo" value="discard" id="discard"/>
+                <label for="discard">Descartar</label>
+                <input type="checkbox" name="arquetipo" value="move" id="move"/>
+                <label for="move">Movimiento</label>
+                <input type="checkbox" name="arquetipo" value="reveal" id="reveal"/>
+                <label for="reveal">Al Revelarse</label>
+                <input type="checkbox" name="arquetipo" value="ongoing" id="ongoing"/>
+                <label for="ongoing">Continuo</label>
+            </div>
+        </section>
         <section class="gridMazos">
-            <div th:each="mazo : ${listaMazos}" th:if="${mazo.publico}" th:data-arquetipo="${mazo.arquetipo}"  class="mazo">
+            <div th:each="mazo : ${listaMazos}" th:if="${mazo.publico}" th:data-arquetipo="${mazo.arquetipo}" th:data-fecha="${mazo.fechaCreacion}"  class="mazo">
                 <a th:href="@{/mazos/{id}(id=${mazo.id})}">
                     <span th:text="${mazo.nombre}" class="texto"></span>
                 </a>
