@@ -116,7 +116,7 @@ public class UsuarioController {
         List<MazoDto> listaFavoritos = new ArrayList<>();
 
         usuario.getLikedMazos().forEach(mazo -> listaFavoritos.add(mazoMapper.toMazoDto(mazo)));
-        model.addAttribute("listaFavoritos", listaFavoritos);
+        model.addAttribute("listaFavoritos", listaFavoritos.reversed());
         model.addAttribute("usuario", usuarioDto);
         model.addAttribute("foto", customUserDetails.getAvatar());
         model.addAttribute("id", customUserDetails.getUuid());

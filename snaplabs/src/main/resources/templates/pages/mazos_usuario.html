@@ -45,6 +45,7 @@
                     <th>Nombre del Mazo</th>
                     <th>Autor</th>
                     <th>Publicado</th>
+                    <th>Estado</th>
                     <th>Cartas</th>
                 </tr>
                 </thead>
@@ -60,6 +61,10 @@
                     </td>
                     <td>
                         <p th:text="${mazo.tiempoTranscurrido}"></p>
+                    </td>
+                    <td>
+                        <p th:if="${mazo.publico}">Público</p>
+                        <p th:unless="${mazo.publico}">Oculto</p>
                     </td>
                     <td class="rowCartas">
                         <div class="gridCartasTabla">
