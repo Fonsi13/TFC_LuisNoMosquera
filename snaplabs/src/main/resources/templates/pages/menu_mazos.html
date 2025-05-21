@@ -43,7 +43,7 @@
                     <span th:text="${mazo.nombre}" class="texto"></span>
                 </a>
                 <span th:text="'Creado por ' + ${mazo.usuario.username}" class="texto"></span>
-                <span th:text="'Arquetipo: ' + ${mazo.arquetipo}" class="texto"></span>
+                <span th:text="'Arquetipo: ' + ${mazo.nombreArquetipo}" class="texto"></span>
                 <span th:text="'Publicado ' + ${mazo.tiempoTranscurrido}" class="texto"></span>
                 <div th:if="${likedMazos.isEmpty() or !likedMazos.contains(mazo.id)}">
                     <a th:href="@{/mazos/{id}/like(id=${mazo.id})}">

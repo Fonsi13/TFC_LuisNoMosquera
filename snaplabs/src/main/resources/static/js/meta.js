@@ -7,8 +7,8 @@ imagenes.forEach(imagen => {
     imagen.addEventListener("mouseleave", deleteTooltip);
 });
 
-function copiarCodigo(event) {
-    codigo = event.target.value;
+window.copiarCodigo = function(event) {
+    const codigo = event.target.value;
     navigator.clipboard.writeText(codigo);
     alert("Código copiado");
 }
