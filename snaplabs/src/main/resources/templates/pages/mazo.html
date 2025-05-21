@@ -17,7 +17,7 @@
             <p th:text="${mazo.nombre}"></p>
         </section>
         <section class="mazo">
-            <p th:text="'Arquetipo: ' + ${mazo.arquetipo}" class="texto"></p>
+            <p th:text="'Arquetipo: ' + ${mazo.nombreArquetipo}" class="texto"></p>
             <p th:text="'Coste medio del mazo: ' + ${#numbers.formatDecimal(coste, 1, 2)}" class="texto"></p>
             <p th:text="'Poder medio del mazo: ' + ${#numbers.formatDecimal(poder, 1, 2)}" class="texto"></p>
             <p th:text="'Publicado ' + ${mazo.tiempoTranscurrido}" class="texto"></p>
