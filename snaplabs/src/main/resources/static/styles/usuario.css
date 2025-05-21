@@ -5,6 +5,7 @@
     justify-content: flex-start;
     width: 100%;
     margin-top: 5em;
+    gap: 4em;
     color: #F5F1FB;
 }
 /* Estilos del menu de botones */
@@ -87,6 +88,21 @@
 .botonPerfil:hover {
     background-color: #643AC9;
 }
+/* Estilos del boton para borrar */
+.borrar {
+    width: 100%;
+    padding: 0.5em 0.7em;
+    border: none;
+    background-color: #cc0000;
+    font-family: 'Edge of the Galaxy', Arial, sans-serif;
+    font-size: 1.4rem;
+    color: #F5F1FB;
+    cursor: pointer;
+}
+.borrar:hover {
+    background-color: #a10000;
+}
+/* Centrar formulario cuando el ancho de la pantalla sea superior a 1920px */
 @media screen and (min-width: 1921px) {
     .perfil {
         margin-left: 12.5%;

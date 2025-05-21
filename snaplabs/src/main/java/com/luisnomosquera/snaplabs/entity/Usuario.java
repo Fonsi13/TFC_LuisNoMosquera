@@ -42,7 +42,7 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private Set<Variante> listaVariante;
 
-    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "usuario_favorito_mazo",
             joinColumns = { @JoinColumn(name = "id_usuario", columnDefinition = "CHAR(36)") },

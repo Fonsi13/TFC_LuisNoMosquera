@@ -40,35 +40,40 @@
             <div id="div-foto">
                 <img th:src="${fotoPerfil}" alt="Arre demo, esto non furrula" class="imagenPerfil">
             </div>
-            <form th:action="@{/usuario/{id}/update(id=${usuario.uuid})}" th:object="${usuario}" method="post" enctype="multipart/form-data" class="col">
-                <div class="col">
-                    <label for="username">Nombre de usuario:</label>
-                    <input type="text" th:field="*{username}" id="username" name="username" class="campo">
-                    <input type="hidden" id="hiddenUsername" th:value="${hidden.username}"/>
-                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></span>
-                    <span th:if="${errorUsr}" th:text="${errorUsr}" class="error"></span>
-                </div>
-                <div class="col">
-                    <label for="pwd">Clave de acceso:</label>
-                    <input type="password" th:field="*{password}" id="pwd" name="pwd" class="campo" placeholder="Introduce o actualiza tu contraseña" minlength="12" required>
-                    <span th:if="${#fields.hasErrors('password')}" th:each="err : ${#fields.errors('password')}" th:utext="${err}" class="error"></span>
-                </div>
-                <div class="col">
-                    <label for="email">Correo electronico:</label>
-                    <input type="text" th:field="*{correo}" id="email" name="email" th:value="${usuario.correo}" class="campo">
-                    <input type="hidden" id="hiddenEmail" th:value="${hidden.correo}"/>
-                    <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}" class="error"></span>
-                </div>
-                <div class="col">
-                    <label for="foto_perfil">Foto de perfil (Opcional):</label>
-                    <input type="file" th:field="*{fotoPerfil}" id="foto_perfil" name="foto_perfil" accept="image/png, image/jpeg, image/jpg, image/webp" class="campo campoFoto">
-                    <span th:if="${errorImg}" th:utext="${errorImg}" class="error"></span>
-                </div>
-                <div class="col">
-                    <button onclick="resetCampos()" class="campo boton">Resetear campos</button>
-                    <input type="submit" id="btn_registro" name="btn_registro" class="campo boton" value="Actualizar">
-                </div>
-            </form>
+            <div>
+                <form th:action="@{/usuario/{id}/update(id=${usuario.uuid})}" th:object="${usuario}" method="post" enctype="multipart/form-data" class="col">
+                    <div class="col">
+                        <label for="username">Nombre de usuario:</label>
+                        <input type="text" th:field="*{username}" id="username" name="username" class="campo">
+                        <input type="hidden" id="hiddenUsername" th:value="${hidden.username}"/>
+                        <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></span>
+                        <span th:if="${errorUsr}" th:text="${errorUsr}" class="error"></span>
+                    </div>
+                    <div class="col">
+                        <label for="pwd">Clave de acceso:</label>
+                        <input type="password" th:field="*{password}" id="pwd" name="pwd" class="campo" placeholder="Introduce o actualiza tu contraseña" minlength="12" required>
+                        <span th:if="${#fields.hasErrors('password')}" th:each="err : ${#fields.errors('password')}" th:utext="${err}" class="error"></span>
+                    </div>
+                    <div class="col">
+                        <label for="email">Correo electronico:</label>
+                        <input type="text" th:field="*{correo}" id="email" name="email" th:value="${usuario.correo}" class="campo">
+                        <input type="hidden" id="hiddenEmail" th:value="${hidden.correo}"/>
+                        <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}" class="error"></span>
+                    </div>
+                    <div class="col">
+                        <label for="foto_perfil">Foto de perfil (Opcional):</label>
+                        <input type="file" th:field="*{fotoPerfil}" id="foto_perfil" name="foto_perfil" accept="image/png, image/jpeg, image/jpg, image/webp" class="campo campoFoto">
+                        <span th:if="${errorImg}" th:utext="${errorImg}" class="error"></span>
+                    </div>
+                    <div class="col">
+                        <button onclick="resetCampos()" class="campo boton">Resetear campos</button>
+                        <input type="submit" id="btn_registro" name="btn_registro" class="campo boton" value="Actualizar">
+                    </div>
+                </form>
+                <form th:action="@{/usuario/{id}/delete(id=${usuario.uuid})}" method="post">
+                    <input type="submit" class="campo borrar" value="Eliminar cuenta">
+                </form>
+            </div>
         </section>
     </main>
 </body>

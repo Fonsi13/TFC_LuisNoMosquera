@@ -9,12 +9,15 @@ import com.luisnomosquera.snaplabs.mapper.UsuarioMapper;
 import com.luisnomosquera.snaplabs.service.CloudinaryService;
 import com.luisnomosquera.snaplabs.service.UsuarioService;
 import com.luisnomosquera.snaplabs.util.FileUploadUtil;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -78,6 +81,15 @@ public class UsuarioController {
             updateUsuario(usuario, redirectAttributes, authentication, customUserDetails, uuid);
         }
         return "redirect:/usuario/{uuid}";
+    }
+
+    @PostMapping("/{uuid}/delete")
+    public String deleteUsuario(@PathVariable String uuid, Authentication authentication, HttpServletRequest request,
+                                HttpServletResponse response) {
+        usuarioService.deleteUsuario(uuid);
+        SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
+        logoutHandler.logout(request, response, authentication);
+        return "redirect:/";
     }
 
     @GetMapping("/{uuid}/mazos")
