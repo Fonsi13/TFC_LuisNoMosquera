@@ -25,6 +25,9 @@ public class UsuarioUpdateDto {
     @NotBlank(message = "La contraseña es obligatoria.")
     private String password;
 
+    @NotBlank(message = "La contraseña es obligatoria.")
+    private String confirmarPassword;
+
     private String hashPassword;
 
     private MultipartFile fotoPerfil;

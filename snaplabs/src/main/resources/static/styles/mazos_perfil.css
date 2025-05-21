@@ -1,0 +1,79 @@
+/* Centrar el contenido */
+.contenido {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 5em;
+    gap: 4em;
+    color: #F5F1FB;
+}
+/* Estilos del menu de botones */
+.lateral {
+    position: sticky;
+    align-self: flex-start;
+}
+.menuBoton {
+    list-style: none;
+}
+/* Estilos de los campos del formulario */
+.campo {
+    width: 28rem;
+    padding: 0.25em 0.7em;
+    margin: 0.5em 0 1rem 0;
+    border: 0.05em solid #ccc;
+    border-radius: 0.5em;
+    font-size: 1.25rem;
+}
+/* Estilos del boton */
+.botonPerfil {
+    width: 100%;
+    padding: 0.5em 0.7em;
+    border: none;
+    background-color: #F5F1FB;
+    font-family: 'Edge of the Galaxy', Arial, sans-serif;
+    font-size: 1.4rem;
+    color: #000002;
+    cursor: pointer;
+}
+.botonPerfil:hover {
+    color: #F5F1FB;
+    background-color: #643AC9;
+}
+/* Estilos del contenedor para la tabla */
+.mazos {
+    display: flex;
+    justify-content: center;
+    width: 75%;
+    height: fit-content;
+}
+/* Estilos de la tabla */
+.tabla {
+    font-family: 'IBM Plex Sans Condensed Light', Arial, sans-serif;
+    border-collapse: collapse;
+}
+/* Estilos de celdas de la tabla */
+.tabla th, .tabla td {
+    padding: 0.5rem 0.75rem;
+    text-align: center;
+}
+.rowCartas {
+    width: 60%;
+}
+/* Estilos del grid de la lista de cartas */
+.gridCartasTabla {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    width: 100%;
+}
+/* Estilos de la imagen */
+.imagen {
+    width: 100%;
+    height: auto;
+}
+/* Estilos de los tooltip */
+.tooltip {
+    position: fixed;
+    background-color: #2B1B67;
+    border-radius: 2.5%;
+}

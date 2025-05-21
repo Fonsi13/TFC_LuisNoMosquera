@@ -64,13 +64,13 @@ public class MazoMapper {
         long years = ChronoUnit.YEARS.between(fechaCreacion, today);
 
         if (dias == 0) {
-            diferencia = "hoy";
+            diferencia = "Hoy";
         } else if (meses < 1) {
-            diferencia = "hace " + dias + "d";
-        } else if (meses >= 1 && meses <= 12) {
-            diferencia = "hace " + meses + "m";
+            diferencia = "Hace " + dias + "d";
+        } else if (meses <= 12) {
+            diferencia = "Hace " + meses + "m";
         } else {
-            diferencia = "hace " + years + "y";
+            diferencia = "Hace " + years + "y";
         }
         return diferencia;
     }

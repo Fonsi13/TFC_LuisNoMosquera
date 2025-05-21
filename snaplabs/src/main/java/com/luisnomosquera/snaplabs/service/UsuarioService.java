@@ -35,4 +35,6 @@ public class UsuarioService {
     public Usuario saveNewUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
+
+    public void deleteUsuario(String uuid) { usuarioRepository.deleteById(uuid); }
 }

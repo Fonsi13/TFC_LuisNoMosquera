@@ -2,17 +2,22 @@ package com.luisnomosquera.snaplabs.controller;
 
 import com.luisnomosquera.snaplabs.dto.CustomUserDetails;
 import com.luisnomosquera.snaplabs.dto.request.UsuarioUpdateDto;
+import com.luisnomosquera.snaplabs.dto.response.MazoDto;
 import com.luisnomosquera.snaplabs.entity.Usuario;
+import com.luisnomosquera.snaplabs.mapper.MazoMapper;
 import com.luisnomosquera.snaplabs.mapper.UsuarioMapper;
 import com.luisnomosquera.snaplabs.service.CloudinaryService;
 import com.luisnomosquera.snaplabs.service.UsuarioService;
 import com.luisnomosquera.snaplabs.util.FileUploadUtil;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +25,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -37,6 +44,9 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioMapper usuarioMapper;
+
+    @Autowired
+    private MazoMapper mazoMapper;
 
     @GetMapping("/{uuid}")
     public String showUsuario(Model model, @PathVariable String uuid, Authentication authentication) {
@@ -65,12 +75,51 @@ public class UsuarioController {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.usuario", bindingResult);
             redirectAttributes.addFlashAttribute("usuario", usuario);
-            System.out.println(bindingResult.hasErrors());
-            System.out.println(bindingResult);
         } else if (validarCampos(usuario, customUserDetails, redirectAttributes)) {
             updateUsuario(usuario, redirectAttributes, authentication, customUserDetails, uuid);
         }
         return "redirect:/usuario/{uuid}";
+    }
+
+    @PostMapping("/{uuid}/delete")
+    public String deleteUsuario(@PathVariable String uuid, Authentication authentication, HttpServletRequest request,
+                                HttpServletResponse response) {
+        usuarioService.deleteUsuario(uuid);
+        SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
+        logoutHandler.logout(request, response, authentication);
+        return "redirect:/";
+    }
+
+    @GetMapping("/{uuid}/mazos")
+    public String showMazos(@PathVariable String uuid, Model model, Authentication authentication) {
+        CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+        Usuario usuario = usuarioService.getUsuarioByUuid(uuid).orElseThrow();
+        UsuarioUpdateDto usuarioDto = usuarioMapper.toUsuarioDto(usuario);
+        List<MazoDto> listaMazos = new ArrayList<>();
+
+        usuario.getListaMazo().forEach(mazo -> listaMazos.add(mazoMapper.toMazoDto(mazo)));
+        model.addAttribute("listaMazos", listaMazos.reversed());
+        model.addAttribute("usuario", usuarioDto);
+        model.addAttribute("foto", customUserDetails.getAvatar());
+        model.addAttribute("id", customUserDetails.getUuid());
+        model.addAttribute("vista", "pages/mazos_usuario");
+        return "layouts/plantilla";
+    }
+
+    @GetMapping("/{uuid}/favoritos")
+    public String showFavoritos(@PathVariable String uuid, Model model, Authentication authentication) {
+        CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+        Usuario usuario = usuarioService.getUsuarioByUuid(uuid).orElseThrow();
+        UsuarioUpdateDto usuarioDto = usuarioMapper.toUsuarioDto(usuario);
+        List<MazoDto> listaFavoritos = new ArrayList<>();
+
+        usuario.getLikedMazos().forEach(mazo -> listaFavoritos.add(mazoMapper.toMazoDto(mazo)));
+        model.addAttribute("listaFavoritos", listaFavoritos.reversed());
+        model.addAttribute("usuario", usuarioDto);
+        model.addAttribute("foto", customUserDetails.getAvatar());
+        model.addAttribute("id", customUserDetails.getUuid());
+        model.addAttribute("vista", "pages/favoritos");
+        return "layouts/plantilla";
     }
 
     private void updateUsuario(UsuarioUpdateDto usuarioDto, RedirectAttributes redirectAttributes,
@@ -115,7 +164,13 @@ public class UsuarioController {
     private boolean validarCampos(UsuarioUpdateDto usuarioDto, CustomUserDetails customUserDetails,
                                   RedirectAttributes redirectAttributes) {
         boolean valido = true;
-        String username = customUserDetails.getUsername();
+        Usuario usuario = usuarioService.getReferenciaByUuid(customUserDetails.getUuid());
+        String username = usuario.getUsername();
+        String hashedPwd = usuario.getPassword();
+        if (!passwordEncoder.matches(usuarioDto.getConfirmarPassword(), hashedPwd)) {
+            valido = false;
+            redirectAttributes.addFlashAttribute("errorPwd","Debes introducir tu contraseña actual para confirmar los cambios");
+        }
         if (!usuarioDto.getFotoPerfil().isEmpty() && !validarImagen(usuarioDto.getFotoPerfil())) {
             valido = false;
             redirectAttributes.addFlashAttribute("errorImg","La imagen tener un tamaño máximo de 2MB.<br>" +
