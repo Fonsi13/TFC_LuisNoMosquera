@@ -2,7 +2,9 @@ package com.luisnomosquera.snaplabs.controller;
 
 import com.luisnomosquera.snaplabs.dto.CustomUserDetails;
 import com.luisnomosquera.snaplabs.dto.request.UsuarioUpdateDto;
+import com.luisnomosquera.snaplabs.dto.response.MazoDto;
 import com.luisnomosquera.snaplabs.entity.Usuario;
+import com.luisnomosquera.snaplabs.mapper.MazoMapper;
 import com.luisnomosquera.snaplabs.mapper.UsuarioMapper;
 import com.luisnomosquera.snaplabs.service.CloudinaryService;
 import com.luisnomosquera.snaplabs.service.UsuarioService;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -37,6 +41,9 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioMapper usuarioMapper;
+
+    @Autowired
+    private MazoMapper mazoMapper;
 
     @GetMapping("/{uuid}")
     public String showUsuario(Model model, @PathVariable String uuid, Authentication authentication) {
@@ -71,6 +78,22 @@ public class UsuarioController {
             updateUsuario(usuario, redirectAttributes, authentication, customUserDetails, uuid);
         }
         return "redirect:/usuario/{uuid}";
+    }
+
+    @GetMapping("/{uuid}/mazos")
+    public String showMazos(@PathVariable String uuid, Model model, Authentication authentication) {
+        CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+        Usuario usuario = usuarioService.getUsuarioByUuid(uuid).orElseThrow();
+        UsuarioUpdateDto usuarioDto = usuarioMapper.toUsuarioDto(usuario);
+        List<MazoDto> listaMazos = new ArrayList<>();
+
+        usuario.getListaMazo().forEach(mazo -> listaMazos.add(mazoMapper.toMazoDto(mazo)));
+        model.addAttribute("listaMazos", listaMazos.reversed());
+        model.addAttribute("usuario", usuarioDto);
+        model.addAttribute("foto", customUserDetails.getAvatar());
+        model.addAttribute("id", customUserDetails.getUuid());
+        model.addAttribute("vista", "pages/mazos_usuario");
+        return "layouts/plantilla";
     }
 
     private void updateUsuario(UsuarioUpdateDto usuarioDto, RedirectAttributes redirectAttributes,
