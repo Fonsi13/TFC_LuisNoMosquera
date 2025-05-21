@@ -55,6 +55,12 @@
                         <span th:if="${#fields.hasErrors('password')}" th:each="err : ${#fields.errors('password')}" th:utext="${err}" class="error"></span>
                     </div>
                     <div class="col">
+                        <label for="confirmar_pwd">Confirmar clave de acceso:</label>
+                        <input type="password" th:field="*{confirmarPassword}" id="confirmar_pwd" name="confirmar_pwd" class="campo" placeholder="Introduce tu contraseña actual" minlength="12" required>
+                        <span th:if="${#fields.hasErrors('confirmarPassword')}" th:errors="*{confirmarPassword}" class="error"></span>
+                        <span th:if="${errorPwd}" th:text="${errorPwd}" class="error"></span>
+                    </div>
+                    <div class="col">
                         <label for="email">Correo electronico:</label>
                         <input type="text" th:field="*{correo}" id="email" name="email" th:value="${usuario.correo}" class="campo">
                         <input type="hidden" id="hiddenEmail" th:value="${hidden.correo}"/>

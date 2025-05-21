@@ -75,8 +75,6 @@ public class UsuarioController {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.usuario", bindingResult);
             redirectAttributes.addFlashAttribute("usuario", usuario);
-            System.out.println(bindingResult.hasErrors());
-            System.out.println(bindingResult);
         } else if (validarCampos(usuario, customUserDetails, redirectAttributes)) {
             updateUsuario(usuario, redirectAttributes, authentication, customUserDetails, uuid);
         }
@@ -166,7 +164,13 @@ public class UsuarioController {
     private boolean validarCampos(UsuarioUpdateDto usuarioDto, CustomUserDetails customUserDetails,
                                   RedirectAttributes redirectAttributes) {
         boolean valido = true;
-        String username = customUserDetails.getUsername();
+        Usuario usuario = usuarioService.getReferenciaByUuid(customUserDetails.getUuid());
+        String username = usuario.getUsername();
+        String hashedPwd = usuario.getPassword();
+        if (!passwordEncoder.matches(usuarioDto.getConfirmarPassword(), hashedPwd)) {
+            valido = false;
+            redirectAttributes.addFlashAttribute("errorPwd","Debes introducir tu contraseña actual para confirmar los cambios");
+        }
         if (!usuarioDto.getFotoPerfil().isEmpty() && !validarImagen(usuarioDto.getFotoPerfil())) {
             valido = false;
             redirectAttributes.addFlashAttribute("errorImg","La imagen tener un tamaño máximo de 2MB.<br>" +
