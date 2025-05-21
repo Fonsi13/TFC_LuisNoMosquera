@@ -15,13 +15,13 @@ arquetipos.forEach(checkbox => checkbox.addEventListener("change", filtrarMazoBy
 
 function ordenarMazosFecha(event) {
     gridMazos.innerHTML = "";
-    asc = event.target.value === "asc";
+    const asc = event.target.value === "asc";
     mazos
         .sort((a,b) => {
-        valorA = a.getAttribute("data-fecha");
-        valorB = b.getAttribute("data-fecha");
-        return asc ? new Date(valorA) - new Date(valorB) : new Date(valorB) - new Date(valorA);
-    })
+            const valorA = a.getAttribute("data-fecha");
+            const valorB = b.getAttribute("data-fecha");
+            return asc ? new Date(valorA) - new Date(valorB) : new Date(valorB) - new Date(valorA);
+        })
         .forEach(mazo => gridMazos.appendChild(mazo))
 }
 

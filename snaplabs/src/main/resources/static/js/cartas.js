@@ -25,7 +25,7 @@ listaCartasLab.forEach(carta => {
 
 function ordenarCartasAlf() {
     grid.innerHTML = "";
-    asc = event.target.value === "asc";
+    const asc = event.target.value === "asc";
     listaCartas
         .sort((a, b) => asc ? a.id.localeCompare(b.id) : b.id.localeCompare(a.id))
         .forEach(node => grid.appendChild(node));
@@ -34,7 +34,7 @@ function ordenarCartasAlf() {
 function ordenarCartasDato(event) {
     grid.innerHTML = "";
     criterio = event.target.id;
-    asc = event.target.value === "asc";
+    const asc = event.target.value === "asc";
     listaCartas
         .sort((a, b) => {
             const valorA = parseInt(a.getAttribute(`data-${criterio}`));
