@@ -96,6 +96,22 @@ public class UsuarioController {
         return "layouts/plantilla";
     }
 
+    @GetMapping("/{uuid}/favoritos")
+    public String showFavoritos(@PathVariable String uuid, Model model, Authentication authentication) {
+        CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+        Usuario usuario = usuarioService.getUsuarioByUuid(uuid).orElseThrow();
+        UsuarioUpdateDto usuarioDto = usuarioMapper.toUsuarioDto(usuario);
+        List<MazoDto> listaFavoritos = new ArrayList<>();
+
+        usuario.getLikedMazos().forEach(mazo -> listaFavoritos.add(mazoMapper.toMazoDto(mazo)));
+        model.addAttribute("listaFavoritos", listaFavoritos);
+        model.addAttribute("usuario", usuarioDto);
+        model.addAttribute("foto", customUserDetails.getAvatar());
+        model.addAttribute("id", customUserDetails.getUuid());
+        model.addAttribute("vista", "pages/favoritos");
+        return "layouts/plantilla";
+    }
+
     private void updateUsuario(UsuarioUpdateDto usuarioDto, RedirectAttributes redirectAttributes,
                                Authentication authentication, CustomUserDetails customUserDetails, String uuid) {
         Usuario usuario = usuarioService.getReferenciaByUuid(uuid);
