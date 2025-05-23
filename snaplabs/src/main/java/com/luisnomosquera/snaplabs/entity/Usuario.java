@@ -50,6 +50,14 @@ public class Usuario {
     )
     private Set<Mazo> likedMazos;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "usuario_like_variante",
+            joinColumns = { @JoinColumn(name = "id_usuario", columnDefinition = "CHAR(36)") },
+            inverseJoinColumns = { @JoinColumn(name = "id_variante") }
+    )
+    private Set<Mazo> likedVariantes;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

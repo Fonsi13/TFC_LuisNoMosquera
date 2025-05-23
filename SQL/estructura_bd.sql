@@ -1,5 +1,4 @@
-DROP DATABASE IF EXISTS snaplabs;
-CREATE DATABASE snaplabs;
+CREATE DATABASE IF NOT EXISTS snaplabs;
 USE snaplabs;
 
 CREATE TABLE usuario (
@@ -29,9 +28,8 @@ CREATE TABLE variante (
 	uuid CHAR(36) PRIMARY KEY,
 	nombre VARCHAR(25) NOT NULL,
 	descripcion VARCHAR(255) DEFAULT '',
-	enlace VARCHAR(255) NOT NULL,
+	urlImagen VARCHAR(255) NOT NULL,
 	personaje VARCHAR(25) NOT NULL,
-	total_likes INT UNSIGNED DEFAULT 0,
 	fecha_creacion date DEFAULT CURRENT_DATE,
 	id_usuario CHAR(36) NOT NULL,
 	CONSTRAINT fk_id_usuario_variante FOREIGN KEY (id_usuario) REFERENCES usuario(uuid) ON DELETE CASCADE
@@ -43,6 +41,14 @@ CREATE TABLE usuario_favorito_mazo (
 	CONSTRAINT pk_usuario_favorito_mazo PRIMARY KEY (id_usuario,id_mazo),
 	CONSTRAINT fk_favorito_id_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(uuid) ON DELETE CASCADE,
 	CONSTRAINT fk_favorito_id_mazo FOREIGN KEY (id_mazo) REFERENCES mazo(id) ON DELETE CASCADE
+);
+
+CREATE TABLE usuario_like_variante (
+	id_usuario CHAR(36),
+	id_variante CHAR(36),
+	CONSTRAINT pk_usuario_like_variante PRIMARY KEY (id_usuario,id_variante),
+	CONSTRAINT fk_like_id_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(uuid) ON DELETE CASCADE,
+	CONSTRAINT fk_like_id_variante FOREIGN KEY (id_variante) REFERENCES variante(uuid) ON DELETE CASCADE
 );
 
 CREATE TABLE carta (
