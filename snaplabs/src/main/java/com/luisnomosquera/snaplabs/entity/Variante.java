@@ -2,6 +2,7 @@ package com.luisnomosquera.snaplabs.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -20,11 +21,12 @@ public class Variante {
     private String descripcion;
 
     @Column(nullable = false)
-    private String urlImagen;
+    private String imagen;
 
     @Column(nullable = false)
     private String personaje;
 
+    @CreationTimestamp
     @Column(name = "fecha_creacion")
     private LocalDate fechaCreacion;
 

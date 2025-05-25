@@ -16,7 +16,7 @@ public class CloudinaryService {
     @Autowired
     private Cloudinary cloudinary;
 
-    public String uploadImage(MultipartFile imagen, String uuid) {
+    public String uploadFotoPerfil(MultipartFile imagen, String uuid) {
         String url;
 
         if (imagen == null || imagen.isEmpty()) {
@@ -28,6 +28,26 @@ public class CloudinaryService {
                     "public_id", uuid,
                     "overwrite", true,
                     "folder", "avatars",
+                    "resource_type", "image",
+                    "format", "png"
+            );
+            Map uploadResult = cloudinary.uploader().upload(imagen.getBytes(), params);
+            url = uploadResult.get("public_id").toString();
+        } catch (IOException e) {
+            throw new RuntimeException("Error al procesar la imagen: " + e.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("Error al subir imagen: " + e.getMessage());
+        }
+        return url;
+    }
+
+    public String uploadVariante(MultipartFile imagen, String uuid) {
+        String url;
+        try {
+            final Map params = ObjectUtils.asMap(
+                    "public_id", uuid,
+                    "overwrite", true,
+                    "folder", "variants",
                     "resource_type", "image",
                     "format", "png"
             );

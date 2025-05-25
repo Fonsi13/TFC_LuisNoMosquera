@@ -13,7 +13,7 @@ public class VarianteMapper {
         variante.setUuid(varianteRequestDto.getUuid());
         variante.setNombre(varianteRequestDto.getNombre());
         variante.setDescripcion(varianteRequestDto.getDescripcion());
-        variante.setUrlImagen(varianteRequestDto.getUrlFoto());
+        variante.setImagen(varianteRequestDto.getUrlFoto());
         variante.setPersonaje(varianteRequestDto.getPersonaje());
         variante.setUsuario(varianteRequestDto.getUsuario());
         return variante;
@@ -24,7 +24,7 @@ public class VarianteMapper {
         varianteDto.setUuid(variante.getUuid());
         varianteDto.setNombre(variante.getNombre());
         varianteDto.setDescripcion(variante.getDescripcion());
-        varianteDto.setUrlImagen(variante.getUrlImagen());
+        varianteDto.setUrlImagen(variante.getImagen());
         varianteDto.setPersonaje(variante.getPersonaje());
         varianteDto.setFechaCreacion(variante.getFechaCreacion());
         varianteDto.setUsuario(variante.getUsuario());

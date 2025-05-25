@@ -28,8 +28,8 @@ CREATE TABLE variante (
 	uuid CHAR(36) PRIMARY KEY,
 	nombre VARCHAR(25) NOT NULL,
 	descripcion VARCHAR(255) DEFAULT '',
-	urlImagen VARCHAR(255) NOT NULL,
-	personaje VARCHAR(25) NOT NULL,
+	imagen VARCHAR(255) NOT NULL,
+	personaje VARCHAR(50) NOT NULL,
 	fecha_creacion date DEFAULT CURRENT_DATE,
 	id_usuario CHAR(36) NOT NULL,
 	CONSTRAINT fk_id_usuario_variante FOREIGN KEY (id_usuario) REFERENCES usuario(uuid) ON DELETE CASCADE

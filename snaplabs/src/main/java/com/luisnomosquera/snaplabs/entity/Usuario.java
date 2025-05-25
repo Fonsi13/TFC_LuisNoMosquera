@@ -56,7 +56,7 @@ public class Usuario {
             joinColumns = { @JoinColumn(name = "id_usuario", columnDefinition = "CHAR(36)") },
             inverseJoinColumns = { @JoinColumn(name = "id_variante") }
     )
-    private Set<Mazo> likedVariantes;
+    private Set<Variante> likedVariantes;
 
     @Override
     public boolean equals(Object o) {

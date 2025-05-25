@@ -5,15 +5,10 @@ import com.luisnomosquera.snaplabs.mapper.UsuarioMapper;
 import com.luisnomosquera.snaplabs.service.CloudinaryService;
 import com.luisnomosquera.snaplabs.service.UsuarioService;
 import com.luisnomosquera.snaplabs.util.FileUploadUtil;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -54,23 +49,22 @@ public class RegistroController {
 
     @PostMapping ("/registro")
     public String guardarUsuario(@ModelAttribute("usuarioDto") @Valid UsuarioRequestDto usuarioDto,
-                                 BindingResult bindingResult, RedirectAttributes redirectAttributes, HttpServletRequest request) {
+                                 BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         final String vista;
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.usuarioDto", bindingResult);
             redirectAttributes.addFlashAttribute("usuarioDto", usuarioDto);
             vista = "redirect:/registro";
         } else if (validarCampos(usuarioDto, redirectAttributes)) {
-            vista = crearUsuario(usuarioDto, redirectAttributes, request);
+            vista = crearUsuario(usuarioDto, redirectAttributes);
         } else {
             redirectAttributes.addFlashAttribute("usuarioDto", usuarioDto);
             vista = "redirect:/registro";
         }
-
         return vista;
     }
 
-    private String crearUsuario(UsuarioRequestDto usuarioDto, RedirectAttributes redirectAttributes, HttpServletRequest request) {
+    private String crearUsuario(UsuarioRequestDto usuarioDto, RedirectAttributes redirectAttributes) {
         String vista;
         try {
             final String uuid = UUID.randomUUID().toString();
@@ -78,7 +72,7 @@ public class RegistroController {
             // Hash contraseña
             usuarioDto.setHashPassword(passwordEncoder.encode(usuarioDto.getPassword()));
             // Guardar la imagen en la nube y actualizar la url del usuario
-            usuarioDto.setUrlFoto(cloudinaryService.uploadImage(usuarioDto.getFotoPerfil(), uuid));
+            usuarioDto.setUrlFoto(cloudinaryService.uploadFotoPerfil(usuarioDto.getFotoPerfil(), uuid));
             // Guardar el usuario en la base de datos
             usuarioService.saveNewUsuario(usuarioMapper.toUsuario(usuarioDto));
             vista = "redirect:/login?exito";
