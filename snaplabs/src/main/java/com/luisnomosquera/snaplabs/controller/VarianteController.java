@@ -81,6 +81,7 @@ public class VarianteController {
         final String vista;
         CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
         if (bindingResult.hasErrors()) {
+            System.out.println(bindingResult);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.varianteDto", bindingResult);
             redirectAttributes.addFlashAttribute("varianteDto", varianteDto);
             vista = "redirect:/variantes/upload";

@@ -21,14 +21,35 @@
                 <span>Variante subida correctamente.</span>
             </div>
             <div>
-                <a th:href="@{/variantes/upload}">
-                    <img th:src="@{/images/upload/upload_icon.svg}" alt="Arre demo, esto non furrula" width="85px" height="95px">
-                </a>
+
             </div>
         </section>
         <section class="gridVariantes">
-            <div th:each="variante : ${listaVariantes}">
-
+            <div class="carta">
+                <p class="texto">Subir una variante</p>
+                <a th:href="@{/variantes/upload}">
+                    <img th:src="@{/images/icons/upload_icon.svg}" alt="Arre demo, esto non furrula" width="400px" height="500px">
+                </a>
+            </div>
+            <div th:each="variante : ${listaVariantes}" class="carta">
+                <p th:text="${variante.nombre}" class="texto"></p>
+                <a th:href="@{/variantes/{id}(id=${variante.uuid})}">
+                    <img th:src="${variante.imagen}" alt="Arre demo, esto non furrula" width="400px" height="500px" class="variante">
+                </a>
+                <div class="row gap">
+                    <p th:text="'Creado por ' + ${variante.usuario.username}"></p>
+                    <div class="row">
+                        <span th:text="${variante.likes.size()}"></span>
+                        <div th:if="${variante.usuario.uuid.equals(id)}">
+                            <a th:href="@{/variantes/{id}/like(id=${variante.uuid})}">
+                                <img th:src="@{/images/icons/like_icon_white.svg}" alt="Arre demo, esto non furrula" width="50px" height="50px">
+                            </a>
+                        </div>
+                        <div th:unless="${variante.usuario.uuid.equals(id)}">
+                            <img th:src="@{/images/icons/like_icon_red.svg}" alt="Arre demo, esto non furrula" width="50px" height="50px">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

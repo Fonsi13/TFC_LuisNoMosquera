@@ -25,7 +25,8 @@ public class VarianteService {
 
     public List<VarianteResponseDto> getListVarianteDto() {
         List<VarianteResponseDto> lista = new ArrayList<>();
-        varianteRepository.findAll().forEach(variante -> lista.add(varianteMapper.toVarianteDto(variante)));
+        varianteRepository.findAllByOrderByFechaCreacionDesc()
+                .forEach(variante -> lista.add(varianteMapper.toVarianteDto(variante)));
         return lista;
     }
 }

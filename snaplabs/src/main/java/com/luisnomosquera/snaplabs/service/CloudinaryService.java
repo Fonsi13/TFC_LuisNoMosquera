@@ -72,4 +72,10 @@ public class CloudinaryService {
                 .transformation(new Transformation().width(200).height(200).crop("fill"))
                 .generate(publicId);
     }
+
+    public String getVariante(String publicId) {
+        return cloudinary.url()
+                .transformation(new Transformation().width(400).height(500).crop("fill"))
+                .generate(publicId);
+    }
 }

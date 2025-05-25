@@ -15,7 +15,7 @@ public class VarianteResponseDto {
 
     private String descripcion;
 
-    private String urlImagen;
+    private String imagen;
 
     private String personaje;
 

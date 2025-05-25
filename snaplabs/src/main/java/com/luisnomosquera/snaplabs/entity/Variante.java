@@ -27,7 +27,7 @@ public class Variante {
     private String personaje;
 
     @CreationTimestamp
-    @Column(name = "fecha_creacion")
+    @Column(name = "fecha_creacion", updatable = false)
     private LocalDate fechaCreacion;
 
     @ManyToOne

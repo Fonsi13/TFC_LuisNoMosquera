@@ -16,10 +16,9 @@ public class VarianteRequestDto {
     @Size(min = 3, message = "El nombre debe tener mínimo 3 letras")
     private String nombre;
 
-    @NotBlank(message = "La imagen de la variante es obligatoria.")
     private String descripcion;
 
-    @NotNull(message = "La imagen es obligatoria.")
+    @NotNull(message = "La imagen de la variante es obligatoria.")
     private MultipartFile imagen;
 
     private String urlFoto;
