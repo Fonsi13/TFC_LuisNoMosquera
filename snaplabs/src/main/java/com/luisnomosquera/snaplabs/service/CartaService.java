@@ -41,4 +41,6 @@ public class CartaService {
     public List<Carta> findBySerie(String serie) {
         return cartaRepository.findBySerie(serie);
     }
+
+    public List<String> getAllNombresCartas() { return cartaRepository.getAllNombres(); }
 }

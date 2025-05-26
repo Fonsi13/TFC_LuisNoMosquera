@@ -133,7 +133,7 @@ public class UsuarioController {
             if (!passwordEncoder.matches(usuarioDto.getPassword(), usuario.getPassword()))
                 usuario.setPassword(passwordEncoder.encode(usuarioDto.getPassword()));
             if (!usuarioDto.getFotoPerfil().isEmpty()){
-                String publicId = cloudinaryService.uploadImage(usuarioDto.getFotoPerfil(), uuid);
+                String publicId = cloudinaryService.uploadVariante(usuarioDto.getFotoPerfil(), uuid);
                 usuario.setFoto(publicId);
             }
             // Actualizar el usuario en la base de datos

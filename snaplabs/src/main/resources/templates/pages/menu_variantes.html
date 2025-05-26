@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:fragment="titulo">
+        <title>Variantes de la Comunidad - Marvel Snap Mazos, Cartas y Variantes</title>
+    </th:block>
+    <th:block th:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/menu_variantes.css}">
+    </th:block>
+    <script th:fragment="js" th:src="@{/js/variantes.js}" defer></script>
+</head>
+<body>
+    <main th:fragment="contenido" class="contenido">
+        <section class="titulo">
+            <p>Variantes creadas por la Comunidad</p>
+        </section>
+        <section class="filtros">
+            <div th:if="${param.exito}" class="exito">
+                <span>Variante subida correctamente.</span>
+            </div>
+            <div>
+                <label for="fecha">Ordenar por fecha:</label>
+                <select id="fecha">
+                    <option selected disabled>Orden:</option>
+                    <option value="asc">ASC</option>
+                    <option value="desc">DESC</option>
+                </select>
+                <label for="likes">Ordenar por likes:</label>
+                <select id="likes">
+                    <option selected disabled>Orden:</option>
+                    <option value="asc">ASC</option>
+                    <option value="desc">DESC</option>
+                </select>
+            </div>
+        </section>
+        <section class="gridVariantes">
+            <div class="upload">
+                <p class="texto">Subir una variante</p>
+                <a th:href="@{/variantes/upload}">
+                    <img th:src="@{/images/icons/upload_icon.svg}" alt="Arre demo, esto non furrula" width="400px" height="500px">
+                </a>
+            </div>
+            <div th:each="variante : ${listaVariantes}" th:data-fecha="${variante.fechaCreacion}" th:data-likes="${variante.likes.size()}" class="carta">
+                <p th:text="${variante.nombre}" class="texto"></p>
+                <a th:href="@{/variantes/{id}(id=${variante.uuid})}">
+                    <img th:src="${variante.imagen}" alt="Arre demo, esto non furrula" width="400px" height="500px" class="variante">
+                </a>
+                <div class="row gap">
+                    <p th:text="'Creado por ' + ${variante.usuario.username}"></p>
+                    <div class="row">
+                        <span th:text="${variante.likes.size()}"></span>
+                        <div th:if="${likedVariantes.contains(variante.uuid)}">
+                            <a th:href="@{/variantes/{id}/dislike(id=${variante.uuid})}">
+                                <img th:src="@{/images/icons/like_icon_red.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">
+                            </a>
+                        </div>
+                        <div th:unless="${likedVariantes.contains(variante.uuid)}">
+                            <a th:href="@{/variantes/{id}/like(id=${variante.uuid})}">
+                                <img th:src="@{/images/icons/like_icon_white.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

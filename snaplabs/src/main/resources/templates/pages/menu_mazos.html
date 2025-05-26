@@ -47,12 +47,12 @@
                 <span th:text="'Publicado ' + ${mazo.tiempoTranscurrido}" class="texto"></span>
                 <div th:if="${likedMazos.isEmpty() or !likedMazos.contains(mazo.id)}">
                     <a th:href="@{/mazos/{id}/like(id=${mazo.id})}">
-                        <img th:src="@{/images/fav/fav_icon_white.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">
+                        <img th:src="@{/images/icons/fav_icon_white.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">
                     </a>
                 </div>
                 <div th:if="${likedMazos.contains(mazo.id)}">
                     <a th:href="@{/mazos/{id}/dislike(id=${mazo.id})}">
-                        <img th:src="@{/images/fav/fav_icon_golden.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">
+                        <img th:src="@{/images/icons/fav_icon_golden.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">
                     </a>
                 </div>
                 <div class="gridCartas">

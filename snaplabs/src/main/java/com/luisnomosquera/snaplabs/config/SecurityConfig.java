@@ -3,6 +3,7 @@ package com.luisnomosquera.snaplabs.config;
 import com.luisnomosquera.snaplabs.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -31,6 +32,9 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                     // Ruta privada para el administrador
                     .requestMatchers("/cartas/update").hasRole("ADMIN")
+                    // Ruta privada para subir variantes
+                    .requestMatchers(HttpMethod.GET, "/variantes/upload").authenticated()
+                    .requestMatchers(HttpMethod.POST, "/variantes/upload").authenticated()
                     // Rutas públicas
                     .requestMatchers(
                             "/styles/**",
@@ -45,7 +49,9 @@ public class SecurityConfig {
                             "/cartas/id/*",
                             "/mazos",
                             "/mazos/*",
-                            "/meta"
+                            "/meta",
+                            "/variantes",
+                            "/variantes/*"
                     ).permitAll()
                     // Resto de rutas con autorización
                     .anyRequest().authenticated()
