@@ -9,7 +9,7 @@
     <th:block th:fragment="css">
         <link rel="stylesheet" type="text/css" th:href="@{/styles/menu_variantes.css}">
     </th:block>
-    <script th:fragment="js" th:remove="tag"></script>
+    <script th:fragment="js" th:src="@{/js/variantes.js}" defer></script>
 </head>
 <body>
     <main th:fragment="contenido" class="contenido">
@@ -21,7 +21,18 @@
                 <span>Variante subida correctamente.</span>
             </div>
             <div>
-
+                <label for="fecha">Ordenar por fecha:</label>
+                <select id="fecha">
+                    <option selected disabled>Orden:</option>
+                    <option value="asc">ASC</option>
+                    <option value="desc">DESC</option>
+                </select>
+                <label for="likes">Ordenar por likes:</label>
+                <select id="likes">
+                    <option selected disabled>Orden:</option>
+                    <option value="asc">ASC</option>
+                    <option value="desc">DESC</option>
+                </select>
             </div>
         </section>
         <section class="gridVariantes">
@@ -31,7 +42,7 @@
                     <img th:src="@{/images/icons/upload_icon.svg}" alt="Arre demo, esto non furrula" width="400px" height="500px">
                 </a>
             </div>
-            <div th:each="variante : ${listaVariantes}" class="carta">
+            <div th:each="variante : ${listaVariantes}" th:data-fecha="${variante.fechaCreacion}" th:data-likes="${variante.likes.size()}" class="carta">
                 <p th:text="${variante.nombre}" class="texto"></p>
                 <a th:href="@{/variantes/{id}(id=${variante.uuid})}">
                     <img th:src="${variante.imagen}" alt="Arre demo, esto non furrula" width="400px" height="500px" class="variante">
