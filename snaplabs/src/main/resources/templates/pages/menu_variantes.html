@@ -25,7 +25,7 @@
             </div>
         </section>
         <section class="gridVariantes">
-            <div class="carta">
+            <div class="upload">
                 <p class="texto">Subir una variante</p>
                 <a th:href="@{/variantes/upload}">
                     <img th:src="@{/images/icons/upload_icon.svg}" alt="Arre demo, esto non furrula" width="400px" height="500px">
@@ -40,13 +40,15 @@
                     <p th:text="'Creado por ' + ${variante.usuario.username}"></p>
                     <div class="row">
                         <span th:text="${variante.likes.size()}"></span>
-                        <div th:if="${variante.usuario.uuid.equals(id)}">
-                            <a th:href="@{/variantes/{id}/like(id=${variante.uuid})}">
-                                <img th:src="@{/images/icons/like_icon_white.svg}" alt="Arre demo, esto non furrula" width="50px" height="50px">
+                        <div th:if="${likedVariantes.contains(variante.uuid)}">
+                            <a th:href="@{/variantes/{id}/dislike(id=${variante.uuid})}">
+                                <img th:src="@{/images/icons/like_icon_red.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">
                             </a>
                         </div>
-                        <div th:unless="${variante.usuario.uuid.equals(id)}">
-                            <img th:src="@{/images/icons/like_icon_red.svg}" alt="Arre demo, esto non furrula" width="50px" height="50px">
+                        <div th:unless="${likedVariantes.contains(variante.uuid)}">
+                            <a th:href="@{/variantes/{id}/like(id=${variante.uuid})}">
+                                <img th:src="@{/images/icons/like_icon_white.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">
+                            </a>
                         </div>
                     </div>
                 </div>

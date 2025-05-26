@@ -15,10 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
@@ -94,6 +91,20 @@ public class VarianteController {
         return vista;
     }
 
+    @GetMapping("/{id}/like")
+    public String likeVariante(@PathVariable String id, Authentication authentication) {
+        CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+        varianteService.addLikedVariante(customUserDetails.getUuid(), id);
+        return "redirect:/variantes";
+    }
+
+    @GetMapping("/{id}/dislike")
+    public String dislikeVariante(@PathVariable String id, Authentication authentication) {
+        CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+        varianteService.removeLikedVariante(customUserDetails.getUuid(), id);
+        return "redirect:/variantes";
+    }
+
     private boolean validarCampos(VarianteRequestDto varianteDto, RedirectAttributes redirectAttributes) {
         boolean valido = true;
         if (!FileUploadUtil.validarExtension(varianteDto.getImagen())) {
@@ -102,7 +113,8 @@ public class VarianteController {
         }
         if (!cartaService.getAllNombresCartas().contains(varianteDto.getPersonaje())) {
             valido = false;
-            redirectAttributes.addFlashAttribute("errorPersonaje","Debes introducir el nombre de un personaje existente.");
+            redirectAttributes.addFlashAttribute("errorPersonaje","Debes introducir el nombre de un personaje existente.<br>"
+                    + "Recuerda respetar <b>mayúsculas y minúsculas</b>");
         }
         return valido;
     }
