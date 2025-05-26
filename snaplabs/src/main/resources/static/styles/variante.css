@@ -1,0 +1,34 @@
+/* Centrar el contenido */
+.contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #F5F1FB;
+}
+/* Estilos del titulo */
+.titulo {
+    font-family: 'Edge of the Galaxy', Arial, sans-serif;
+    font-size: 2.75rem;
+}
+/* Estilos del texto del mazo */
+.texto {
+    font-family: 'IBM Plex Sans Condensed Regular', Arial, sans-serif;
+}
+.row {
+    display: flex;
+    align-items: center;
+}
+.col {
+    display: flex;
+    flex-direction: column;
+}
+.center {
+    align-items: center;
+}
+#pdf {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}

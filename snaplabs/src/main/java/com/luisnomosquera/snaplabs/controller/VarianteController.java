@@ -3,6 +3,7 @@ package com.luisnomosquera.snaplabs.controller;
 import com.luisnomosquera.snaplabs.dto.CustomUserDetails;
 import com.luisnomosquera.snaplabs.dto.request.VarianteRequestDto;
 import com.luisnomosquera.snaplabs.entity.Usuario;
+import com.luisnomosquera.snaplabs.entity.Variante;
 import com.luisnomosquera.snaplabs.mapper.VarianteMapper;
 import com.luisnomosquera.snaplabs.service.CartaService;
 import com.luisnomosquera.snaplabs.service.CloudinaryService;
@@ -89,6 +90,23 @@ public class VarianteController {
             vista = "redirect:/variantes/upload";
         }
         return vista;
+    }
+
+    @GetMapping("/{id}")
+    public String showVariante(@PathVariable String id, Model model, Authentication authentication) {
+        Variante variante = varianteService.getReferenciaByUuid(id);
+        boolean liked = false;
+        if (authentication != null) {
+            CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+            model.addAttribute("foto", customUserDetails.getAvatar());
+            model.addAttribute("id", customUserDetails.getUuid());
+            Usuario usuario = usuarioService.getUsuarioByUuid(customUserDetails.getUuid()).orElseThrow();
+            if (variante.getLikes().contains(usuario)) liked = true;
+        }
+        model.addAttribute("liked", liked);
+        model.addAttribute("variante", varianteMapper.toVarianteDto(variante));
+        model.addAttribute("vista", "pages/variante");
+        return "layouts/plantilla";
     }
 
     @GetMapping("/{id}/like")
