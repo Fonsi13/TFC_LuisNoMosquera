@@ -42,8 +42,8 @@ public class MazoController {
             CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
             model.addAttribute("foto", customUserDetails.getAvatar());
             model.addAttribute("id", customUserDetails.getUuid());
-            Optional<Usuario> usuario = usuarioService.getUsuarioByUuid(customUserDetails.getUuid());
-            usuario.get().getLikedMazos().forEach(mazo -> likedMazos.add(mazo.getId()));
+            Usuario usuario = usuarioService.getUsuarioByUuid(customUserDetails.getUuid()).orElseThrow();
+            usuario.getLikedMazos().forEach(mazo -> likedMazos.add(mazo.getId()));
         }
         model.addAttribute("likedMazos", likedMazos);
         model.addAttribute("listaMazos", mazoService.getListaMazosDto().reversed());
@@ -53,25 +53,27 @@ public class MazoController {
 
     @GetMapping("/{id}")
     public String showMazo(@PathVariable String id, Model model, Authentication authentication) {
+        boolean liked = false;
+        Mazo mazo = mazoService.findById(parseInt(id)).orElseThrow();
         if (authentication != null) {
             CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
             model.addAttribute("foto", customUserDetails.getAvatar());
             model.addAttribute("id", customUserDetails.getUuid());
+            Usuario usuario = usuarioService.getUsuarioByUuid(customUserDetails.getUuid()).orElseThrow();
+            if (usuario.getLikedMazos().contains(mazo)) liked = true;
         }
-        Optional<Mazo> mazo = mazoService.findById(parseInt(id));
-        if (mazo.isPresent()) {
-            MazoDto mazoDto =  mazoMapper.toMazoDto(mazo.get());
-            List<SimpleCartaResponseDto> cartas = mazoDto.getCartas();
-            model.addAttribute("mazo", mazoDto);
-            model.addAttribute("coste", getMedias(cartas, "coste"));
-            model.addAttribute("poder", getMedias(cartas, "poder"));
-        }
+        MazoDto mazoDto =  mazoMapper.toMazoDto(mazo);
+        List<SimpleCartaResponseDto> cartas = mazoDto.getCartas();
+        model.addAttribute("mazo", mazoDto);
+        model.addAttribute("coste", getMedias(cartas, "coste"));
+        model.addAttribute("poder", getMedias(cartas, "poder"));
+        model.addAttribute("liked", liked);
         model.addAttribute("vista", "pages/mazo");
         return "layouts/plantilla";
     }
 
     @GetMapping("/{id}/like")
-    public String likeMazo(@PathVariable String id, Model model, Authentication authentication) {
+    public String likeMazo(@PathVariable String id, Authentication authentication) {
         if (authentication != null) {
             CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
             mazoService.addLikedMazo(customUserDetails.getUuid(), id);
