@@ -16,7 +16,9 @@
 .perfil {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    font-family: 'IBM Plex Sans Condensed Light', Arial, sans-serif;
+    font-family: 'IBM Plex Sans Condensed', Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
     font-size: 1.25rem;
 }
 /* Estilos de la imagen */
@@ -66,7 +68,9 @@
     padding: 0.5em 0.7em;
     border: none;
     background-color: #3B014B;
-    font-family: 'Edge of the Galaxy', Arial, sans-serif;
+    font-family: 'Ultimatum', Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
     font-size: 1.4rem;
     color: #F5F1FB;
     cursor: pointer;
@@ -80,7 +84,9 @@
     padding: 0.5em 0.7em;
     border: none;
     background-color: #F5F1FB;
-    font-family: 'Edge of the Galaxy', Arial, sans-serif;
+    font-family: 'Ultimatum', Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
     font-size: 1.4rem;
     color: #000002;
     cursor: pointer;
@@ -94,7 +100,9 @@
     padding: 0.5em 0.7em;
     border: none;
     background-color: #cc0000;
-    font-family: 'Edge of the Galaxy', Arial, sans-serif;
+    font-family: 'Ultimatum', Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
     font-size: 1.4rem;
     color: #F5F1FB;
     cursor: pointer;

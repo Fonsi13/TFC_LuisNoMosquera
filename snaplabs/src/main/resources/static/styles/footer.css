@@ -4,7 +4,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: 'IBM Plex Sans Condensed Light', Arial, sans-serif;
+    font-family: 'IBM Plex Sans Condensed', Arial, sans-serif;
+    font-weight: 300;
+    font-style: normal;
     background-color: #2B1B67;
     color: #F5F1FB;
     border-top: medium solid #BE6BBC;

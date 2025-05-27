@@ -34,6 +34,9 @@
     padding: 2.5em 2.25em;
     color: #F5F1FB;
     position: relative;
+    font-family: 'Ultimatum', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 900;
 }
 /* Forzar colores enlace */
 .caja a {

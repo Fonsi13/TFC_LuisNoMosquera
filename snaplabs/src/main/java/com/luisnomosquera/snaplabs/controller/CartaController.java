@@ -71,7 +71,7 @@ public class CartaController {
             case "Recruit" -> "Temporada de Reclutamiento";
             case "Starter" -> "Iniciales";
             case "SeasonPass" -> "Pase de Temporada";
-            case "Series0" -> "Serie 0 (Nivel de Coleccion 1-14)";
+            case "Series0" -> "Serie 0 (Nivel de Colección 1-14)";
             case "Series1" -> "Serie 1";
             case "Series2" -> "Serie 2";
             case "Series3" -> "Serie 3";

@@ -31,7 +31,9 @@
     padding: 0.5em 0.7em;
     border: none;
     background-color: #F5F1FB;
-    font-family: 'Edge of the Galaxy', Arial, sans-serif;
+    font-family: 'Ultimatum', Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
     font-size: 1.4rem;
     color: #000002;
     cursor: pointer;
@@ -49,7 +51,9 @@
 }
 /* Estilos de la tabla */
 .tabla {
-    font-family: 'IBM Plex Sans Condensed Light', Arial, sans-serif;
+    font-family: 'IBM Plex Sans Condensed', Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
     border-collapse: collapse;
 }
 /* Estilos de celdas de la tabla */

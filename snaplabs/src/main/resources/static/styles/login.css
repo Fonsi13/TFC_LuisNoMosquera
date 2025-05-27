@@ -8,7 +8,9 @@
 }
 /* Estilos del titulo */
 .titulo {
-    font-family: 'Edge of the Galaxy', Arial, sans-serif;
+    font-family: 'Ultimatum', Arial, sans-serif;
+    font-style: italic;
+    font-weight: bold;
     font-size: 2.75rem;
 }
 /* Estilos en columna */
@@ -19,7 +21,9 @@
 /* Espaciar los campos */
 .formulario {
     gap: 1.5rem;
-    font-family: 'IBM Plex Sans Condensed Light', Arial, sans-serif;
+    font-family: 'IBM Plex Sans Condensed', Arial, sans-serif;
+    font-weight: 300;
+    font-style: normal;
     font-size: 1.25rem;
 }
 /* Estilos de los campos del formulario */
@@ -37,7 +41,9 @@
     padding: 0.5em 0.7em;
     border: none;
     background-color: #3B014B;
-    font-family: 'Edge of the Galaxy', Arial, sans-serif;
+    font-family: 'Ultimatum', Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
     font-size: 1.4rem;
     color: #F5F1FB;
     cursor: pointer;

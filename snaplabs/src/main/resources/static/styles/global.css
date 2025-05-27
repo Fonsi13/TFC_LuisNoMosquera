@@ -1,0 +1,82 @@
+/* Defino las fuentes */
+@font-face {
+    font-family: 'Ultimatum';
+    font-style: normal;
+    font-weight: bold;
+    src:
+        local("Ultimatum Bold"),
+        url("../fonts/cc-ultimatum-bold.otf") format("opentype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Ultimatum';
+    font-style: italic;
+    font-weight: bold;
+    src:
+        local("Ultimatum Bold Italic"),
+        url("../fonts/cc-ultimatum-bold-italic.otf") format("opentype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Ultimatum';
+    font-style: normal;
+    font-weight: 900;
+    src:
+        local("Ultimatum Heavy"),
+        url("../fonts/cc-ultimatum-heavy.otf") format("opentype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Ultimatum';
+    font-style: italic;
+    font-weight: 900;
+    src:
+        local("Ultimatum Heavy Italic"),
+        url("../fonts/cc-ultimatum-heavy-italic.otf") format("opentype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'IBM Plex Sans Condensed';
+    font-style: normal;
+    font-weight: 300;
+    src:
+        local("IBM Plex Sans Condensed Light"),
+        url("../fonts/IBMPlexSansCondensed-Light.ttf") format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'IBM Plex Sans Condensed';
+    font-style: normal;
+    font-weight: 400;
+    src:
+        local("IBM Plex Sans Condensed Regular"),
+        url("../fonts/IBMPlexSansCondensed-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+/* Ocupar todo el espacio en la ventana */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: #0a002b;
+}
+/* Enviar el footer al fondo */
+main {
+    flex: 1;
+    margin-bottom: 1.5rem;
+}
+/* Cambiar el cursor en los enlaces */
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #F5F1FB;
+}
+/* Estilos de los mensajes de error */
+.error {
+    color: #FFD700;
+}
+/* Estilos de los mensajes de error */
+.exito {
+    color: #4cff4c;
+}

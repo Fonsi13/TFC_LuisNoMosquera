@@ -10,8 +10,10 @@
     justify-content: center;
     align-items: center;
     gap: 1.5em;
-    font-family: 'Edge of the Galaxy Italic', Arial, sans-serif;
-    font-size: 36px;
+    font-family: 'Ultimatum', Arial, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 2.25rem;
     background-color: #2B1B67;
     color: #F5F1FB;
     border-bottom: medium solid #BE6BBC;
@@ -39,8 +41,10 @@
     transform: translateX(-50%);
     background-color: #2B1B67;
     min-width: 200px;
-    font-family: 'IBM Plex Sans Condensed Regular', Arial, sans-serif;
-    font-size: 24px;
+    font-family: 'Ultimatum', Arial, sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 1.25rem;
     border-radius: 2.5%;
 }
 /* Estilos de los enlaces */
