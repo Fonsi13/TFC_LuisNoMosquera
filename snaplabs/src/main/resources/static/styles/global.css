@@ -95,3 +95,11 @@ a {
     font-style: normal;
     font-size: 1.3rem;
 }
+/* Centrar el contenido */
+.contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #F5F1FB;
+}

@@ -1,16 +1,3 @@
-/* Centrar el contenido */
-.contenido {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Edge of the Galaxy', Arial, sans-serif;
-    color: #F5F1FB;
-}
-/* Estilos del titulo */
-.titulo {
-    font-size: 2.75rem;
-}
 /* Aplicando el grid a los apartados */
 .secciones {
     display: grid;
@@ -107,4 +94,33 @@
         );
     background-size: cover;
     background-position: center;
+}
+/* Estilos responsive */
+.margen-x {
+    margin: 0 3rem;
+}
+@media screen and (max-width: 1709px) {
+    .caja {
+        padding: 2.5em 1.75em;
+    }
+}
+@media screen and (max-width: 1614px) {
+    .secciones {
+        grid-template-rows: repeat(3,1fr);
+        grid-template-columns: repeat(2,1fr);
+        grid-template-areas: none;
+    }
+    .caja1, .caja2, .caja3, .caja4, .caja5 {
+        grid-area: auto;
+    }
+}
+@media screen and (max-width: 1100px) {
+    .secciones {
+        grid-template-rows: repeat(5,1fr);
+        grid-template-columns: repeat(1,1fr);
+        grid-template-areas: none;
+    }
+    .caja1, .caja2, .caja3, .caja4, .caja5 {
+        grid-area: auto;
+    }
 }
