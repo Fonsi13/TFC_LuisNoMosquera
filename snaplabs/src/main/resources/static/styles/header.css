@@ -22,7 +22,7 @@
 .desplegable {
     position: relative;
     display: inline-block;
-    margin: 0.45em 1.5em 0 1.5em;
+    margin: 0 1.5em;
 }
 /* Estilos de los titulos del menu */
 .desplegable > a{
@@ -75,20 +75,18 @@
 #div-logo {
     margin-top: 5px;
 }
-/* Centrar el enlace de inicio de sesión */
-#div-login {
-    margin: 0.45em 1.75em 0 1.75em;
+/* Estilos de los botones header */
+.boton-header {
+    background: none;
+    padding: 1rem;
+    font-size: 1.5rem;
+    color: #F5F1FB;
+    border: thin solid #BE6BBC;
+    border-radius: 2.5%;
+    cursor: pointer;
 }
-#div-login a {
-    padding: 0.3em;
-}
-#div-login i {
-    margin-right: 0.2em;
-    font-size: 30px;
-}
-/* Estilos del enlace de inicio de sesión */
-#div-login:hover a {
-    color: #0A002B;
+.boton-header:hover {
+    background-color: #BE6BBC;
 }
 /* Estilos de la foto de perfil */
 .fotoHeader {

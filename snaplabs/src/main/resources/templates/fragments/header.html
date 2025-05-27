@@ -12,75 +12,73 @@
                 <img th:src="@{/images/logo/snap_labs_small_logo_white.png}" alt="Logo blanco Snap Labs">
             </a>
         </div>
-        <div>
-            <nav>
-                <ul>
-                    <li class="desplegable">
-                        <a class="desplegable-boton">
-                            Mazos<i class="fa-solid fa-caret-down"></i>
-                        </a>
-                        <ul class="desplegable-contenido">
-                            <li>
-                                <a th:href="@{/mazos}">Mazos Publicados</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/meta}">Mazos Meta</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/lab}">Laboratorio</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="desplegable">
-                        <a class="desplegable-boton" th:href="@{/cartas}">
-                            Cartas<i class="fa-solid fa-caret-down"></i>
-                        </a>
-                        <ul class="desplegable-contenido">
-                            <li>
-                                <a th:href="@{/cartas}">Lista de Cartas</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/cartas/Starter}">Iniciales</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/cartas/Recruit}">Reclutamiento</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/cartas/SeasonPass}">Pase de Batalla</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/cartas/Series0}">Serie 0</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/cartas/Series1}">Serie 1</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/cartas/Series2}">Serie 2</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/cartas/Series3}">Serie 3</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/cartas/Series4}">Serie 4</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/cartas/Series5}">Serie 5</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="desplegable">
-                        <a class="desplegable-boton">
-                            Comunidad<i class="fa-solid fa-caret-down"></i>
-                        </a>
-                        <ul class="desplegable-contenido">
-                            <li>
-                                <a th:href="@{/variantes}">Variantes</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+        <nav>
+            <ul>
+                <li class="desplegable">
+                    <a class="desplegable-boton">
+                        Mazos<i class="fa-solid fa-caret-down"></i>
+                    </a>
+                    <ul class="desplegable-contenido">
+                        <li>
+                            <a th:href="@{/mazos}">Mazos Publicados</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/meta}">Mazos Meta</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/lab}">Laboratorio</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="desplegable">
+                    <a class="desplegable-boton" th:href="@{/cartas}">
+                        Cartas<i class="fa-solid fa-caret-down"></i>
+                    </a>
+                    <ul class="desplegable-contenido">
+                        <li>
+                            <a th:href="@{/cartas}">Lista de Cartas</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/cartas/Starter}">Iniciales</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/cartas/Recruit}">Reclutamiento</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/cartas/SeasonPass}">Pase de Batalla</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/cartas/Series0}">Serie 0</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/cartas/Series1}">Serie 1</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/cartas/Series2}">Serie 2</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/cartas/Series3}">Serie 3</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/cartas/Series4}">Serie 4</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/cartas/Series5}">Serie 5</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="desplegable">
+                    <a class="desplegable-boton">
+                        Comunidad<i class="fa-solid fa-caret-down"></i>
+                    </a>
+                    <ul class="desplegable-contenido">
+                        <li>
+                            <a th:href="@{/variantes}">Variantes</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
         <div id="div-login">
             <div sec:authorize="isAuthenticated()" class="perfilHeader">
                 <div>
@@ -98,7 +96,10 @@
             </div>
             <div sec:authorize="!isAuthenticated()">
                 <a th:href="@{/login}">
-                    <i class="fa-solid fa-door-open"></i>Acceder
+                    <button class="boton-header subtitulo">Iniciar Sesión</button>
+                </a>
+                <a th:href="@{/registro}">
+                    <button class="boton-header subtitulo">Crear Cuenta</button>
                 </a>
             </div>
         </div>
