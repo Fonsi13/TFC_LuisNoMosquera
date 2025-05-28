@@ -87,6 +87,7 @@ a {
     font-style: italic;
     font-size: 2rem;
     text-align: center;
+    color: #F5F1FB;
 }
 /* Estilos para la fuente de los titulos */
 .subtitulo {
@@ -95,6 +96,16 @@ a {
     font-style: normal;
     font-size: 1.3rem;
 }
+/* Estilos para la fuente de texto normal */
+.texto {
+    font-family: 'IBM Plex Sans Condensed', Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #F5F1FB;
+}
+.blanco {
+    color: #F5F1FB;
+}
 /* Centrar el contenido */
 .contenido {
     display: flex;
@@ -102,4 +113,21 @@ a {
     justify-content: center;
     align-items: center;
     color: #F5F1FB;
+}
+/* Estilos de flex row*/
+.row {
+    display: flex;
+    align-items: center;
+}
+/* Centrado */
+.center {
+    justify-content: center;
+}
+/* Estilos base boton */
+.boton {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    color: #F5F1FB;
+    cursor: pointer;
 }
