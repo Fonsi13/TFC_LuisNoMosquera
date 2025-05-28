@@ -37,11 +37,6 @@
     gap: 5px;
     margin-top: 10px;
 }
-/* Imágenes de las cartas */
-.imagen {
-    width: 100%;
-    height: auto;
-}
 /* Estilos del texto del mazo */
 .texto {
     font-family: 'IBM Plex Sans Condensed', Arial, sans-serif;

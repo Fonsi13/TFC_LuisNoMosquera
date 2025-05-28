@@ -18,10 +18,13 @@
         </section>
         <section class="gridMazos">
             <div th:each="mazo : ${listaMazos}" class="mazo">
-                <span th:text="${mazo.nombre}" class="texto"></span>
-                <button type="button" onclick="copiarCodigo(event)" th:value="${mazo.codigo}">Copiar</button>
-                <span th:text="'Porcentaje de victorias: ' + ${#numbers.formatDecimal(mazo.pctVictorias, 1, 2)} + '%'" class="texto"></span>
-                <span th:text="'Promedio de cubos: ' + ${#numbers.formatDecimal(mazo.mediaCubos, 1, 2)} + ''" class="texto"></span>
+                <div class="grid-meta">
+                    <p th:text="${mazo.nombre}" class="nombre"></p>
+                    <button type="button" onclick="copiarCodigo(event)" th:value="${mazo.codigo}" class="boton subtitulo">Copiar</button>
+                    <p class="texto negrita vict">Porcentaje de victorias: <span th:text="${#numbers.formatDecimal(mazo.pctVictorias, 1, 2)} + '%'" class="texto"></span></p>
+                    <p class="texto negrita cube">Promedio de cubos: <span th:text="${#numbers.formatDecimal(mazo.mediaCubos, 1, 2)}" class="texto"></span></p>
+                </div>
+                <hr class="linea">
                 <div class="gridCartas">
                     <div th:each="carta : ${mazo.cartas}" th:data-src="${carta.imagen}" th:data-desc="${carta.descripcion}">
                         <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">

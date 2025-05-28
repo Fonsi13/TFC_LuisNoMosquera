@@ -103,6 +103,9 @@ a {
     font-style: normal;
     color: #F5F1FB;
 }
+.negrita {
+    font-weight: bold;
+}
 .blanco {
     color: #F5F1FB;
 }
@@ -130,4 +133,15 @@ a {
     border-radius: 10px;
     color: #F5F1FB;
     cursor: pointer;
+}
+/* Imágenes de las cartas */
+.imagen {
+    width: 100%;
+    height: auto;
+}
+/* Estilos del separador */
+.linea {
+    width: 100%;
+    border: 1px solid rgba(245, 241, 251, 0.2);
+    margin-bottom: 0;
 }
