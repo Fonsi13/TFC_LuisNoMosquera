@@ -7,7 +7,7 @@
         <title>Acceder - Snap Labs</title>
     </th:block>
     <th:block th:fragment="css">
-        <link rel="stylesheet" type="text/css" th:href="@{/styles/login.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/registro.css}">
     </th:block>
     <script th:fragment="js" th:remove="tag"></script>
 </head>
@@ -17,13 +17,13 @@
             <p>Explora el multiverso de Snap Labs</p>
         </section>
         <section class="login">
-            <form th:action="@{/login}" method="post" class="formulario columna">
-                <div class="columna">
+            <form th:action="@{/login}" method="post" class="formulario col texto">
+                <div class="col">
                     <label for="username">Nombre de usuario:</label>
                     <input type="text" id="username" name="username" class="campo" required>
                 </div>
-                <div class="columna">
-                    <label for="password">Clave de acceso:</label>
+                <div class="col">
+                    <label for="password">Contraseña:</label>
                     <input type="password" id="password" name="password" class="campo" required>
                 </div>
                 <div th:if="${param.error}" class="error">
@@ -33,9 +33,9 @@
                     <span>Cuenta creada correctamente.</span>
                 </div>
                 <div>
-                    <input type="submit" id="btn_login" name="btn_login" class="campo boton" value="Acceder">
+                    <input type="submit" id="btn_login" name="btn_login" class="boton subtitulo" value="Acceder">
                 </div>
-                <div class="enlace">
+                <div class="enlace texto">
                     <a th:href="@{/registro}">Crear cuenta</a>
                 </div>
             </form>

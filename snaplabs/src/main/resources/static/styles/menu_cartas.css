@@ -170,3 +170,9 @@
         gap: 12px;
     }
 }
+@media screen and (max-width: 519px) {
+    .gridCartas {
+        grid-template-columns: 300px;
+        justify-content: center;
+    }
+}

@@ -122,6 +122,11 @@ a {
     display: flex;
     align-items: center;
 }
+/* Estilos en columna */
+.col {
+    display: flex;
+    flex-direction: column;
+}
 /* Centrado */
 .center {
     justify-content: center;
@@ -144,6 +149,21 @@ a {
     width: 100%;
     border: 1px solid rgba(245, 241, 251, 0.2);
     margin-bottom: 0;
+}
+/* Estilos de los campos de formulario */
+.campo {
+    width: 28rem;
+    padding: 6px 15px;
+    margin: 10px 0;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    font-size: 1.25rem;
+}
+/* Efecto de enfoque en los campos de entrada */
+.campo:focus {
+    border-width: 2px;
+    border-color: #BE6BBC;
+    outline: none;
 }
 /* Estilos de los tooltip */
 .tooltip {
