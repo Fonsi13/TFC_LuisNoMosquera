@@ -128,7 +128,7 @@ a {
 }
 /* Estilos base boton */
 .boton {
-    padding: 15px 20px;
+    padding: 10px 20px;
     border: none;
     border-radius: 10px;
     color: #F5F1FB;
@@ -144,4 +144,10 @@ a {
     width: 100%;
     border: 1px solid rgba(245, 241, 251, 0.2);
     margin-bottom: 0;
+}
+/* Estilos de los tooltip */
+.tooltip {
+    position: fixed;
+    background-color: #2B1B67;
+    border-radius: 2.5%;
 }

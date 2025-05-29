@@ -11,6 +11,11 @@
     background-color: #1F2329;
     border: 2px solid #BE6BBC;
     border-radius: 15px;
+    transition: transform 0.3s linear;
+}
+/* Estilos del contenedor de la carta*/
+.div-carta:hover {
+    transform: scale(1.1);
 }
 /* Estilos de las cartas */
 .carta {
@@ -37,6 +42,7 @@
     margin: 15px 0;
 }
 .boton {
+    padding: 15px 20px;
     background-color: #cc0000;
 }
 .boton:hover {
