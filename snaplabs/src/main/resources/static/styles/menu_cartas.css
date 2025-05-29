@@ -58,10 +58,6 @@
     padding: 30px;
     max-width: 1200px;
     margin: 0 auto;
-    /*
-    border: 2px solid #BE6BBC;
-    border-radius: 20px;
-    */
 }
 .grid-filtros {
     display: grid;
@@ -88,7 +84,7 @@
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(190, 107, 188, 0.5);
     border-radius: 15px;
-    color: white;
+    color: #F5F1FB;
     font-size: 16px;
     transition: all 0.2s ease;
     outline: none;
@@ -105,7 +101,7 @@
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(190, 107, 188, 0.5);
     border-radius: 10px;
-    color: white;
+    color: #F5F1FB;
     font-size: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -116,7 +112,7 @@
 }
 .seleccion option {
     background: #0a002b;
-    color: white;
+    color: #F5F1FB;
     padding: 8px;
 }
 .filtro-habilidades {
@@ -151,7 +147,7 @@
     cursor: pointer;
 }
 .checkbox-item label {
-    color: rgba(255, 255, 255, 0.9);
+    color: #F5F1FB;
     font-size: 16px;
     cursor: pointer;
 }
