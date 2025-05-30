@@ -128,8 +128,11 @@ a {
     flex-direction: column;
 }
 /* Centrado */
-.center {
+.h-center {
     justify-content: center;
+}
+.v-center {
+    align-items: center;
 }
 /* Estilos base boton */
 .boton {

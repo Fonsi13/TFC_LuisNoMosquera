@@ -12,21 +12,24 @@
     <script th:fragment="js" th:src="@{/js/cartas.js}" defer></script>
 </head>
 <body>
-    <main th:fragment="contenido" class="contenido">
+    <main th:fragment="contenido">
+        <section>
+            <p class="titulo">Laboratorio de Mazos</p>
+        </section>
         <section class="builder">
             <form id="formBuilder" th:action="@{/lab/{id}/crear(id=${id})}" th:object="${mazoDto}" method="post" class="formulario col">
                 <input type="hidden" id="contenido" th:field="*{contenido}">
                 <span th:if="${error}" th:text="${error}" class="error"></span>
                 <span th:if="${param.exito}" class="exito">Mazo creado con éxito.</span>
-                <div class="gridForm">
-                    <div class="col">
-                        <label for="nombre">Nombre*:</label>
+                <div class="grid-form">
+                    <div class="col h-center" id="div-nombre">
+                        <label for="nombre" class="subtitulo">Nombre:</label>
                         <input type="text" th:field="*{nombre}" id="nombre" name="nombre" class="campo" minlength="3" maxlength="25" required>
                         <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error"></span>
                     </div>
-                    <div class="col" style="justify-content: center;">
-                        <div class="row center">
-                            <label for="arquetipo">Arquetipo*:</label>
+                    <div class="col h-center v-center">
+                        <div class="col" id="div-arq">
+                            <label for="arquetipo" class="subtitulo">Arquetipo:</label>
                             <select th:field="*{arquetipo}" id="arquetipo" name="arquetipo" class="arquetipo" required>
                                 <option value="" selected>Selecciona</option>
                                 <option value="destroy">Destrucción</option>
@@ -38,13 +41,13 @@
                         </div>
                         <span th:if="${#fields.hasErrors('arquetipo')}" th:errors="*{arquetipo}" class="error"></span>
                     </div>
-                    <div class="col">
-                        <label for="descripcion">Descripción:</label>
-                        <textarea id="descripcion" name="descripcion" rows="6" cols="65" placeholder="Introduce una descripción de tu mazo"></textarea>
-                    </div>
-                    <div class="row center">
-                        <label for="publico">Público*:</label>
+                    <div class="row h-center v-center">
+                        <label for="publico" class="subtitulo">Público:</label>
                         <input type="checkbox" th:field="*{publico}" id="publico" name="publico">
+                    </div>
+                    <div class="col" id="div-desc">
+                        <label for="descripcion" class="subtitulo">Descripción(Opcional):</label>
+                        <textarea id="descripcion" name="descripcion" rows="6" cols="65" placeholder="Introduce una descripción de tu mazo"></textarea>
                     </div>
                 </div>
                 <div class="gridBuilder">
@@ -52,44 +55,69 @@
                 </div>
                 <span th:if="${#fields.hasErrors('contenido')}" th:errors="*{contenido}" class="error"></span>
                 <div class="row">
-                    <input type="submit" id="crear" name="crear" class="campo boton" value="Crear">
+                    <input type="submit" id="crear" name="crear" class="boton subtitulo" value="Crear mazo">
                 </div>
             </form>
         </section>
         <section class="filtros">
-            <input type="text" id="buscar" placeholder="Buscar cartas...">
-            <label for="alfa">Ordenar alfabéticamente:</label>
-            <select id="alfa">
-                <option selected disabled>Orden:</option>
-                <option value="asc">ASC</option>
-                <option value="desc">DESC</option>
-            </select>
-            <label for="coste">Ordenar por Coste:</label>
-            <select id="coste">
-                <option selected disabled>Orden:</option>
-                <option value="asc">ASC</option>
-                <option value="desc">DESC</option>
-            </select>
-            <label for="poder">Ordenar por Poder:</label>
-            <select id="poder">
-                <option selected disabled>Orden:</option>
-                <option value="asc">ASC</option>
-                <option value="desc">DESC</option>
-            </select>
-            <label for="habilidades">Filtrar por Habilidad:</label>
-            <div id="habilidades">
-                <input type="checkbox" name="habilidad" value="Destroy" id="destroy"/>
-                <label for="destroy">Destruir</label>
-                <input type="checkbox" name="habilidad" value="Discard" id="discard"/>
-                <label for="discard">Descartar</label>
-                <input type="checkbox" name="habilidad" value="Move" id="move"/>
-                <label for="move">Movimiento</label>
-                <input type="checkbox" name="habilidad" value="No Ability" id="no"/>
-                <label for="no">Sin Habilidad</label>
-                <input type="checkbox" name="habilidad" value="On Reveal" id="reveal"/>
-                <label for="reveal">Al Revelarse</label>
-                <input type="checkbox" name="habilidad" value="Ongoing" id="ongoing"/>
-                <label for="ongoing">Continuo</label>
+            <div class="grid-filtros">
+                <div class="filtro">
+                    <label for="alfa" class="texto label">BÚSQUEDA</label>
+                    <input type="text" id="buscar" placeholder="Buscar cartas...">
+                </div>
+                <div class="filtro">
+                    <label for="alfa" class="texto label">ORDEN ALFABÉTICO</label>
+                    <select id="alfa" class="seleccion">
+                        <option selected disabled>Seleccionar orden...</option>
+                        <option value="asc">A - Z</option>
+                        <option value="desc">Z - A</option>
+                    </select>
+                </div>
+                <div class="filtro">
+                    <label for="coste" class="texto label">ORDEN POR COSTE</label>
+                    <select id="coste" class="seleccion">
+                        <option selected disabled>Seleccionar orden...</option>
+                        <option value="asc">Menor a Mayor</option>
+                        <option value="desc">Mayor a Menor</option>
+                    </select>
+                </div>
+                <div class="filtro">
+                    <label for="poder" class="texto label">ORDEN POR PODER</label>
+                    <select id="poder" class="seleccion">
+                        <option selected disabled>Seleccionar orden...</option>
+                        <option value="asc">Menor a Mayor</option>
+                        <option value="desc">Mayor a Menor</option>
+                    </select>
+                </div>
+                <div class="filtro-habilidades">
+                    <label for="habilidades" class="texto label">FILTRAR POR HABILIDADES</label>
+                    <div id="habilidades" class="grid-habilidades">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="habilidad" value="Destroy" id="destroy"/>
+                            <label for="destroy" class="texto">Destruir</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="habilidad" value="Discard" id="discard"/>
+                            <label for="discard" class="texto">Descartar</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="habilidad" value="Move" id="move"/>
+                            <label for="move" class="texto">Movimiento</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="habilidad" value="No Ability" id="no"/>
+                            <label for="no" class="texto">Sin Habilidad</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="habilidad" value="On Reveal" id="reveal"/>
+                            <label for="reveal" class="texto">Al Revelarse</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="habilidad" value="Ongoing" id="ongoing"/>
+                            <label for="ongoing" class="texto">Continuo</label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="gridCartas">
