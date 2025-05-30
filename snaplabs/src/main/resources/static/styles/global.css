@@ -75,10 +75,12 @@ a {
 /* Estilos de los mensajes de error */
 .error {
     color: #FFD700;
+    text-align: center;
 }
 /* Estilos de los mensajes de error */
 .exito {
     color: #4cff4c;
+    text-align: center;
 }
 /* Estilos para la fuente de los titulos */
 .titulo {
