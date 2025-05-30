@@ -1,38 +1,27 @@
 /* Centrar el contenido */
-.contenido {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #F5F1FB;
-}
-/* Estilos del titulo */
-.titulo {
-    font-family: 'Ultimatum', Arial, sans-serif;
-    font-style: italic;
-    font-weight: bold;
-    font-size: 2.75rem;
-}
-/* Estilos del texto del mazo */
-.texto {
-    font-family: 'IBM Plex Sans Condensed', Arial, sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-.row {
-    display: flex;
-    align-items: center;
-}
-.col {
-    display: flex;
-    flex-direction: column;
-}
-.center {
-    align-items: center;
+.grid-variante {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 #pdf {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
+}
+/* Estilos del titulo */
+.titulo {
+    font-size: 2rem;
+}
+.subtitulo {
+    font-size: 1.6rem;
+    margin-bottom:0;
+    color: #F5F1FB;
+}
+/* Estilos responsive */
+@media screen and (max-width: 855px) {
+    .grid-variante {
+        grid-template-columns: 1fr;
+    }
 }

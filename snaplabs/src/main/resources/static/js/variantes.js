@@ -1,4 +1,4 @@
-const gridVariantes = document.querySelector(".gridVariantes");
+const gridVariantes = document.querySelector(".grid-variantes");
 const listaCartas = document.querySelectorAll(".carta");
 const selectFecha = document.getElementById("fecha");
 const selectLikes = document.getElementById("likes");

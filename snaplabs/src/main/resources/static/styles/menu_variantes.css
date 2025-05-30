@@ -57,6 +57,21 @@
     margin-bottom: 20px;
 }
 /* Estilos de las cartas */
+.upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px 0;
+    border: 2px solid #BE6BBC;
+    border-radius: 15px;
+    background-color: #1F2329;
+    box-sizing: border-box;
+    transition: transform 0.3s linear;
+}
+.upload:hover {
+    transform: scale(1.07);
+}
 .carta {
     display: flex;
     flex-direction: column;
