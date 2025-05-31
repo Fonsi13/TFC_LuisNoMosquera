@@ -51,7 +51,9 @@ public class SecurityConfig {
                             "/mazos/*",
                             "/meta",
                             "/variantes",
-                            "/variantes/*"
+                            "/variantes/*",
+                            "/about",
+                            "/contacto"
                     ).permitAll()
                     // Resto de rutas con autorización
                     .anyRequest().authenticated()

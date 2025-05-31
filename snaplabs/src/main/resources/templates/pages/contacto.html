@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:fragment="titulo">
+        <title>Contacto - Snap Labs</title>
+    </th:block>
+    <th:block th:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/about.css}">
+    </th:block>
+    <script th:fragment="js" th:remove="tag"></script>
+</head>
+<body>
+  <main th:fragment="contenido" class="contenido">
+      <h1 class="titulo">Contacto</h1>
+      <section class="info">
+          <p class="texto">
+            Este proyecto fue desarrollado por <strong>Luis Alfonso No Mosquera</strong>, amante de Marvel Snap y desarrollador web. Si quieres ponerte en contacto para sugerencias, correcciones, colaboraciones o simplemente para decir hola, aquí tienes cómo hacerlo:
+          </p>
+
+          <ul class="texto">
+              <li><strong>Email:</strong> <a href="mailto:luisalfonsono@gmail.com">luisalfonsono@gmail.com</a></li>
+              <li><strong>GitHub:</strong> <a href="https://github.com/Fonsi13" target="_blank">github.com/Fonsi13</a></li>
+              <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/luis-alfonso-no-mosquera-a18020329/" target="_blank">Luis Alfonso No Mosquera</a></li>
+              <li><strong>Twitter:</strong> <a href="https://x.com/fonsii_33" target="_blank">@fonsii_33</a></li>
+          </ul>
+
+          <p class="texto">
+              También puedes abrir una issue en el repositorio de GitHub si detectas algún error o bug.
+          </p>
+
+          <p class="texto">
+            ¡Gracias por visitar <strong>Snap Labs</strong> y ser parte de la comunidad!
+          </p>
+      </section>
+  </main>
+</body>
+</html>
