@@ -13,7 +13,7 @@
             </a>
         </div>
         <nav>
-            <ul>
+            <ul id="nav-lista">
                 <li class="desplegable">
                     <a class="desplegable-boton">
                         Mazos<i class="fa-solid fa-caret-down"></i>
@@ -94,7 +94,7 @@
                     </form>
                 </div>
             </div>
-            <div sec:authorize="!isAuthenticated()">
+            <div sec:authorize="!isAuthenticated()" class="boton-login">
                 <a th:href="@{/login}">
                     <button class="boton-header subtitulo">Iniciar Sesión</button>
                 </a>
