@@ -3,6 +3,7 @@ package com.luisnomosquera.snaplabs.dto.request;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,6 +17,7 @@ public class UsuarioRequestDto {
     private String correo;
 
     @NotBlank(message = "El nombre de usuario es obligatorio.")
+    @Size(max = 25, message = "El nombre no puede tener más de 25 letras")
     private String username;
 
     @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^\\w\\s])\\S{12,}$",

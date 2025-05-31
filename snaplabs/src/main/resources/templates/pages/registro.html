@@ -20,7 +20,7 @@
             <form th:action="@{/registro}" th:object="${usuarioDto}" method="post" enctype="multipart/form-data" class="formulario col texto">
                 <div class="col">
                     <label for="usuario">Nombre de usuario:</label>
-                    <input type="text" th:field="*{username}" id="usuario" name="usuario" class="campo" required>
+                    <input type="text" th:field="*{username}" id="usuario" name="usuario" class="campo" maxlength="25" required>
                     <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></span>
                     <span th:if="${errorUsr}" th:text="${errorUsr}" class="error"></span>
                 </div>
