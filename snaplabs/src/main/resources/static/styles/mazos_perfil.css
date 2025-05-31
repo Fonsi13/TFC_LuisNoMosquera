@@ -23,6 +23,7 @@
     margin: 0.5em 0 1rem 0;
 }
 .boton-perfil:hover {
+    color: #F5F1FB;
     background-color: #643AC9;
 }
 /* Estilos del contenedor para la tabla */
@@ -81,7 +82,7 @@ thead {
         padding: 0.25rem 0;
     }
     .col-nombre::before {
-        content: "Nombre del mazo: ";
+        content: "Nombre del mazo ";
         font-family: 'Ultimatum', Arial, sans-serif;
         font-weight: bold;
         font-style: normal;
@@ -89,7 +90,7 @@ thead {
         color: #F5F1FB;
     }
     .col-username::before {
-        content: "Autor: ";
+        content: "Autor ";
         font-family: 'Ultimatum', Arial, sans-serif;
         font-weight: bold;
         font-style: normal;
@@ -97,7 +98,7 @@ thead {
         color: #F5F1FB;
     }
     .col-tiempo::before {
-        content: "Publicado: ";
+        content: "Publicado ";
         font-family: 'Ultimatum', Arial, sans-serif;
         font-weight: bold;
         font-style: normal;
@@ -105,7 +106,7 @@ thead {
         color: #F5F1FB;
     }
     .col-estado::before {
-        content: "Estado: ";
+        content: "Estado ";
         font-family: 'Ultimatum', Arial, sans-serif;
         font-weight: bold;
         font-style: normal;

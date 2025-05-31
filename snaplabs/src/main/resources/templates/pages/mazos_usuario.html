@@ -41,7 +41,6 @@
                 <thead>
                     <tr>
                         <th class="subtitulo blanco">Nombre del Mazo</th>
-                        <th class="subtitulo blanco">Autor</th>
                         <th class="subtitulo blanco">Publicado</th>
                         <th class="subtitulo blanco">Estado</th>
                         <th class="subtitulo blanco">Cartas</th>
@@ -53,9 +52,6 @@
                             <a th:href="@{/mazos/{id}(id=${mazo.id})}">
                                 <p th:text="${mazo.nombre}" class="texto"></p>
                             </a>
-                        </td>
-                        <td class="col-username">
-                            <p th:text="${mazo.usuario.username}" class="texto"></p>
                         </td>
                         <td class="col-tiempo">
                             <p th:text="${mazo.tiempoTranscurrido}" class="texto"></p>

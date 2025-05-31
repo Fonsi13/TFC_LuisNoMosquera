@@ -65,6 +65,7 @@
     margin: 0.5em 0 1rem 0;
 }
 .boton-perfil:hover {
+    color: #F5F1FB;
     background-color: #643AC9;
 }
 /* Estilos del boton para borrar */
