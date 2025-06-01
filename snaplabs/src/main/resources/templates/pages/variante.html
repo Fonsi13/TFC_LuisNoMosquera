@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <th:block th:fragment="titulo">
-        <title th:text="${variante.nombre} + ' - Marvel Snap Mazos, Cartas y Variantes'"></title>
+        <title th:text="${variante.nombre} + ' - Snap Labs'"></title>
     </th:block>
     <th:block th:fragment="css">
         <link rel="stylesheet" type="text/css" th:href="@{/styles/variante.css}">
@@ -13,30 +13,33 @@
 </head>
 <body>
     <main th:fragment="contenido" class="contenido">
-        <section class="titulo">
-            <p th:text="${variante.nombre}"></p>
+        <section>
+            <p th:text="${variante.nombre}" class="titulo"></p>
         </section>
-        <section class="col center">
-            <img th:src="${variante.imagen}" alt="Arre demo, esto non furrula" width="400px" height="500px">
-            <div id="pdf">
-                <p th:text="'Creado por ' + ${variante.usuario.username}"></p>
-                <div class="row">
-                    <span th:text="${variante.likes.size()}"></span>
-                    <div th:if="${liked}">
-                        <a th:href="@{/variantes/{id}/dislike(id=${variante.uuid})}">
-                            <img th:src="@{/images/icons/like_icon_red.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">
-                        </a>
-                    </div>
-                    <div th:unless="${liked}">
-                        <a th:href="@{/variantes/{id}/like(id=${variante.uuid})}">
-                            <img th:src="@{/images/icons/like_icon_white.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">
-                        </a>
+        <section class="grid-variante">
+            <div class="col">
+                <img th:src="${variante.imagen}" alt="Arre demo, esto non furrula" width="400px" height="500px">
+                <div id="pdf">
+                    <p th:text="'Creado por ' + ${variante.usuario.username}" class="texto"></p>
+                    <div class="row">
+                        <span th:text="${variante.likes.size()}"></span>
+                        <div th:if="${liked}">
+                            <a th:href="@{/variantes/{id}/dislike(id=${variante.uuid})}">
+                                <img th:src="@{/images/icons/like_icon_red.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">
+                            </a>
+                        </div>
+                        <div th:unless="${liked}">
+                            <a th:href="@{/variantes/{id}/like(id=${variante.uuid})}">
+                                <img th:src="@{/images/icons/like_icon_white.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div>
-                <p>Descripción</p>
-                <p th:text="${variante.descripcion}"></p>
+                <p class="subtitulo">Descripción</p>
+                <hr class="linea">
+                <p th:text="${variante.descripcion}" class="texto"></p>
             </div>
         </section>
     </main>

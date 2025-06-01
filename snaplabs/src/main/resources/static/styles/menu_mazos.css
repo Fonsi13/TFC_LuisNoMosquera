@@ -1,31 +1,172 @@
-/* Centrar el contenido */
-.contenido {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 65%;
-    margin: 0 auto;
-    margin-bottom: 20%;
-    color: #F5F1FB;
+/* Estilos de los filtros */
+.filtros * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-/* Estilos del titulo */
-.titulo {
-    font-family: 'Edge of the Galaxy', Arial, sans-serif;
-    font-size: 2.75rem;
+.filtros {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.grid-filtros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+.filtro {
+    border: 1px solid rgba(190, 107, 188, 0.5);
+    border-radius: 15px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+.filtro:hover {
+    border-color: #BE6BBC;
+    transform: translateY(-2px);
+}
+.label {
+    display: block;
+    margin-bottom: 12px;
+}
+.seleccion {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(190, 107, 188, 0.5);
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+.seleccion:hover, .seleccion:focus {
+    border-color: #BE6BBC;
+}
+.seleccion option {
+    background: #0a002b;
+    color: white;
+    padding: 8px;
+}
+.filtro-arquetipos {
+    border: 1px solid rgba(190, 107, 188, 0.5);
+    border-radius: 15px;
+    padding: 25px;
+    grid-column: 1 / -1;
+}
+.grid-arquetipos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(190, 107, 188, 0.5);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.checkbox-item:hover {
+    border-color: #BE6BBC;
+    transform: translateY(-1px);
+}
+.checkbox-item input[type="checkbox"] {
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+    appearance: none;
+    border: 2px solid #BE6BBC;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+}
+.checkbox-item input[type="checkbox"]:checked {
+    background-color: #BE6BBC;
+}
+.checkbox-item label {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    cursor: pointer;
 }
 /* Estilos del grid de mazos */
 .gridMazos {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 600px);
     gap: 20px;
-    width: 100%;
+    margin-bottom: 300px;
+    justify-content: center;
+}
+/* Estilos del grid de informacion del mazo */
+.grid-info {
+    display: grid;
+    grid-template-areas:
+        "nombre nombre"
+        "arq btn"
+        "usr btn";
+}
+.nombre {
+    grid-area: nombre;
+    justify-self: center;
+}
+.nombre p {
+    margin: 0;
+    width: fit-content;
+}
+.nombre p:hover {
+    color: #643AC9;
+    transform: scale(1.1);
+}
+.arq {
+    grid-area: arq;
+    margin-bottom: 0;
+}
+.usr {
+    grid-area: usr;
+}
+.btn {
+    grid-area: btn;
+    align-self: flex-end;
+    justify-self: flex-end;
+}
+.like {
+    background-image: url(../images/icons/fav_icon_white.svg);
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    width: 35px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+}
+.dislike {
+    background-image: url(../images/icons/fav_icon_golden.svg);
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    width: 35px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+}
+.like:hover {
+    transform: scale(1.25);
+    background-image: url(../images/icons/fav_icon_golden.svg);
+}
+.dislike:hover {
+    transform: scale(1.25);
+    background-image: url(../images/icons/fav_icon_white.svg);
 }
 /* Estilos de cada mazo */
 .mazo {
     display: flex;
     flex-direction: column;
+    background-color: #1F2329;
+    border: 2px solid #BE6BBC;
+    border-radius: 15px;
+    padding: 10px 20px;
 }
 /* Estilos del grid de cartas */
 .gridCartas {
@@ -35,19 +176,27 @@
     gap: 5px;
     margin-top: 10px;
 }
-/* Imágenes de las cartas */
-.imagen {
-    width: 100%;
-    height: auto;
-}
 /* Estilos del texto del mazo */
 .texto {
-    font-family: 'IBM Plex Sans Condensed Regular', Arial, sans-serif;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
-/* Estilos de los tooltip */
-.tooltip {
-    position: fixed;
-    background-color: #2B1B67;
-    border-radius: 2.5%;
+/* Estilos del titulo */
+.titulo {
+    margin-bottom: 0;
+}
+/* Estilos responsive */
+@media screen and (max-width: 1274px) {
+    .gridMazos {
+        grid-template-columns: repeat(1, 600px);
+    }
+}
+@media screen and (max-width: 650px) {
+    .gridMazos {
+        grid-template-columns: repeat(1, 500px);
+    }
+}
+@media screen and (max-width: 550px) {
+    .gridMazos {
+        grid-template-columns: repeat(1, 400px);
+    }
 }

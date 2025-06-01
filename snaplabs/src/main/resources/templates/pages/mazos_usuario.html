@@ -18,21 +18,19 @@
                 <ul class="menuBoton">
                     <li>
                         <a th:href="@{/usuario/{id}(id=${usuario.uuid})}">
-                            <button class="campo botonPerfil">Perfil</button>
+                            <button class="boton boton-perfil subtitulo">
+                                Perfil
+                            </button>
                         </a>
                     </li>
                     <li>
                         <a th:href="@{/usuario/{id}/mazos(id=${usuario.uuid})}">
-                            <button class="campo botonPerfil" style="background-color: #643AC9; color: #F5F1FB;">
-                                Mazos creados
-                            </button>
+                            <button class="boton subtitulo boton-perfil" style="background-color: #643AC9; color: #F5F1FB;">Mazos creados</button>
                         </a>
                     </li>
                     <li>
                         <a th:href="@{/usuario/{id}/favoritos(id=${usuario.uuid})}">
-                            <button class="campo botonPerfil">
-                                Mazos favoritos
-                            </button>
+                            <button class="boton subtitulo boton-perfil">Mazos favoritos</button>
                         </a>
                     </li>
                 </ul>
@@ -41,39 +39,35 @@
         <section class="mazos">
             <table class="tabla">
                 <thead>
-                <tr>
-                    <th>Nombre del Mazo</th>
-                    <th>Autor</th>
-                    <th>Publicado</th>
-                    <th>Estado</th>
-                    <th>Cartas</th>
-                </tr>
+                    <tr>
+                        <th class="subtitulo blanco">Nombre del Mazo</th>
+                        <th class="subtitulo blanco">Publicado</th>
+                        <th class="subtitulo blanco">Estado</th>
+                        <th class="subtitulo blanco">Cartas</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr th:each="mazo : ${listaMazos}">
-                    <td>
-                        <a th:href="@{/mazos/{id}(id=${mazo.id})}">
-                            <p th:text="${mazo.nombre}"></p>
-                        </a>
-                    </td>
-                    <td>
-                        <p th:text="${mazo.usuario.username}"></p>
-                    </td>
-                    <td>
-                        <p th:text="${mazo.tiempoTranscurrido}"></p>
-                    </td>
-                    <td>
-                        <p th:if="${mazo.publico}">Público</p>
-                        <p th:unless="${mazo.publico}">Oculto</p>
-                    </td>
-                    <td class="rowCartas">
-                        <div class="gridCartasTabla">
-                            <div th:each="carta : ${mazo.cartas}" th:data-src="${carta.imagen}" th:data-desc="${carta.descripcion}">
-                                <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">
+                    <tr th:each="mazo : ${listaMazos}">
+                        <td class="col-nombre">
+                            <a th:href="@{/mazos/{id}(id=${mazo.id})}">
+                                <p th:text="${mazo.nombre}" class="texto"></p>
+                            </a>
+                        </td>
+                        <td class="col-tiempo">
+                            <p th:text="${mazo.tiempoTranscurrido}" class="texto"></p>
+                        </td>
+                        <td class="col-estado">
+                            <p th:if="${mazo.publico}" class="texto">Público</p>
+                            <p th:unless="${mazo.publico}" class="texto">Oculto</p>
+                        </td>
+                        <td class="rowCartas">
+                            <div class="gridCartasTabla">
+                                <div th:each="carta : ${mazo.cartas}" th:data-src="${carta.imagen}" th:data-desc="${carta.descripcion}">
+                                    <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </section>

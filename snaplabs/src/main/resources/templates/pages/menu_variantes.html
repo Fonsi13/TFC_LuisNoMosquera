@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <th:block th:fragment="titulo">
-        <title>Variantes de la Comunidad - Marvel Snap Mazos, Cartas y Variantes</title>
+        <title>Variantes de la Comunidad - Snap Labs</title>
     </th:block>
     <th:block th:fragment="css">
         <link rel="stylesheet" type="text/css" th:href="@{/styles/menu_variantes.css}">
@@ -12,45 +12,49 @@
     <script th:fragment="js" th:src="@{/js/variantes.js}" defer></script>
 </head>
 <body>
-    <main th:fragment="contenido" class="contenido">
-        <section class="titulo">
-            <p>Variantes creadas por la Comunidad</p>
-        </section>
-        <section class="filtros">
+    <main th:fragment="contenido">
+        <section>
+            <p class="titulo">Variantes creadas por la Comunidad</p>
             <div th:if="${param.exito}" class="exito">
                 <span>Variante subida correctamente.</span>
             </div>
-            <div>
-                <label for="fecha">Ordenar por fecha:</label>
-                <select id="fecha">
-                    <option selected disabled>Orden:</option>
-                    <option value="asc">ASC</option>
-                    <option value="desc">DESC</option>
-                </select>
-                <label for="likes">Ordenar por likes:</label>
-                <select id="likes">
-                    <option selected disabled>Orden:</option>
-                    <option value="asc">ASC</option>
-                    <option value="desc">DESC</option>
-                </select>
+        </section>
+        <section class="filtros">
+            <div class="grid-filtros">
+                <div class="filtro">
+                    <label for="fecha" class="texto label">Ordenar por fecha:</label>
+                    <select id="fecha" class="seleccion">
+                        <option selected disabled>Seleccionar orden...</option>
+                        <option value="asc">Más antigua primero</option>
+                        <option value="desc">Más reciente primero</option>
+                    </select>
+                </div>
+                <div class="filtro">
+                    <label for="likes" class="texto label">ORDEN POR LIKES</label>
+                    <select id="likes" class="seleccion">
+                        <option selected disabled>Seleccionar orden...</option>
+                        <option value="asc">Menos populares primero</option>
+                        <option value="desc">Más populares primero</option>
+                    </select>
+                </div>
             </div>
         </section>
-        <section class="gridVariantes">
+        <section class="grid-variantes">
             <div class="upload">
-                <p class="texto">Subir una variante</p>
+                <p class="subtitulo">Subir una variante</p>
                 <a th:href="@{/variantes/upload}">
-                    <img th:src="@{/images/icons/upload_icon.svg}" alt="Arre demo, esto non furrula" width="400px" height="500px">
+                    <img th:src="@{/images/icons/upload_icon.svg}" alt="Arre demo, esto non furrula" width="350px" height="450px">
                 </a>
             </div>
             <div th:each="variante : ${listaVariantes}" th:data-fecha="${variante.fechaCreacion}" th:data-likes="${variante.likes.size()}" class="carta">
-                <p th:text="${variante.nombre}" class="texto"></p>
+                <p th:text="${variante.nombre}" class="subtitulo"></p>
                 <a th:href="@{/variantes/{id}(id=${variante.uuid})}">
-                    <img th:src="${variante.imagen}" alt="Arre demo, esto non furrula" width="400px" height="500px" class="variante">
+                    <img th:src="${variante.imagen}" alt="Arre demo, esto non furrula" width="350px" height="450px" class="variante">
                 </a>
                 <div class="row gap">
-                    <p th:text="'Creado por ' + ${variante.usuario.username}"></p>
+                    <p th:text="'Creado por ' + ${variante.usuario.username}" class="texto"></p>
                     <div class="row">
-                        <span th:text="${variante.likes.size()}"></span>
+                        <p th:text="${variante.likes.size()}" class="texto"></p>
                         <div th:if="${likedVariantes.contains(variante.uuid)}">
                             <a th:href="@{/variantes/{id}/dislike(id=${variante.uuid})}">
                                 <img th:src="@{/images/icons/like_icon_red.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">

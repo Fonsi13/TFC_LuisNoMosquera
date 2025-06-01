@@ -1,19 +1,22 @@
 /* Centrar el contenido */
-.contenido {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 65%;
-    margin: 0 auto;
-    margin-bottom: 20%;
-    color: #F5F1FB;
+main {
+    margin-bottom: 300px;
 }
-/* Estilos del titulo */
-.titulo {
-    font-family: 'Edge of the Galaxy', Arial, sans-serif;
-    font-size: 2.75rem;
+.mazo {
+    width: 65%;
+    margin: 0 auto;
+}
+/* Estilos del grid del mazo */
+.grid-mazo {
+    display: grid    ;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-content: center;
+    gap: 20px;
+}
+.last {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 /* Estilos del grid de cartas */
 .gridCartas {
@@ -21,22 +24,49 @@
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(2, auto);
     gap: 5px;
-    margin-top: 10px;
-    width: 100%;
-    height: auto;
+    background-color: #1F2329;
+    border: 2px solid #BE6BBC;
+    border-radius: 15px;
+    padding: 10px 20px;
 }
-/* Imágenes de las cartas */
-.imagen {
-    width: 100%;
-    height: auto;
+.like {
+    background-image: url(../images/icons/fav_icon_white.svg);
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    width: 35px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
 }
-/* Estilos de los tooltip */
-.tooltip {
-    position: fixed;
-    background-color: #2B1B67;
-    border-radius: 2.5%;
+.dislike {
+    background-image: url(../images/icons/fav_icon_golden.svg);
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    width: 35px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
 }
-/* Estilos del texto del mazo */
-.texto {
-    font-family: 'IBM Plex Sans Condensed Regular', Arial, sans-serif;
+.like:hover {
+    transform: scale(1.25);
+    background-image: url(../images/icons/fav_icon_golden.svg);
+}
+.dislike:hover {
+    transform: scale(1.25);
+    background-image: url(../images/icons/fav_icon_white.svg);
+}
+/* Estilos del titulo */
+.titulo {
+    font-size: 2rem;
+}
+.descripcion .titulo {
+    margin-bottom: 0;
+}
+/* Estilos del info */
+.subtitulo {
+    font-size: 1.6rem;
+    margin-bottom:0;
+    color: #F5F1FB;
 }

@@ -1,59 +1,78 @@
-/* Centrar el contenido */
-.contenido {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #F5F1FB;
-}
-/* Estilos del titulo */
+/* Estilos del titulo*/
 .titulo {
-    font-family: 'Edge of the Galaxy', Arial, sans-serif;
-    font-size: 2.75rem;
+    font-size: 2rem;
+}
+/* Estilos de la imagen de la carta base */
+.img-base {
+    justify-self: flex-end;
 }
 /* Estilos del grid */
 .gridDetalles {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
-/* Estilos del contenedor con los detalles */
-.contenedor {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-/* Estilos del titulo de cada categoria */
-.categoriaDetalle {
-    font-family: 'Edge of the Galaxy', Arial, sans-serif;
-    font-size: 2rem;
-    margin-bottom:0;
-}
-/* Estilos del texto de cada categoria */
-.textoDetalle {
-    font-family: 'IBM Plex Sans Condensed Regular', Arial, sans-serif;
-    font-size: 1.35rem;
-}
-/* Estilo del enlace */
-#div-serie a {
-    color: #F5F1FB;
-}
-/* Estilo negrita */
-.negrita {
-    font-weight: bold;
-}
-/* Estilo de las imágenes de las variantes */
-.imgVariante {
-    width: 90%;
-    height: auto;
-}
 /* Estilos del grid de las variantes */
 .gridVariantes {
     display: grid;
-    grid-template-columns: repeat(3, 25%);
+    grid-template-columns: repeat(3, 450px);
     justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
 }
 /* Estilo de contenedor de cada variante */
 .variante {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    background-color: #1F2329;
+    border: 2px solid #BE6BBC;
+    border-radius: 15px;
+}
+/* Estilos de los contenedores de info de las variantes */
+.info-variante {
+    justify-self: center;
+    align-self: center;
+}
+.info-variante > :first-child {
+    margin-top: 0;
+}
+/* Estilos del titulo de cada categoria */
+.subtitulo {
+    font-size: 1.6rem;
+    margin-bottom:0;
+    color: #F5F1FB;
+}
+/* Estilos del texto de cada categoria */
+.texto {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+/* Separacion antes del apartado de variantes */
+.variantes {
+    margin-top: 50px;
+}
+.linea {
+    width: 600px;
+    margin-left: 0;
+}
+/* Estilos responsive */
+@media screen and (max-width: 1600px) {
+    .gridVariantes {
+        grid-template-columns: repeat(2, 450px);
+    }
+}
+@media screen and (max-width: 1300px) {
+    .gridDetalles {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .img-base {
+        justify-self: center;
+    }
+    .detalles {
+        justify-self: center;
+    }
+}
+@media screen and (max-width: 980px) {
+    .gridVariantes {
+        grid-template-columns: repeat(1, 450px);
+    }
 }

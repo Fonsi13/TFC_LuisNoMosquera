@@ -1,41 +1,17 @@
-/* Centrar el contenido */
-.contenido {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #F5F1FB;
+.registro {
+    margin-bottom: 30px;
 }
 /* Estilos del titulo */
 .titulo {
-    font-family: 'Edge of the Galaxy', Arial, sans-serif;
-    font-size: 2.75rem;
-}
-/* Estilos en columna */
-.columna {
-    display: flex;
-    flex-direction: column;
+    font-size: 2rem;
 }
 /* Espaciar los campos */
 .formulario {
-    gap: 1.5rem;
-    font-family: 'IBM Plex Sans Condensed Light', Arial, sans-serif;
+    gap: 1rem;
     font-size: 1.25rem;
-}
-/* Estilos de los campos del formulario */
-.campo {
-    width: 28rem;
-    padding: 0.25em 0.7em;
-    margin: 0.5em 0 1rem 0;
-    border: 0.05em solid #ccc;
-    border-radius: 0.5em;
-    font-size: 1.25rem;
-}
-/* Efecto de enfoque en los campos de entrada */
-.campo:focus {
-    border-width: 2px;
-    border-color: #BE6BBC;
-    outline: none;
+    border: 2px solid #BE6BBC;
+    border-radius: 15px;
+    padding: 15px 20px;
 }
 .foto {
     border: none;
@@ -43,30 +19,16 @@
 /* Estilos del boton */
 .boton {
     width: 100%;
-    padding: 0.5em 0.7em;
-    border: none;
-    background-color: #3B014B;
-    font-family: 'Edge of the Galaxy', Arial, sans-serif;
-    font-size: 1.4rem;
-    color: #F5F1FB;
-    cursor: pointer;
+    background-color: #643AC9;
+    font-size: 1.5rem;
 }
 .boton:hover {
-    background-color: #643AC9;
-}
-/* Efecto de enfoque en los campos de entrada */
-.campo:focus {
-    border-color: #BE6BBC;
-    outline: none;
+    background-color: #2B1B67;
 }
 /* Estilos del enlace */
 .enlace {
     text-align: center;
-    font-family: 'IBM Plex Sans Condensed Light', Arial, sans-serif;
-    font-size: 0.95rem;
-}
-.enlace a {
-    color: #F5F1FB;
+    font-size: 1rem;
 }
 .enlace a:hover {
     color: #BE6BBC;

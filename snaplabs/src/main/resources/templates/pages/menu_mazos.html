@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <th:block th:fragment="titulo">
-        <title>Mazos de la Comunidad - Marvel Snap Mazos, Cartas y Variantes</title>
+        <title>Mazos de la Comunidad - Snap Labs</title>
     </th:block>
     <th:block th:fragment="css">
         <link rel="stylesheet" type="text/css" th:href="@{/styles/menu_mazos.css}">
@@ -12,49 +12,69 @@
     <script th:fragment="js" th:src="@{/js/menu_mazos.js}" type="module" defer></script>
 </head>
 <body>
-    <main th:fragment="contenido" class="contenido">
-        <section class="titulo">
-            <p>Mazos publicados por la Comunidad</p>
+    <main th:fragment="contenido">
+        <section>
+            <p class="titulo">Mazos publicados por la Comunidad</p>
         </section>
         <section class="filtros">
-            <label for="fecha">Ordenar por fecha:</label>
-            <select id="fecha">
-                <option selected disabled>Orden:</option>
-                <option value="asc">ASC</option>
-                <option value="desc">DESC</option>
-            </select>
-            <label for="habilidades">Filtrar por Arquetipo:</label>
-            <div id="habilidades">
-                <input type="checkbox" name="arquetipo" value="destroy" id="destroy"/>
-                <label for="destroy">Destruir</label>
-                <input type="checkbox" name="arquetipo" value="discard" id="discard"/>
-                <label for="discard">Descartar</label>
-                <input type="checkbox" name="arquetipo" value="move" id="move"/>
-                <label for="move">Movimiento</label>
-                <input type="checkbox" name="arquetipo" value="reveal" id="reveal"/>
-                <label for="reveal">Al Revelarse</label>
-                <input type="checkbox" name="arquetipo" value="ongoing" id="ongoing"/>
-                <label for="ongoing">Continuo</label>
+            <div class="grid-filtros">
+                <div class="filtro">
+                    <label for="fecha" class="texto label">ORDEN POR FECHA:</label>
+                    <select id="fecha" class="seleccion">
+                        <option selected disabled>Orden:</option>
+                        <option value="asc">Más antigua primero</option>
+                        <option value="desc">Más reciente primero</option>
+                    </select>
+                </div>
+                <div class="filtro-arquetipos">
+                    <label for="arquetipos" class="texto label">FILTRAR POR ARQUETIPO</label>
+                    <div id="arquetipos" class="grid-arquetipos">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="arquetipo" value="destroy" id="destroy"/>
+                            <label for="destroy" class="texto">Destruir</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="arquetipo" value="discard" id="discard"/>
+                            <label for="discard" class="texto">Descartar</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="arquetipo" value="move" id="move"/>
+                            <label for="move" class="texto">Movimiento</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="arquetipo" value="reveal" id="reveal"/>
+                            <label for="reveal" class="texto">Al Revelarse</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="arquetipo" value="ongoing" id="ongoing"/>
+                            <label for="ongoing" class="texto">Continuo</label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="gridMazos">
             <div th:each="mazo : ${listaMazos}" th:if="${mazo.publico}" th:data-arquetipo="${mazo.arquetipo}" th:data-fecha="${mazo.fechaCreacion}"  class="mazo">
-                <a th:href="@{/mazos/{id}(id=${mazo.id})}">
-                    <span th:text="${mazo.nombre}" class="texto"></span>
-                </a>
-                <span th:text="'Creado por ' + ${mazo.usuario.username}" class="texto"></span>
-                <span th:text="'Arquetipo: ' + ${mazo.nombreArquetipo}" class="texto"></span>
-                <span th:text="'Publicado ' + ${mazo.tiempoTranscurrido}" class="texto"></span>
-                <div th:if="${likedMazos.isEmpty() or !likedMazos.contains(mazo.id)}">
-                    <a th:href="@{/mazos/{id}/like(id=${mazo.id})}">
-                        <img th:src="@{/images/icons/fav_icon_white.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">
-                    </a>
+                <div class="grid-info">
+                    <div class="nombre">
+                        <a th:href="@{/mazos/{id}(id=${mazo.id})}">
+                            <p th:text="${mazo.nombre}" class="titulo"></p>
+                        </a>
+                    </div>
+                    <p th:text="'Arquetipo: ' + ${mazo.nombreArquetipo}" class="texto arq"></p>
+                    <p th:text="${mazo.tiempoTranscurrido} + ' por ' + ${mazo.usuario.username}" class="texto usr"></p>
+                    <div th:if="${likedMazos.isEmpty() or !likedMazos.contains(mazo.id)}" class="btn">
+                        <a th:href="@{/mazos/{id}/like(id=${mazo.id})}">
+                            <button class="like"></button>
+                        </a>
+                    </div>
+                    <div th:if="${likedMazos.contains(mazo.id)}" class="btn">
+                        <a th:href="@{/mazos/{id}/dislike(id=${mazo.id})}">
+                            <button class="dislike"></button>
+                        </a>
+                    </div>
                 </div>
-                <div th:if="${likedMazos.contains(mazo.id)}">
-                    <a th:href="@{/mazos/{id}/dislike(id=${mazo.id})}">
-                        <img th:src="@{/images/icons/fav_icon_golden.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">
-                    </a>
-                </div>
+                <hr class="linea">
                 <div class="gridCartas">
                     <div th:each="carta : ${mazo.cartas}" th:data-src="${carta.imagen}" th:data-desc="${carta.descripcion}">
                         <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">

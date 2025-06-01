@@ -20,7 +20,9 @@ export function showTooltip(event) {
     descripcion.textContent = texto;
     descripcion.style.padding = '0 2em';
     descripcion.style.textAlign = 'center';
-    descripcion.style.fontFamily = 'IBM Plex Sans Condensed Regular';
+    descripcion.style.fontFamily = 'IBM Plex Sans Condensed';
+    descripcion.style.fontStyle = 'normal';
+    descripcion.style.fontWeight = '400';
     descripcion.style.fontSize = '1.25rem';
     descripcion.style.color = '#F5F1FB';
 

@@ -34,4 +34,26 @@ public class MainController {
         model.addAttribute("vista", "pages/login");
         return "layouts/plantilla";
     }
+
+    @GetMapping("/about")
+    public String showAbout(Model model, Authentication authentication) {
+        if (authentication != null) {
+            CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+            model.addAttribute("foto", customUserDetails.getAvatar());
+            model.addAttribute("id", customUserDetails.getUuid());
+        }
+        model.addAttribute("vista", "pages/about");
+        return "layouts/plantilla";
+    }
+
+    @GetMapping("/contacto")
+    public String showContacto(Model model, Authentication authentication) {
+        if (authentication != null) {
+            CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+            model.addAttribute("foto", customUserDetails.getAvatar());
+            model.addAttribute("id", customUserDetails.getUuid());
+        }
+        model.addAttribute("vista", "pages/contacto");
+        return "layouts/plantilla";
+    }
 }
