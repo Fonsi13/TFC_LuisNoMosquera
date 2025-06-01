@@ -65,6 +65,7 @@ body {
 main {
     flex: 1;
     margin-bottom: 1.5rem;
+    padding-top: 70px;
 }
 /* Cambiar el cursor en los enlaces */
 a {

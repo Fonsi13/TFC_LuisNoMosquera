@@ -10,13 +10,12 @@
     justify-content: center;
     align-items: center;
     gap: 1.5em;
-    font-family: 'Ultimatum', Arial, sans-serif;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 2.25rem;
     background-color: #2B1B67;
     color: #F5F1FB;
     border-bottom: medium solid #BE6BBC;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
 }
 /* Estilos de los contenedores */
 .desplegable {
@@ -102,6 +101,9 @@
     padding: 0;
     cursor: pointer;
 }
+.titulo {
+    font-size: 2.25rem;
+}
 /* Estilos responsive */
 @media screen and (max-width: 1420px) {
     .cabecera {
@@ -121,6 +123,9 @@
     .boton-login button {
         width: 100%;
     }
+    main {
+        padding-top: 150px;
+    }
 }
 @media screen and (max-width: 950px) {
     .cabecera * {
@@ -133,5 +138,10 @@
         flex-direction: column;
         gap: 10px;
         margin-bottom: 5px;
+    }
+}
+@media screen and (max-width: 515px) {
+    main {
+        padding-top: 175px;
     }
 }
