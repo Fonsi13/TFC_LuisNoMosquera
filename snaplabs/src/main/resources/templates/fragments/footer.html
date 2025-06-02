@@ -6,19 +6,17 @@
     <title>Footer</title>
 </head>
 <body>
-    <footer th:fragment="footer" class="footer">
-        <div id="div-logo">
-            <img th:src="@{/images/logo/snap_labs_small_logo_white.png}" alt="Logo negro Snap Labs">
+    <footer th:fragment="footer" class="footer" role="contentinfo">
+        <div id="div-logo" aria-label="Ir al inicio">
+            <img th:src="@{/images/logo/snap_labs_small_logo_white.png}" alt="Logo blanco Snap Labs">
         </div>
         <div>
-            <nav>
+            <nav role="navigation" aria-label="Enlaces de información">
                 <ul class="enlaces">
                     <li>
-                        <a th:href="@{/about}">Sobre nosotros</a>
+                        <a th:href="@{/about}" aria-label="Ir al inicio">Sobre nosotros</a>
                     </li>
-                    <li>
-                        |
-                    </li>
+                    <li aria-hidden="true" role="presentation">|</li>
                     <li>
                         <a th:href="@{/contacto}">Contacto</a>
                     </li>

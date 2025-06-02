@@ -21,6 +21,11 @@ checkboxes.forEach(checkbox => {
 formulario?.addEventListener("submit", validarFormulario);
 listaCartasLab.forEach(carta => {
     carta.addEventListener("click", addCartaBuilder);
+    carta.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            addCartaBuilder(event);
+        }
+    });
 });
 
 function ordenarCartasAlf() {
