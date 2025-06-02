@@ -54,6 +54,12 @@
     width: 600px;
     margin-left: 0;
 }
+.info a:hover {
+    color: #BE6BBC;
+}
+.info hr {
+    margin-bottom: 1rem;
+}
 /* Estilos responsive */
 @media screen and (max-width: 1600px) {
     .gridVariantes {

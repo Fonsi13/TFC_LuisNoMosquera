@@ -13,8 +13,8 @@
 </head>
 <body>
     <main th:fragment="contenido">
-        <section class="titulo">
-            <p th:text="${mazo.nombre}"></p>
+        <section>
+            <h1 th:text="${mazo.nombre}" class="titulo" aria-label="'Nombre del mazo: ' + ${mazo.nombre}"></h1>
         </section>
         <section class="mazo">
             <div class="grid-mazo">
@@ -40,18 +40,18 @@
                 </div>
                 <div th:if="${liked}" class="btn">
                     <a th:href="@{/mazos/{id}/like(id=${mazo.id})}">
-                        <button class="dislike"></button>
+                        <button class="dislike" aria-label="Quitar me gusta al mazo"></button>
                     </a>
                 </div>
                 <div th:unless="${liked}" class="btn">
                     <a th:href="@{/mazos/{id}/dislike(id=${mazo.id})}">
-                        <button class="like"></button>
+                        <button class="like" aria-label="Dar me gusta al mazo"></button>
                     </a>
                 </div>
             </div>
             <div class="gridCartas">
                 <div th:each="carta : ${mazo.cartas}" th:data-src="${carta.imagen}" th:data-desc="${carta.descripcion}">
-                    <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">
+                    <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" th:alt="${carta.nombre}" class="imagen">
                 </div>
             </div>
             <div class="descripcion">

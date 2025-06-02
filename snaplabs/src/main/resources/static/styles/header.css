@@ -56,7 +56,7 @@
     color: #F5F1FB;
 }
 /* Mostra el menú desplegable */
-.desplegable:hover .desplegable-contenido {
+.desplegable:hover .desplegable-contenido, .desplegable:focus-within .desplegable-contenido {
     display: block;
 }
 /* Cambiar el color de fondo de los enlaces al pasar por encima */
@@ -83,8 +83,10 @@
     border: thin solid #BE6BBC;
     border-radius: 2.5%;
     cursor: pointer;
+    text-align: center;
 }
 .boton-header:hover {
+    color: #F5F1FB;
     background-color: #BE6BBC;
 }
 /* Estilos de la foto de perfil */

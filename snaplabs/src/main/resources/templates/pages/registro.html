@@ -13,43 +13,43 @@
 </head>
 <body>
     <main th:fragment="contenido" class="contenido">
-        <section class="titulo">
-            <p>Comienza tu aventura</p>
+        <section>
+            <h1 class="titulo">Comienza tu aventura</h1>
         </section>
         <section class="registro">
             <form th:action="@{/registro}" th:object="${usuarioDto}" method="post" enctype="multipart/form-data" class="formulario col texto">
                 <div class="col">
                     <label for="usuario">Nombre de usuario:</label>
                     <input type="text" th:field="*{username}" id="usuario" name="usuario" class="campo" maxlength="25" required>
-                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></span>
-                    <span th:if="${errorUsr}" th:text="${errorUsr}" class="error"></span>
+                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error" role="alert"></span>
+                    <span th:if="${errorUsr}" th:text="${errorUsr}" class="error" role="alert"></span>
                 </div>
                 <div class="col">
                     <label for="pwd">Contraseña:</label>
                     <input type="password" th:field="*{password}" id="pwd" name="pwd" class="campo" minlength="12" placeholder="Ej: Ab@123456789" required>
-                    <span th:if="${#fields.hasErrors('password')}" th:each="err : ${#fields.errors('password')}" th:utext="${err}" class="error"></span>
+                    <span th:if="${#fields.hasErrors('password')}" th:each="err : ${#fields.errors('password')}" th:utext="${err}" class="error" role="alert"></span>
                 </div>
                 <div class="col">
                     <label for="confirmar_pwd">Repite la contraseña:</label>
                     <input type="password" th:field="*{confirmarPassword}" id="confirmar_pwd" name="confirmar_pwd" class="campo" minlength="12" placeholder="Ej: Ab@123456789" required>
-                    <span th:if="${#fields.hasErrors('confirmarPassword')}" th:errors="*{confirmarPassword}" class="error"></span>
-                    <span th:if="${errorPwd}" th:text="${errorPwd}" class="error"></span>
+                    <span th:if="${#fields.hasErrors('confirmarPassword')}" th:errors="*{confirmarPassword}" class="error" role="alert"></span>
+                    <span th:if="${errorPwd}" th:text="${errorPwd}" class="error" role="alert"></span>
                 </div>
                 <div class="col">
                     <label for="email">Email:</label>
                     <input type="email" th:field="*{correo}" id="email" name="email" class="campo" required>
-                    <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}" class="error"></span>
+                    <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}" class="error" role="alert"></span>
                 </div>
                 <div class="col">
                     <label for="foto_perfil">Foto de perfil (Opcional):</label>
                     <input type="file" th:field="*{fotoPerfil}" id="foto_perfil" name="foto_perfil" accept="image/png, image/jpeg, image/jpg, image/webp" class="campo foto">
-                    <span th:if="${errorImg}" th:utext="${errorImg}" class="error"></span>
+                    <span th:if="${errorImg}" th:utext="${errorImg}" class="error" role="alert"></span>
                 </div>
                 <div>
                     <input type="submit" id="btn_registro" name="btn_registro" class="boton subtitulo" value="Crear Cuenta">
                 </div>
                 <div class="texto enlace">
-                    <a th:href="@{/login}">Ya tengo una cuenta</a>
+                    <a th:href="@{/login}" aria-label="Ir a la página de inicio de sesión">Ya tengo una cuenta</a>
                 </div>
             </form>
         </section>

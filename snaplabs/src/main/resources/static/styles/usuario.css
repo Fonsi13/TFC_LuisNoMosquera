@@ -63,6 +63,8 @@
     background-color: #F5F1FB;
     color: #000002;
     margin: 0.5em 0 1rem 0;
+    display: block;
+    text-align: center;
 }
 .boton-perfil:hover {
     color: #F5F1FB;

@@ -19,8 +19,8 @@
         <section class="builder">
             <form id="formBuilder" th:action="@{/lab/{id}/crear(id=${id})}" th:object="${mazoDto}" method="post" class="formulario col">
                 <input type="hidden" id="contenido" th:field="*{contenido}">
-                <span th:if="${error}" th:text="${error}" class="error"></span>
-                <span th:if="${param.exito}" class="exito">Mazo creado con éxito.</span>
+                <span th:if="${error}" th:text="${error}" class="error" role="alert"></span>
+                <span th:if="${param.exito}" class="exito" role="alert">Mazo creado con éxito.</span>
                 <div class="grid-form">
                     <div class="col h-center" id="div-nombre">
                         <label for="nombre" class="subtitulo">Nombre:</label>
@@ -55,7 +55,7 @@
                 </div>
                 <span th:if="${#fields.hasErrors('contenido')}" th:errors="*{contenido}" class="error"></span>
                 <div class="row">
-                    <input type="submit" id="crear" name="crear" class="boton subtitulo" value="Crear Mazo">
+                    <input type="submit" id="crear" name="crear" class="boton subtitulo" value="Crear Mazo" aria-label="Crear nuevo mazo">
                 </div>
             </form>
         </section>
@@ -122,8 +122,8 @@
         </section>
         <section class="gridCartas">
             <div th:each="carta: ${listaCartas}" th:id="${carta.nombre}" th:data-coste="${carta.coste}" th:data-poder="${carta.poder}" th:data-habilidades="${carta.habilidades}" class="cartaLab">
-                <div class="carta">
-                    <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">
+                <div class="carta" tabindex="0" role="button">
+                    <img th:src="${carta.imagen}" th:alt="'Imagen de ' + ${carta.nombre}" class="imagen">
                     <span th:text="${carta.nombre}" class="texto"></span>
                     <span th:text="${carta.descripcion}" class="texto"></span>
                 </div>

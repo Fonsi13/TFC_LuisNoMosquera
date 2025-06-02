@@ -111,11 +111,10 @@
     grid-area: nombre;
     justify-self: center;
 }
-.nombre p {
-    margin: 0;
-    width: fit-content;
+.nombre a {
+    display: inline-block;
 }
-.nombre p:hover {
+.nombre a:hover {
     color: #643AC9;
     transform: scale(1.1);
 }
