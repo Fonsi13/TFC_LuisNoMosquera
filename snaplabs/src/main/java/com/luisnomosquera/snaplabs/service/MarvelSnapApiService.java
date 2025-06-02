@@ -20,11 +20,11 @@ public class MarvelSnapApiService {
 
     Dotenv dotenv = Dotenv.load();
     private final String API_KEY = dotenv.get("MARVEL_SNAP_API_KEY");
-    private final String API_HOST = dotenv.get("MARVEL_SNAP_API_HOST");
-    private final String API_URL_ALL = dotenv.get("MARVEL_SNAP_API_URL_ALL_CARDS");
-    private final String API_URL_DETAILS = dotenv.get("MARVEL_SNAP_API_URL_CARDS_DETAILS");
-    private final String API_URL_VARIANTS = dotenv.get("MARVEL_SNAP_API_URL_CARDS_VARIANTS");
-    private final String API_URL_META_DECKS = dotenv.get("MARVEL_SNAP_API_URL_META_DECKS");
+    private final String API_HOST = "marvel-snap-api.p.rapidapi.com";
+    private final String API_URL_ALL = "https://marvel-snap-api.p.rapidapi.com/api/get-all-cards?page=";
+    private final String API_URL_DETAILS = "https://marvel-snap-api.p.rapidapi.com/api/get-card-details/";
+    private final String API_URL_VARIANTS = "https://marvel-snap-api.p.rapidapi.com/api/get-card-variants/";
+    private final String API_URL_META_DECKS = "https://marvel-snap-api.p.rapidapi.com/api/get-meta-decks?page=";
 
     public List<SimpleCartaResponseDto> getArrayCartas() {
         Integer pagina = 1;

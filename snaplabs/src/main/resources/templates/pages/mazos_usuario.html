@@ -17,20 +17,18 @@
             <nav>
                 <ul class="menuBoton">
                     <li>
-                        <a th:href="@{/usuario/{id}(id=${usuario.uuid})}">
-                            <button class="boton boton-perfil subtitulo">
-                                Perfil
-                            </button>
+                        <a th:href="@{/usuario/{id}(id=${usuario.uuid})}" class="boton boton-perfil subtitulo">
+                            Perfil
                         </a>
                     </li>
                     <li>
-                        <a th:href="@{/usuario/{id}/mazos(id=${usuario.uuid})}">
-                            <button class="boton subtitulo boton-perfil" style="background-color: #643AC9; color: #F5F1FB;">Mazos creados</button>
+                        <a th:href="@{/usuario/{id}/mazos(id=${usuario.uuid})}" class="boton subtitulo boton-perfil" style="background-color: #643AC9; color: #F5F1FB;">
+                            Mazos creados
                         </a>
                     </li>
                     <li>
-                        <a th:href="@{/usuario/{id}/favoritos(id=${usuario.uuid})}">
-                            <button class="boton subtitulo boton-perfil">Mazos favoritos</button>
+                        <a th:href="@{/usuario/{id}/favoritos(id=${usuario.uuid})}" class="boton subtitulo boton-perfil">
+                            Mazos favoritos
                         </a>
                     </li>
                 </ul>

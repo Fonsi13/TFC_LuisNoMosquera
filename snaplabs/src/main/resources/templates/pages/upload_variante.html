@@ -21,23 +21,23 @@
                 <div class="col">
                     <label for="nombre" class="texto">Nombre:</label>
                     <input type="text" th:field="*{nombre}" id="nombre" name="nombre" class="campo" minlength="3" maxlength="50" required>
-                    <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error"></span>
+                    <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error" role="alert"></span>
                 </div>
                 <div class="col">
                     <label for="descripcion" class="texto">Descripción(Opcional):</label>
-                    <textarea id="descripcion" name="descripcion" rows="6" cols="63" placeholder="Introduce una descripción de tu mazo"></textarea>
+                    <textarea th:field="*{descripcion}" id="descripcion" name="descripcion" rows="6" cols="63" placeholder="Introduce una descripción de tu mazo"></textarea>
                 </div>
                 <div class="col">
                     <label for="imagen" class="texto">Variante:</label>
                     <input type="file" th:field="*{imagen}" id="imagen" name="imagen" accept="image/png, image/jpeg, image/jpg, image/webp" class="campo foto" required>
-                    <span th:if="${#fields.hasErrors('imagen')}" th:errors="*{imagen}" class="error"></span>
-                    <span th:if="${errorImg}" th:utext="${errorImg}" class="error"></span>
+                    <span th:if="${#fields.hasErrors('imagen')}" th:errors="*{imagen}" class="error" role="alert"></span>
+                    <span th:if="${errorImg}" th:utext="${errorImg}" class="error" role="alert"></span>
                 </div>
                 <div class="col">
                     <label for="personaje" class="texto">Personaje:</label>
                     <input type="text" th:field="*{personaje}" id="personaje" name="personaje" class="campo" minlength="3" maxlength="50" required>
                     <span th:if="${#fields.hasErrors('personaje')}" th:errors="*{personaje}" class="error"></span>
-                    <span th:if="${errorPersonaje}" th:utext="${errorPersonaje}" class="error"></span>
+                    <span th:if="${errorPersonaje}" th:utext="${errorPersonaje}" class="error" role="alert"></span>
                 </div>
                 <div>
                     <input type="submit" id="btn_registro" name="btn_registro" class="boton subtitulo" value="Subir Variante">

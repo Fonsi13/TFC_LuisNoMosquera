@@ -5,18 +5,6 @@ Repositorio para el Trabajo de Fin de Ciclo de Luis Alfonso No Mosquera
 > [!NOTE]
 > Este proyecto está en fase de pruebas. Sigue estos pasos para configurar el entorno local.
 
----
-
-## 📚 Índice
-
-   - [📌 Descripción](#📌-descripción)
-   - [⚙️ Requisitos](#⚙️-requisitos)
-   - [🚀 Pasos para ejecutar](#🚀-pasos-para-ejecutar)
-   - [🧰 Tecnologías utilizadas](#🧰-tecnologías-utilizadas)
-   - [👤 Autor](#👤-autor)
-
----
-
 ## 📌 Descripción
 
    **Snap Labs** es una plataforma para conectar a jugadores de **Marvel Snap** de todo el mundo.

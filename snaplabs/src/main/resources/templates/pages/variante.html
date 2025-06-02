@@ -18,26 +18,26 @@
         </section>
         <section class="grid-variante">
             <div class="col">
-                <img th:src="${variante.imagen}" alt="Arre demo, esto non furrula" width="400px" height="500px">
+                <img th:src="${variante.imagen}" th:alt="'Imagen de la variante ' + ${variante.nombre}" width="400px" height="500px">
                 <div id="pdf">
                     <p th:text="'Creado por ' + ${variante.usuario.username}" class="texto"></p>
                     <div class="row">
                         <span th:text="${variante.likes.size()}"></span>
                         <div th:if="${liked}">
                             <a th:href="@{/variantes/{id}/dislike(id=${variante.uuid})}">
-                                <img th:src="@{/images/icons/like_icon_red.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">
+                                <img th:src="@{/images/icons/like_icon_red.svg}" alt="Dar me gusta" role="button" width="35px" height="40px">
                             </a>
                         </div>
                         <div th:unless="${liked}">
                             <a th:href="@{/variantes/{id}/like(id=${variante.uuid})}">
-                                <img th:src="@{/images/icons/like_icon_white.svg}" alt="Arre demo, esto non furrula" width="35px" height="40px">
+                                <img th:src="@{/images/icons/like_icon_white.svg}" alt="Quitar me gusta" role="button" width="35px" height="40px">
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
             <div>
-                <p class="subtitulo">Descripción</p>
+                <h2 class="subtitulo">Descripción</h2>
                 <hr class="linea">
                 <p th:text="${variante.descripcion}" class="texto"></p>
             </div>
