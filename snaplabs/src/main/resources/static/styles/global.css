@@ -75,11 +75,17 @@ a {
 }
 /* Estilos de los mensajes de error */
 .error {
+    font-family: 'IBM Plex Sans Condensed', Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
     color: #FFD700;
     text-align: center;
 }
 /* Estilos de los mensajes de error */
 .exito {
+    font-family: 'IBM Plex Sans Condensed', Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
     color: #4cff4c;
     text-align: center;
 }

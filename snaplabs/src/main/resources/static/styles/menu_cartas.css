@@ -41,6 +41,7 @@
     background-color: #cc0000;
 }
 .boton:hover {
+    color: #F5F1FB;
     background-color: #a10000;
 }
 /* Estilos de los filtros */

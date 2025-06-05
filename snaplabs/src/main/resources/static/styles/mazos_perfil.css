@@ -54,6 +54,9 @@ thead {
     grid-template-columns: repeat(12, 1fr);
     width: 100%;
 }
+.col-nombre a:hover {
+    color: #BE6BBC;
+}
 /* Estilos responsive */
 @media screen and (max-width: 1450px) {
     .contenido {
