@@ -1,0 +1,13 @@
+.texto {
+    font-size: 1.1rem;
+}
+.info {
+    margin: 0 30px;
+    text-align: center;
+}
+ul {
+    list-style: none;
+}
+a:hover {
+    color: #BE6BBC;
+}

@@ -1,0 +1,149 @@
+/* Quitar estilos de las listas */
+.cabecera ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+/* Estilos de la cabecera */
+.cabecera {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em;
+    background-color: #2B1B67;
+    color: #F5F1FB;
+    border-bottom: medium solid #BE6BBC;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+}
+/* Estilos de los contenedores */
+.desplegable {
+    position: relative;
+    display: inline-block;
+    margin: 0 1.5em;
+}
+/* Estilos de los titulos del menu */
+.desplegable > a{
+    padding: 0.3em;
+}
+.desplegable-boton i {
+    margin-left: 0.2em;
+    font-size: 20px;
+}
+/* Estilos del menú desplegable, oculto */
+.desplegable-contenido {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2B1B67;
+    min-width: 200px;
+    font-family: 'Ultimatum', Arial, sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 1.25rem;
+    border-radius: 2.5%;
+}
+/* Estilos de los enlaces */
+.desplegable-contenido li {
+    display: block;
+    text-align: center;
+    padding: 0.3em 0;
+}
+.desplegable-contenido a {
+    color: #F5F1FB;
+}
+/* Mostra el menú desplegable */
+.desplegable:hover .desplegable-contenido, .desplegable:focus-within .desplegable-contenido {
+    display: block;
+}
+/* Cambiar el color de fondo de los enlaces al pasar por encima */
+.desplegable-contenido li:hover {
+    background-color: #643AC9;
+}
+.desplegable-contenido li:hover a {
+    color: #0A002B;
+}
+/* Cambiar el color de fondo del padre cuando se muestra el menú desplegable */
+.desplegable:hover .desplegable-boton {
+    color: #0A002B;
+}
+/* Centrar el logo */
+#div-logo {
+    margin-top: 5px;
+}
+/* Estilos de los botones header */
+.boton-header {
+    background: none;
+    padding: 1rem;
+    font-size: 1.5rem;
+    color: #F5F1FB;
+    border: thin solid #BE6BBC;
+    border-radius: 2.5%;
+    cursor: pointer;
+    text-align: center;
+}
+.boton-header:hover {
+    color: #F5F1FB;
+    background-color: #BE6BBC;
+}
+/* Estilos de la foto de perfil */
+.fotoHeader {
+    border-radius: 50%;
+}
+.perfilHeader {
+    display: flex;
+    gap: 5px;
+}
+.botonLogout {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+.titulo {
+    font-size: 2.25rem;
+}
+/* Estilos responsive */
+@media screen and (max-width: 1420px) {
+    .cabecera {
+        gap: 1rem;
+    }
+    .desplegable {
+        margin: 0 1rem;
+    }
+}
+@media screen and (max-width: 1100px) {
+    .boton-login {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin: 5px 0;
+    }
+    .boton-login button {
+        width: 100%;
+    }
+    main {
+        padding-top: 150px;
+    }
+}
+@media screen and (max-width: 950px) {
+    .cabecera * {
+        font-size: 1.4rem;
+    }
+}
+@media screen and (max-width: 780px) {
+    #nav-lista {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 5px;
+    }
+}
+@media screen and (max-width: 515px) {
+    main {
+        padding-top: 175px;
+    }
+}

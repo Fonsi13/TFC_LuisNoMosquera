@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:fragment="titulo">
+        <title>Lista de Cartas - Snap Labs</title>
+    </th:block>
+    <th:block th:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/menu_cartas.css}">
+    </th:block>
+    <script th:fragment="js" th:src="@{/js/cartas.js}" defer></script>
+</head>
+<body>
+    <main th:fragment="contenido">
+        <section>
+            <h1 class="titulo" th:text="${titulo} ?: 'Todas las cartas de Marvel Snap'"></h1>
+        </section>
+        <div sec:authorize="hasRole('ADMIN')" class="div-update">
+            <a th:href="@{/cartas/update}" class="boton subtitulo" aria-label="Actualizar la base de datos de cartas">Actualizar cartas</a>
+        </div>
+        <section class="filtros">
+            <div class="grid-filtros">
+                <div class="filtro">
+                    <label for="buscar" class="texto label">BÚSQUEDA</label>
+                    <input type="text" id="buscar" placeholder="Buscar cartas..." aria-label="Buscar cartas por nombre">
+                </div>
+                <div class="filtro">
+                    <label for="alfa" class="texto label">ORDEN ALFABÉTICO</label>
+                    <select id="alfa" class="seleccion" aria-label="Ordenar alfabéticamente">
+                        <option selected disabled>Seleccionar orden...</option>
+                        <option value="asc">A - Z</option>
+                        <option value="desc">Z - A</option>
+                    </select>
+                </div>
+                <div class="filtro">
+                    <label for="coste" class="texto label">ORDEN POR COSTE</label>
+                    <select id="coste" class="seleccion" aria-label="Ordenar por coste de la carta">
+                        <option selected disabled>Seleccionar orden...</option>
+                        <option value="asc">Menor a Mayor</option>
+                        <option value="desc">Mayor a Menor</option>
+                    </select>
+                </div>
+                <div class="filtro">
+                    <label for="poder" class="texto label">ORDEN POR PODER</label>
+                    <select id="poder" class="seleccion" aria-label="Ordenar por poder de la carta">
+                        <option selected disabled>Seleccionar orden...</option>
+                        <option value="asc">Menor a Mayor</option>
+                        <option value="desc">Mayor a Menor</option>
+                    </select>
+                </div>
+                <div class="filtro-habilidades">
+                    <label for="habilidades" class="texto label">FILTRAR POR HABILIDADES</label>
+                    <div id="habilidades" class="grid-habilidades">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="habilidad" value="Destroy" id="destroy"/>
+                            <label for="destroy" class="texto">Destruir</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="habilidad" value="Discard" id="discard"/>
+                            <label for="discard" class="texto">Descartar</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="habilidad" value="Move" id="move"/>
+                            <label for="move" class="texto">Movimiento</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="habilidad" value="No Ability" id="no"/>
+                            <label for="no" class="texto">Sin Habilidad</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="habilidad" value="On Reveal" id="reveal"/>
+                            <label for="reveal" class="texto">Al Revelarse</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="habilidad" value="Ongoing" id="ongoing"/>
+                            <label for="ongoing" class="texto">Continuo</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="gridCartas">
+            <div th:each="carta: ${listaCartas}" th:id="${carta.nombre}" th:data-coste="${carta.coste}" th:data-poder="${carta.poder}" th:data-habilidades="${carta.habilidades}" class="div-carta">
+                <a th:href="@{/cartas/id/{clave}(clave=${carta.clave})}" class="carta"  th:aria-label="'Ver detalles de la carta ' + ${carta.nombre}">
+                    <img th:src="${carta.imagen}" th:alt="${carta.nombre}" class="imagen">
+                    <span th:text="${carta.nombre}" class="texto negrita"></span>
+                    <span th:text="${carta.descripcion}" class="texto"></span>
+                </a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

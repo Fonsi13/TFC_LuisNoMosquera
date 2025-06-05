@@ -1,0 +1,72 @@
+/* Centrar el contenido */
+main {
+    margin-bottom: 300px;
+}
+.mazo {
+    width: 65%;
+    margin: 0 auto;
+}
+/* Estilos del grid del mazo */
+.grid-mazo {
+    display: grid    ;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-content: center;
+    gap: 20px;
+}
+.last {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* Estilos del grid de cartas */
+.gridCartas {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 5px;
+    background-color: #1F2329;
+    border: 2px solid #BE6BBC;
+    border-radius: 15px;
+    padding: 10px 20px;
+}
+.like {
+    background-image: url(../images/icons/fav_icon_white.svg);
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    width: 35px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+}
+.dislike {
+    background-image: url(../images/icons/fav_icon_golden.svg);
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    width: 35px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+}
+.like:hover {
+    transform: scale(1.25);
+    background-image: url(../images/icons/fav_icon_golden.svg);
+}
+.dislike:hover {
+    transform: scale(1.25);
+    background-image: url(../images/icons/fav_icon_white.svg);
+}
+/* Estilos del titulo */
+.titulo {
+    font-size: 2rem;
+}
+.descripcion .titulo {
+    margin-bottom: 0;
+}
+/* Estilos del info */
+.subtitulo {
+    font-size: 1.6rem;
+    margin-bottom:0;
+    color: #F5F1FB;
+}

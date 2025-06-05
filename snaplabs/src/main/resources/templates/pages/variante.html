@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:fragment="titulo">
+        <title th:text="${variante.nombre} + ' - Snap Labs'"></title>
+    </th:block>
+    <th:block th:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/variante.css}">
+    </th:block>
+    <script th:fragment="js" th:remove="tag" defer></script>
+</head>
+<body>
+    <main th:fragment="contenido" class="contenido">
+        <section>
+            <p th:text="${variante.nombre}" class="titulo"></p>
+        </section>
+        <section class="grid-variante">
+            <div class="col">
+                <img th:src="${variante.imagen}" th:alt="'Imagen de la variante ' + ${variante.nombre}" width="400px" height="500px">
+                <div id="pdf">
+                    <p th:text="'Creado por ' + ${variante.usuario.username}" class="texto"></p>
+                    <div class="row">
+                        <span th:text="${variante.likes.size()}"></span>
+                        <div th:if="${liked}">
+                            <a th:href="@{/variantes/{id}/dislike(id=${variante.uuid})}">
+                                <img th:src="@{/images/icons/like_icon_red.svg}" alt="Dar me gusta" role="button" width="35px" height="40px">
+                            </a>
+                        </div>
+                        <div th:unless="${liked}">
+                            <a th:href="@{/variantes/{id}/like(id=${variante.uuid})}">
+                                <img th:src="@{/images/icons/like_icon_white.svg}" alt="Quitar me gusta" role="button" width="35px" height="40px">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2 class="subtitulo">Descripción</h2>
+                <hr class="linea">
+                <p th:text="${variante.descripcion}" class="texto"></p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

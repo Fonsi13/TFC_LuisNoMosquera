@@ -1,0 +1,185 @@
+/* Defino las fuentes */
+@font-face {
+    font-family: 'Ultimatum';
+    font-style: normal;
+    font-weight: bold;
+    src:
+        local("Ultimatum Bold"),
+        url("../fonts/cc-ultimatum-bold.otf") format("opentype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Ultimatum';
+    font-style: italic;
+    font-weight: bold;
+    src:
+        local("Ultimatum Bold Italic"),
+        url("../fonts/cc-ultimatum-bold-italic.otf") format("opentype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Ultimatum';
+    font-style: normal;
+    font-weight: 900;
+    src:
+        local("Ultimatum Heavy"),
+        url("../fonts/cc-ultimatum-heavy.otf") format("opentype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Ultimatum';
+    font-style: italic;
+    font-weight: 900;
+    src:
+        local("Ultimatum Heavy Italic"),
+        url("../fonts/cc-ultimatum-heavy-italic.otf") format("opentype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'IBM Plex Sans Condensed';
+    font-style: normal;
+    font-weight: 300;
+    src:
+        local("IBM Plex Sans Condensed Light"),
+        url("../fonts/IBMPlexSansCondensed-Light.ttf") format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'IBM Plex Sans Condensed';
+    font-style: normal;
+    font-weight: 400;
+    src:
+        local("IBM Plex Sans Condensed Regular"),
+        url("../fonts/IBMPlexSansCondensed-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+/* Ocupar todo el espacio en la ventana */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: #0a002b;
+}
+/* Enviar el footer al fondo */
+main {
+    flex: 1;
+    margin-bottom: 1.5rem;
+    padding-top: 70px;
+}
+/* Cambiar el cursor en los enlaces */
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #F5F1FB;
+}
+/* Estilos de los mensajes de error */
+.error {
+    font-family: 'IBM Plex Sans Condensed', Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #FFD700;
+    text-align: center;
+}
+/* Estilos de los mensajes de error */
+.exito {
+    font-family: 'IBM Plex Sans Condensed', Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #4cff4c;
+    text-align: center;
+}
+/* Estilos para la fuente de los titulos */
+.titulo {
+    font-family: 'Ultimatum', Arial, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 2rem;
+    text-align: center;
+    color: #F5F1FB;
+}
+/* Estilos para la fuente de los titulos */
+.subtitulo {
+    font-family: 'Ultimatum', Arial, sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 1.3rem;
+}
+/* Estilos para la fuente de texto normal */
+.texto {
+    font-family: 'IBM Plex Sans Condensed', Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #F5F1FB;
+}
+.negrita {
+    font-weight: bold;
+}
+.blanco {
+    color: #F5F1FB;
+}
+/* Centrar el contenido */
+.contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #F5F1FB;
+}
+/* Estilos de flex row*/
+.row {
+    display: flex;
+    align-items: center;
+}
+/* Estilos en columna */
+.col {
+    display: flex;
+    flex-direction: column;
+}
+/* Centrado */
+.h-center {
+    justify-content: center;
+}
+.v-center {
+    align-items: center;
+}
+/* Estilos base boton */
+.boton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    color: #F5F1FB;
+    cursor: pointer;
+}
+/* Imágenes de las cartas */
+.imagen {
+    width: 100%;
+    height: auto;
+}
+/* Estilos del separador */
+.linea {
+    width: 100%;
+    border: 1px solid rgba(245, 241, 251, 0.2);
+    margin-bottom: 0;
+}
+/* Estilos de los campos de formulario */
+.campo {
+    width: 28rem;
+    padding: 6px 15px;
+    margin: 10px 0;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    font-size: 1.25rem;
+}
+/* Efecto de enfoque en los campos de entrada */
+.campo:focus {
+    border-width: 2px;
+    border-color: #BE6BBC;
+    outline: none;
+}
+/* Estilos de los tooltip */
+.tooltip {
+    position: fixed;
+    background-color: #2B1B67;
+    border-radius: 2.5%;
+}

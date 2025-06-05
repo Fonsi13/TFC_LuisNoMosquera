@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:fragment="titulo">
+        <title>Acceder - Snap Labs</title>
+    </th:block>
+    <th:block th:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/registro.css}">
+    </th:block>
+    <script th:fragment="js" th:remove="tag"></script>
+</head>
+<body>
+    <main th:fragment="contenido" class="contenido">
+        <section>
+            <h1 class="titulo" aria-label="Página de inicio de sesión de Snap Labs">Explora el multiverso de Snap Labs</h1>
+        </section>
+        <section class="login">
+            <form th:action="@{/login}" method="post" class="formulario col texto">
+                <div class="col">
+                    <label for="username">Nombre de usuario:</label>
+                    <input type="text" id="username" name="username" class="campo" required>
+                </div>
+                <div class="col">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" class="campo" required>
+                </div>
+                <div th:if="${param.error}" class="error">
+                    <span>Credenciales incorrectas. Inténtalo de nuevo.</span>
+                </div>
+                <div th:if="${param.exito}" class="exito">
+                    <span>Cuenta creada correctamente.</span>
+                </div>
+                <div>
+                    <input type="submit" id="btn_login" name="btn_login" class="boton subtitulo" value="Acceder">
+                </div>
+                <div class="enlace texto">
+                    <a th:href="@{/registro}">Crear cuenta</a>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

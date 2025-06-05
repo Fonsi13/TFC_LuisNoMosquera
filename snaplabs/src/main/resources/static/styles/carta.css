@@ -1,0 +1,84 @@
+/* Estilos del titulo*/
+.titulo {
+    font-size: 2rem;
+}
+/* Estilos de la imagen de la carta base */
+.img-base {
+    justify-self: flex-end;
+}
+/* Estilos del grid */
+.gridDetalles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+/* Estilos del grid de las variantes */
+.gridVariantes {
+    display: grid;
+    grid-template-columns: repeat(3, 450px);
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+/* Estilo de contenedor de cada variante */
+.variante {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: #1F2329;
+    border: 2px solid #BE6BBC;
+    border-radius: 15px;
+}
+/* Estilos de los contenedores de info de las variantes */
+.info-variante {
+    justify-self: center;
+    align-self: center;
+}
+.info-variante > :first-child {
+    margin-top: 0;
+}
+/* Estilos del titulo de cada categoria */
+.subtitulo {
+    font-size: 1.6rem;
+    margin-bottom:0;
+    color: #F5F1FB;
+}
+/* Estilos del texto de cada categoria */
+.texto {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+/* Separacion antes del apartado de variantes */
+.variantes {
+    margin-top: 50px;
+}
+.linea {
+    width: 600px;
+    margin-left: 0;
+}
+.info a:hover {
+    color: #BE6BBC;
+}
+.info hr {
+    margin-bottom: 1rem;
+}
+/* Estilos responsive */
+@media screen and (max-width: 1600px) {
+    .gridVariantes {
+        grid-template-columns: repeat(2, 450px);
+    }
+}
+@media screen and (max-width: 1300px) {
+    .gridDetalles {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .img-base {
+        justify-self: center;
+    }
+    .detalles {
+        justify-self: center;
+    }
+}
+@media screen and (max-width: 980px) {
+    .gridVariantes {
+        grid-template-columns: repeat(1, 450px);
+    }
+}

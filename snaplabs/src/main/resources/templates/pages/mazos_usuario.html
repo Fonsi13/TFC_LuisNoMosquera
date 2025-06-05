@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:fragment="titulo">
+        <title th:text="${usuario.username} + ' - Snap Labs'"></title>
+    </th:block>
+    <th:block th:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/mazos_perfil.css}">
+    </th:block>
+    <script th:fragment="js" th:src="@{/js/tabla.js}" type="module" defer></script>
+</head>
+<body>
+    <main th:fragment="contenido" class="contenido">
+        <aside class="lateral">
+            <nav>
+                <ul class="menuBoton">
+                    <li>
+                        <a th:href="@{/usuario/{id}(id=${usuario.uuid})}" class="boton boton-perfil subtitulo">
+                            Perfil
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/usuario/{id}/mazos(id=${usuario.uuid})}" class="boton subtitulo boton-perfil" style="background-color: #643AC9; color: #F5F1FB;">
+                            Mazos creados
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/usuario/{id}/favoritos(id=${usuario.uuid})}" class="boton subtitulo boton-perfil">
+                            Mazos favoritos
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <section class="mazos">
+            <table class="tabla">
+                <thead>
+                    <tr>
+                        <th class="subtitulo blanco">Nombre del Mazo</th>
+                        <th class="subtitulo blanco">Publicado</th>
+                        <th class="subtitulo blanco">Estado</th>
+                        <th class="subtitulo blanco">Cartas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="mazo : ${listaMazos}">
+                        <td class="col-nombre">
+                            <a th:href="@{/mazos/{id}(id=${mazo.id})}" th:text="${mazo.nombre}" class="texto"></a>
+                        </td>
+                        <td class="col-tiempo">
+                            <p th:text="${mazo.tiempoTranscurrido}" class="texto"></p>
+                        </td>
+                        <td class="col-estado">
+                            <p th:if="${mazo.publico}" class="texto">Público</p>
+                            <p th:unless="${mazo.publico}" class="texto">Oculto</p>
+                        </td>
+                        <td class="rowCartas">
+                            <div class="gridCartasTabla">
+                                <div th:each="carta : ${mazo.cartas}" th:data-src="${carta.imagen}" th:data-desc="${carta.descripcion}">
+                                    <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" class="imagen">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

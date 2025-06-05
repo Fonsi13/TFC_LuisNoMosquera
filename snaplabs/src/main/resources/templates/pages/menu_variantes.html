@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:fragment="titulo">
+        <title>Variantes de la Comunidad - Snap Labs</title>
+    </th:block>
+    <th:block th:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/menu_variantes.css}">
+    </th:block>
+    <script th:fragment="js" th:src="@{/js/variantes.js}" defer></script>
+</head>
+<body>
+    <main th:fragment="contenido">
+        <section>
+            <h1 class="titulo">Variantes creadas por la Comunidad</h1>
+            <div th:if="${param.exito}" class="exito" role="alert">
+                <span>Variante subida correctamente.</span>
+            </div>
+        </section>
+        <section class="filtros">
+            <div class="grid-filtros">
+                <div class="filtro">
+                    <label for="fecha" class="texto label">ORDEN POR FECHA</label>
+                    <select id="fecha" class="seleccion" aria-label="Ordenar variantes por fecha">
+                        <option selected disabled>Seleccionar orden...</option>
+                        <option value="asc">Más antigua primero</option>
+                        <option value="desc">Más reciente primero</option>
+                    </select>
+                </div>
+                <div class="filtro">
+                    <label for="likes" class="texto label">ORDEN POR LIKES</label>
+                    <select id="likes" class="seleccion"  aria-label="Ordenar variantes por número de likes">
+                        <option selected disabled>Seleccionar orden...</option>
+                        <option value="asc">Menos populares primero</option>
+                        <option value="desc">Más populares primero</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+        <section class="grid-variantes">
+            <div class="upload">
+                <p class="subtitulo">Subir una variante</p>
+                <a th:href="@{/variantes/upload}" aria-label="Subir una nueva variante">
+                    <img th:src="@{/images/icons/upload_icon.svg}" alt="Subir una nueva variante" width="350px" height="450px">
+                </a>
+            </div>
+            <div th:each="variante : ${listaVariantes}" th:data-fecha="${variante.fechaCreacion}" th:data-likes="${variante.likes.size()}" class="carta">
+                <p th:text="${variante.nombre}" class="subtitulo"></p>
+                <a th:href="@{/variantes/{id}(id=${variante.uuid})}" aria-label="'Ver detalles de la variante ' + ${variante.nombre}">
+                    <img th:src="${variante.imagen}" th:alt="'Variante: ' + ${variante.nombre}" width="350px" height="450px" class="variante">
+                </a>
+                <div class="row gap">
+                    <p th:text="'Creado por ' + ${variante.usuario.username}" class="texto"></p>
+                    <div class="row">
+                        <p th:text="${variante.likes.size()}" class="texto"></p>
+                        <div th:if="${likedVariantes.contains(variante.uuid)}">
+                            <a th:href="@{/variantes/{id}/dislike(id=${variante.uuid})}" aria-label="Quitar me gusta de esta variante">
+                                <img th:src="@{/images/icons/like_icon_red.svg}" alt="Quitar me gusta de esta variante" width="35px" height="40px">
+                            </a>
+                        </div>
+                        <div th:unless="${likedVariantes.contains(variante.uuid)}">
+                            <a th:href="@{/variantes/{id}/like(id=${variante.uuid})}" aria-label="Quitar me gusta de esta variante">
+                                <img th:src="@{/images/icons/like_icon_white.svg}" alt="Dar me gusta a esta variante" width="35px" height="40px">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

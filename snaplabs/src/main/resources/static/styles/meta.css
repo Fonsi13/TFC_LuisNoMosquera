@@ -1,0 +1,79 @@
+/* Estilos del grid de mazos */
+.gridMazos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 65%;
+    margin-bottom: 300px;
+}
+/* Estilos de cada mazo */
+.mazo {
+    display: flex;
+    flex-direction: column;
+    background-color: #1F2329;
+    border: 2px solid #BE6BBC;
+    border-radius: 15px;
+    padding: 10px 20px;
+}
+.grid-meta {
+    display: grid;
+    grid-template-areas:
+        "nombre nombre"
+        "btn vict"
+        "btn cube";
+}
+.nombre{
+    font-family: 'Ultimatum', Arial, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    grid-area: nombre;
+    margin: 0 0 10px 20px;
+    font-size: 1.7rem;
+    margin-top: 0;
+}
+.texto {
+    justify-self: flex-end;
+    margin: 0;
+}
+.vict {
+    grid-area: vict;
+}
+.cube {
+    grid-area: cube;
+}
+/* Estilos del grid de cartas */
+.gridCartas {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 10px;
+    margin-top: 10px;
+}
+/* Estilos del boton */
+.boton {
+    color: #000002;
+    padding: 2px 10px 7.5px 10px;
+    width: fit-content;
+    grid-area: btn;
+    margin-left: 15px;
+}
+.boton:hover {
+    background-color: #BE6BBC;
+    color: #F5F1FB;
+}
+/* Estilos responsive */
+@media screen and (max-width: 1429px) {
+    .gridMazos {
+        grid-template-columns: 1fr;
+    }
+}
+@media screen and (max-width: 820px) {
+    .gridMazos {
+        max-width: 75%;
+    }
+}
+@media screen and (max-width: 665px) {
+    .gridMazos {
+        max-width: 85%;
+    }
+}

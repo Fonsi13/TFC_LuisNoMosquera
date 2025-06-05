@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:fragment="titulo">
+        <title th:text="${mazo.nombre} + ' - Snap Labs'"></title>
+    </th:block>
+    <th:block th:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/mazo.css}">
+    </th:block>
+    <script th:fragment="js" th:src="@{/js/mazo.js}" type="module" defer></script>
+</head>
+<body>
+    <main th:fragment="contenido">
+        <section>
+            <h1 th:text="${mazo.nombre}" class="titulo" aria-label="'Nombre del mazo: ' + ${mazo.nombre}"></h1>
+        </section>
+        <section class="mazo">
+            <div class="grid-mazo">
+                <div class="arq">
+                    <p class="subtitulo">Arquetipo</p>
+                    <hr class="linea">
+                    <p th:text="${mazo.nombreArquetipo}" class="texto"></p>
+                </div>
+                <div class="cst">
+                    <p class="subtitulo">Coste medio del mazo</p>
+                    <hr class="linea">
+                    <p th:text="${#numbers.formatDecimal(coste, 1, 2)}" class="texto"></p>
+                </div>
+                <div class="pwr">
+                    <p class="subtitulo">Poder medio del mazo</p>
+                    <hr class="linea">
+                    <p th:text="${#numbers.formatDecimal(poder, 1, 2)}" class="texto"></p>
+                </div>
+            </div>
+            <div class="last">
+                <div class="usr">
+                    <p th:text="${mazo.tiempoTranscurrido} + ' por ' + ${mazo.usuario.username}" class="texto"></p>
+                </div>
+                <div th:if="${liked}" class="btn">
+                    <a th:href="@{/mazos/{id}/dislike(id=${mazo.id})}">
+                        <button class="dislike" aria-label="Quitar me gusta al mazo"></button>
+                    </a>
+                </div>
+                <div th:unless="${liked}" class="btn">
+                    <a th:href="@{/mazos/{id}/like(id=${mazo.id})}">
+                        <button class="like" aria-label="Dar me gusta al mazo"></button>
+                    </a>
+                </div>
+            </div>
+            <div class="gridCartas">
+                <div th:each="carta : ${mazo.cartas}" th:data-src="${carta.imagen}" th:data-desc="${carta.descripcion}">
+                    <img th:src="${carta.imagen}" alt="Arre demo, esto non furrula" th:alt="${carta.nombre}" class="imagen">
+                </div>
+            </div>
+            <div class="descripcion">
+                <p class="titulo">Descripción</p>
+                <hr class="linea">
+                <p style="white-space: pre-line;" th:text="${mazo.descripcion}" class="texto"></p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Header</title>
+</head>
+<body>
+    <header th:fragment="header" class="cabecera">
+        <div id="div-logo">
+            <a th:href="@{/}" tabindex="1">
+                <img th:src="@{/images/logo/snap_labs_small_logo_white.png}" alt="Inicio - Snap Labs">
+            </a>
+        </div>
+        <nav role="navigation" aria-label="Cabecera">
+            <ul id="nav-lista">
+                <li class="desplegable">
+                    <a class="desplegable-boton titulo" aria-haspopup="true" aria-controls="submenu-mazos" id="boton-mazos" tabindex="2">
+                        Mazos<i class="fa-solid fa-caret-down"></i>
+                    </a>
+                    <ul class="desplegable-contenido" id="submenu-mazos" role="menu" aria-labelledby="boton-mazos">
+                        <li>
+                            <a th:href="@{/mazos}" tabindex="3">Mazos Publicados</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/meta}" tabindex="4">Mazos Meta</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/lab}" tabindex="5">Laboratorio</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="desplegable">
+                    <a class="desplegable-boton titulo" aria-haspopup="true" aria-controls="submenu-mazos" id="boton-cartas" tabindex="6">
+                        Cartas<i class="fa-solid fa-caret-down"></i>
+                    </a>
+                    <ul class="desplegable-contenido" id="submenu-cartas" role="menu" aria-labelledby="boton-mazos">
+                        <li>
+                            <a th:href="@{/cartas}" tabindex="7">Lista de Cartas</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/cartas/Starter}" aria-label="Cartas Inicales" tabindex="8">Iniciales</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/cartas/Recruit}" aria-label="Cartas de Reclutamiento" tabindex="9">Reclutamiento</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/cartas/SeasonPass}" aria-label="Cartas en el Pase de Batalla" tabindex="10">Pase de Batalla</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/cartas/Series0}" aria-label="Cartas de la categoría Serie 0" tabindex="11">Serie 0</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/cartas/Series1}" aria-label="Cartas de la categoría Serie 1" tabindex="12">Serie 1</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/cartas/Series2}" aria-label="Cartas de categoría Serie 2" tabindex="13">Serie 2</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/cartas/Series3}" aria-label="Cartas de categoría Serie 3" tabindex="14">Serie 3</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/cartas/Series4}" aria-label="Cartas de categoría Serie 4" tabindex="15">Serie 4</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/cartas/Series5}" aria-label="Cartas de categoría Serie 5" tabindex="16">Serie 5</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="desplegable">
+                    <a class="desplegable-boton titulo" aria-haspopup="true" aria-controls="submenu-mazos" id="boton-comunidad" tabindex="17">
+                        Comunidad<i class="fa-solid fa-caret-down"></i>
+                    </a>
+                    <ul class="desplegable-contenido" id="submenu-comunidad" role="menu" aria-labelledby="boton-comunidad">
+                        <li>
+                            <a th:href="@{/variantes}" tabindex="18">Variantes</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="div-login">
+            <div sec:authorize="isAuthenticated()" class="perfilHeader">
+                <div>
+                    <a th:href="@{/usuario/{id}(id=${id})}">
+                        <img th:src="${foto}" alt="Foto de perfil de usuario" class="fotoHeader">
+                    </a>
+                </div>
+                <div>
+                    <form th:action="@{/logout}" method="post" style="display: inline;">
+                        <button type="submit" class="botonLogout">
+                            <img th:src="@{/images/menu/logout.svg}" width="60px" height="60px" alt="Cerrar sesión">
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div sec:authorize="!isAuthenticated()" class="boton-login">
+                <a th:href="@{/login}" class="boton-header subtitulo" aria-label="Iniciar sesión">Iniciar Sesión</a>
+                <a th:href="@{/registro}" class="boton-header subtitulo" aria-label="Crear cuenta">Crear Cuenta</a>
+            </div>
+        </div>
+    </header>
+    </body>
+</html>

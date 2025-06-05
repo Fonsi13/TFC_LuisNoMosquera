@@ -1,0 +1,133 @@
+/* Centrar el contenido */
+.contenido {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 5em;
+    gap: 4em;
+}
+/* Estilos del menu de botones */
+.lateral {
+    position: sticky;
+    align-self: flex-start;
+}
+.menuBoton {
+    list-style: none;
+}
+/* Estilos del boton */
+.boton-perfil {
+    width: 100%;
+    background-color: #F5F1FB;
+    color: #000002;
+    margin: 0.5em 0 1rem 0;
+    display: block;
+    text-align: center;
+}
+.boton-perfil:hover {
+    color: #F5F1FB;
+    background-color: #643AC9;
+}
+/* Estilos del contenedor para la tabla */
+.mazos {
+    align-self: flex-start;
+    width: 80%;
+}
+/* Estilos de la tabla */
+.tabla {
+    border-collapse: collapse;
+}
+thead {
+    border-bottom: 1px solid rgba(245, 241, 251, 0.2);
+}
+/* Estilos de celdas de la tabla */
+.tabla th, .tabla td {
+    padding: 0.5rem 0.75rem;
+    text-align: center;
+}
+.rowCartas {
+    width: 65%;
+}
+/* Estilos del grid de la lista de cartas */
+.gridCartasTabla {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    width: 100%;
+}
+.col-nombre a:hover {
+    color: #BE6BBC;
+}
+/* Estilos responsive */
+@media screen and (max-width: 1450px) {
+    .contenido {
+        flex-direction: column;
+    }
+    .lateral, .mazos {
+        align-self: center;
+    }
+}
+@media screen and (max-width: 1300px) {
+    .mazos {
+        margin-bottom: 300px;
+    }
+    .tabla thead {
+        display: none;
+    }
+    .tabla tr {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        margin-bottom: 1rem;
+        background-color: #1F2329;
+        border: 2px solid #BE6BBC;
+        border-radius: 15px;
+        padding: 10px 10px;
+    }
+    .tabla td {
+        text-align: center;
+        padding: 0.25rem 0;
+    }
+    .col-nombre::before {
+        content: "Nombre del mazo ";
+        font-family: 'Ultimatum', Arial, sans-serif;
+        font-weight: bold;
+        font-style: normal;
+        font-size: 1.3rem;
+        color: #F5F1FB;
+    }
+    .col-username::before {
+        content: "Autor ";
+        font-family: 'Ultimatum', Arial, sans-serif;
+        font-weight: bold;
+        font-style: normal;
+        font-size: 1.3rem;
+        color: #F5F1FB;
+    }
+    .col-tiempo::before {
+        content: "Publicado ";
+        font-family: 'Ultimatum', Arial, sans-serif;
+        font-weight: bold;
+        font-style: normal;
+        font-size: 1.3rem;
+        color: #F5F1FB;
+    }
+    .col-estado::before {
+        content: "Estado ";
+        font-family: 'Ultimatum', Arial, sans-serif;
+        font-weight: bold;
+        font-style: normal;
+        font-size: 1.3rem;
+        color: #F5F1FB;
+    }
+    .rowCartas {
+        width: 100%;
+        border-top: 1px solid rgba(245, 241, 251, 0.2);
+        grid-column: 1 / -1;
+    }
+    .gridCartasTabla {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(2, auto);
+        gap: 5px;
+        margin-top: 10px;
+    }
+}

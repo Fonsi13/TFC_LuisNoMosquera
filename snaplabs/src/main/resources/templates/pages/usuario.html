@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:fragment="titulo">
+        <title th:text="${usuario.username} + ' - Snap Labs'"></title>
+    </th:block>
+    <th:block th:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/usuario.css}">
+    </th:block>
+    <script th:fragment="js" th:src="@{/js/usuario.js}" defer></script>
+</head>
+<body>
+    <main th:fragment="contenido" class="contenido">
+        <aside class="lateral">
+            <nav>
+                <ul class="menuBoton">
+                    <li>
+                        <a th:href="@{/usuario/{id}(id=${usuario.uuid})}" class="boton boton-perfil subtitulo" style="background-color: #643AC9; color: #F5F1FB;">
+                            Perfil
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/usuario/{id}/mazos(id=${usuario.uuid})}" class="boton subtitulo boton-perfil">
+                            Mazos creados
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/usuario/{id}/favoritos(id=${usuario.uuid})}" class="boton subtitulo boton-perfil">
+                            Mazos favoritos
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <section class="perfil">
+            <div id="div-foto">
+                <img th:src="${fotoPerfil}" alt="Arre demo, esto non furrula" class="imagenPerfil">
+            </div>
+            <div class="col gap">
+                <form th:action="@{/usuario/{id}/update(id=${usuario.uuid})}" th:object="${usuario}" method="post" enctype="multipart/form-data" class="formulario col">
+                    <div class="col">
+                        <label for="username" class="texto">Nombre de usuario:</label>
+                        <input type="text" th:field="*{username}" id="username" name="username" class="campo">
+                        <input type="hidden" id="hiddenUsername" th:value="${hidden.username}"/>
+                        <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error" role="alert"></span>
+                        <span th:if="${errorUsr}" th:text="${errorUsr}" class="error" role="alert"></span>
+                    </div>
+                    <div class="col">
+                        <label for="pwd" class="texto">Clave de acceso:</label>
+                        <input type="password" th:field="*{password}" id="pwd" name="pwd" class="campo" placeholder="Introduce o actualiza tu contraseña" minlength="12" required>
+                        <span th:if="${#fields.hasErrors('password')}" th:each="err : ${#fields.errors('password')}" th:utext="${err}" class="error" role="alert"></span>
+                    </div>
+                    <div class="col">
+                        <label for="confirmar_pwd" class="texto">Confirmar contraseña:</label>
+                        <input type="password" th:field="*{confirmarPassword}" id="confirmar_pwd" name="confirmar_pwd" class="campo" placeholder="Introduce tu contraseña actual" minlength="12" required>
+                        <span th:if="${#fields.hasErrors('confirmarPassword')}" th:errors="*{confirmarPassword}" class="error" role="alert"></span>
+                        <span th:if="${errorPwd}" th:text="${errorPwd}" class="error" role="alert"></span>
+                    </div>
+                    <div class="col">
+                        <label for="email" class="texto">Correo electrónico:</label>
+                        <input type="text" th:field="*{correo}" id="email" name="email" th:value="${usuario.correo}" class="campo">
+                        <input type="hidden" id="hiddenEmail" th:value="${hidden.correo}"/>
+                        <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}" class="error" role="alert"></span>
+                    </div>
+                    <div class="col">
+                        <label for="foto_perfil" class="texto">Foto de perfil(Opcional):</label>
+                        <input type="file" th:field="*{fotoPerfil}" id="foto_perfil" name="foto_perfil" accept="image/png, image/jpeg, image/jpg, image/webp" class="campo campoFoto">
+                        <span th:if="${errorImg}" th:utext="${errorImg}" class="error" role="alert"></span>
+                    </div>
+                    <div class="col gap">
+                        <button onclick="resetCampos()" class="boton subtitulo">Resetear campos</button>
+                        <input type="submit" id="btn_registro" name="btn_registro" class="boton subtitulo" value="Actualizar" aria-label="Actualizar datos del usuario">
+                    </div>
+                </form>
+                <form th:action="@{/usuario/{id}/delete(id=${usuario.uuid})}" method="post">
+                    <input type="submit" class="boton borrar subtitulo" value="Eliminar cuenta">
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Footer</title>
+</head>
+<body>
+    <footer th:fragment="footer" class="footer" role="contentinfo">
+        <div id="div-logo" aria-label="Ir al inicio">
+            <img th:src="@{/images/logo/snap_labs_small_logo_white.png}" alt="Logo blanco Snap Labs">
+        </div>
+        <div>
+            <nav role="navigation" aria-label="Enlaces de información">
+                <ul class="enlaces">
+                    <li>
+                        <a th:href="@{/about}" aria-label="Ir al inicio">Sobre nosotros</a>
+                    </li>
+                    <li aria-hidden="true" role="presentation">|</li>
+                    <li>
+                        <a th:href="@{/contacto}">Contacto</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div>
+            <p>Snap Labs no está afiliada a Nuverse, Second Dinner o Marvel.</p>
+        </div>
+    </footer>
+</body>
+</html>

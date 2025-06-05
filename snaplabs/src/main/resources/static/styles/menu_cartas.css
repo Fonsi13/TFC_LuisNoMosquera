@@ -1,0 +1,170 @@
+/* Estilos de la lista de cartas */
+.gridCartas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    max-width: 1200px;
+    margin: 20px auto;
+    gap: 20px;
+}
+/* Estilos del contenedor de la carta*/
+.div-carta {
+    background-color: #1F2329;
+    border: 2px solid #BE6BBC;
+    border-radius: 15px;
+    transition: transform 0.3s linear;
+}
+/* Estilos del contenedor de la carta*/
+.div-carta:hover {
+    transform: scale(1.1);
+}
+/* Estilos de las cartas */
+.carta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #F5F1FB;
+}
+/* Estilo para centrar descripcion */
+.texto {
+    padding: 0 12px 12px;
+}
+/* Estilos del boton para actualizar */
+.div-update {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+}
+.boton {
+    padding: 15px 20px;
+    background-color: #cc0000;
+}
+.boton:hover {
+    color: #F5F1FB;
+    background-color: #a10000;
+}
+/* Estilos de los filtros */
+.filtros * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.filtros {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.grid-filtros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+.filtro {
+    border: 1px solid rgba(190, 107, 188, 0.5);
+    border-radius: 15px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+.filtro:hover {
+    border-color: #BE6BBC;
+    transform: translateY(-2px);
+}
+.label {
+    display: block;
+    margin-bottom: 12px;
+}
+#buscar {
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(190, 107, 188, 0.5);
+    border-radius: 15px;
+    color: #F5F1FB;
+    font-size: 16px;
+    transition: all 0.2s ease;
+    outline: none;
+}
+#buscar::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+#buscar:focus {
+    border-color: #BE6BBC;
+}
+.seleccion {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(190, 107, 188, 0.5);
+    border-radius: 10px;
+    color: #F5F1FB;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+.seleccion:hover, .seleccion:focus {
+    border-color: #BE6BBC;
+}
+.seleccion option {
+    background: #0a002b;
+    color: #F5F1FB;
+    padding: 8px;
+}
+.filtro-habilidades {
+    border: 1px solid rgba(190, 107, 188, 0.5);
+    border-radius: 15px;
+    padding: 25px;
+    grid-column: 1 / -1;
+}
+.grid-habilidades {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(190, 107, 188, 0.5);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.checkbox-item:hover {
+    border-color: #BE6BBC;
+    transform: translateY(-1px);
+}
+.checkbox-item input[type="checkbox"] {
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+.checkbox-item label {
+    color: #F5F1FB;
+    font-size: 16px;
+    cursor: pointer;
+}
+/* Estilos responsive */
+@media screen and (max-width: 768px) {
+    .filtros {
+        padding: 20px;
+        margin: 10px;
+    }
+    .grid-filtros {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .grid-habilidades {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 12px;
+    }
+}
+@media screen and (max-width: 519px) {
+    .gridCartas {
+        grid-template-columns: 300px;
+        justify-content: center;
+    }
+}
