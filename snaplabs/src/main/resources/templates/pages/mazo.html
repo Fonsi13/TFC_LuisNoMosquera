@@ -39,12 +39,12 @@
                     <p th:text="${mazo.tiempoTranscurrido} + ' por ' + ${mazo.usuario.username}" class="texto"></p>
                 </div>
                 <div th:if="${liked}" class="btn">
-                    <a th:href="@{/mazos/{id}/like(id=${mazo.id})}">
+                    <a th:href="@{/mazos/{id}/dislike(id=${mazo.id})}">
                         <button class="dislike" aria-label="Quitar me gusta al mazo"></button>
                     </a>
                 </div>
                 <div th:unless="${liked}" class="btn">
-                    <a th:href="@{/mazos/{id}/dislike(id=${mazo.id})}">
+                    <a th:href="@{/mazos/{id}/like(id=${mazo.id})}">
                         <button class="like" aria-label="Dar me gusta al mazo"></button>
                     </a>
                 </div>

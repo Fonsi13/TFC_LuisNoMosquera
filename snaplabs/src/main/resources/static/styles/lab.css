@@ -41,6 +41,10 @@
     width: 130px;
     height: 180px;
 }
+/* Estilo para centrar descripcion */
+.texto {
+    padding: 0 12px 12px;
+}
 /* Estilos de los filtros*/
 .filtros * {
     margin: 0;
@@ -206,10 +210,6 @@
     background-size: cover;
     background-position: center;
     cursor: pointer;
-}
-/* Estilo para centrar descripcion */
-.texto {
-    padding: 0 12px 12px;
 }
 /* No redimensionar el textarea */
 textarea {

@@ -47,9 +47,7 @@
                 <tbody>
                     <tr th:each="mazo : ${listaMazos}">
                         <td class="col-nombre">
-                            <a th:href="@{/mazos/{id}(id=${mazo.id})}">
-                                <p th:text="${mazo.nombre}" class="texto"></p>
-                            </a>
+                            <a th:href="@{/mazos/{id}(id=${mazo.id})}" th:text="${mazo.nombre}" class="texto"></a>
                         </td>
                         <td class="col-tiempo">
                             <p th:text="${mazo.tiempoTranscurrido}" class="texto"></p>

@@ -124,7 +124,7 @@
             <div th:each="carta: ${listaCartas}" th:id="${carta.nombre}" th:data-coste="${carta.coste}" th:data-poder="${carta.poder}" th:data-habilidades="${carta.habilidades}" class="cartaLab">
                 <div class="carta" tabindex="0" role="button">
                     <img th:src="${carta.imagen}" th:alt="'Imagen de ' + ${carta.nombre}" class="imagen">
-                    <span th:text="${carta.nombre}" class="texto"></span>
+                    <span th:text="${carta.nombre}" class="texto negrita"></span>
                     <span th:text="${carta.descripcion}" class="texto"></span>
                 </div>
             </div>
